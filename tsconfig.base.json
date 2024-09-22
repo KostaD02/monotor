@@ -14,7 +14,11 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@fitmonitor/consts": ["libs/shared/consts/src/index.ts"],
+      "@fitmonitor/interfaces": ["libs/shared/interfaces/src/index.ts"],
+      "@fitmonitor/util": ["libs/shared/util/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

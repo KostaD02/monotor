@@ -1,0 +1,21 @@
+{
+  "name": "consts",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/shared/consts/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/esbuild:esbuild",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/shared/consts",
+        "main": "libs/shared/consts/src/index.ts",
+        "tsConfig": "libs/shared/consts/tsconfig.lib.json",
+        "assets": ["libs/shared/consts/*.md"],
+        "generatePackageJson": true,
+        "format": ["cjs"]
+      }
+    }
+  }
+}
