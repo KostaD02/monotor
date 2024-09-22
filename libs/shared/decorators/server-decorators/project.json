@@ -1,0 +1,21 @@
+{
+  "name": "server-decorators",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/shared/decorators/server-decorators/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/esbuild:esbuild",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/shared/decorators/server-decorators",
+        "main": "libs/shared/decorators/server-decorators/src/index.ts",
+        "tsConfig": "libs/shared/decorators/server-decorators/tsconfig.lib.json",
+        "assets": ["libs/shared/decorators/server-decorators/*.md"],
+        "generatePackageJson": true,
+        "format": ["cjs"]
+      }
+    }
+  }
+}

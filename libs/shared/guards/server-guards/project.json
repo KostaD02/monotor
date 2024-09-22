@@ -1,0 +1,21 @@
+{
+  "name": "server-guards",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/shared/guards/server-guards/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/esbuild:esbuild",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/shared/guards/server-guards",
+        "main": "libs/shared/guards/server-guards/src/index.ts",
+        "tsConfig": "libs/shared/guards/server-guards/tsconfig.lib.json",
+        "assets": ["libs/shared/guards/server-guards/*.md"],
+        "generatePackageJson": true,
+        "format": ["cjs"]
+      }
+    }
+  }
+}

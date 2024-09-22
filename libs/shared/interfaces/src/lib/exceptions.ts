@@ -9,6 +9,7 @@ export enum ExceptionStatusKeys {
   ContentTooLarge = 'errors.content_too_large',
   UnsupportedMediaType = 'errors.unsupported_media_type',
   EnhanceYourCalm = 'errors.enhance_your_calm',
+  InternalServerError = 'errors.internal_server_error',
 }
 
 export enum GlobalExceptionKeys {
@@ -20,4 +21,37 @@ export enum GlobalExceptionKeys {
   PageSizeTooHigh = 'errors.page_size.too_high',
   EndPointNotFound = 'errors.endpoint_not_found',
   InvalidJSON = 'errors.invalid_json',
+  NothingToUpdate = 'errors.nothing_to_update',
+}
+
+export enum AuthExpectionKeys {
+  IncorrectEmailOrPassword = 'errors.incorrect_email_or_password',
+  EmailInUse = 'errors.email_in_use',
+  TokenInvalid = 'errors.token_invalid',
+  TokenExpired = 'errors.token_expired',
+  TokenNotFound = 'errors.token_not_found',
+  InvalidEmail = 'errors.invalid_email',
+  InvalidPassword = 'errors.invalid_password',
+  InvalidOldPassword = 'errors.invalid_old_password',
+  InvalidChangePassword = 'errors.invalid_change_password',
+  FirstnameTooLong = 'errors.firstname_too_long',
+  FirstnameTooShort = 'errors.firstname_too_short',
+  FirstnameShouldBeString = 'errors.firstname_should_be_string',
+  LastnameTooLong = 'errors.lastname_too_long',
+  LastnameTooShort = 'errors.lastname_too_short',
+  LastnameShouldBeString = 'errors.lastname_should_be_string',
+  PasswordTooShort = 'errors.password_too_short',
+  PasswordTooLong = 'errors.password_too_long',
+  TokenContainsIncorrectUser = 'errors.token_contains_incorrect_user',
+  OldPasswordIncorrect = 'errors.old_password_incorrect',
+  NewPasswordMatchesOld = 'errors.new_password_matches_old',
+  UserAlreadyDeleted = 'errors.user_already_deleted',
+  UserPermissionNotGranted = 'errors.user_permission_not_granted',
+  NothingToUpdate = 'errors.nothing_to_update',
+  ShouldProvideEmail = 'errors.should_provide_email',
+  ShouldProvidePassword = 'errors.should_provide_password',
+  ClearingDatabase = 'errors.clearing_database',
+  UserNotFound = 'errors.user_not_found',
+  MakeAdminShouldBeBoolean = 'errors.make_admin_should_be_boolean',
+  AdminAlreadyExists = 'errors.admin_already_exists',
 }

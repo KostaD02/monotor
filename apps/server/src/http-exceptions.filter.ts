@@ -1,3 +1,5 @@
+import { ExceptionStatusKeys } from '@fitmonitor/interfaces';
+import { Logger, LoggerSide } from '@fitmonitor/util';
 import {
   Catch,
   HttpException,
@@ -6,19 +8,41 @@ import {
 } from '@nestjs/common';
 import { Request, Response } from 'express';
 
-@Catch(HttpException)
+@Catch()
 export class HttpExceptionsFilter implements ExceptionFilter {
-  catch(exception: HttpException, host: ArgumentsHost) {
+  catch(exception: Error, host: ArgumentsHost) {
+    const isHttpException =
+      exception.name === 'HttpException' ||
+      exception.name === 'NotFoundException:';
     const ctx = host.switchToHttp();
     const response = ctx.getResponse<Response>();
     const request = ctx.getRequest<Request>();
-    const status = exception.getStatus();
+    const status = isHttpException
+      ? (exception as HttpException)?.getStatus()
+      : 500;
 
-    const exceptionResponse = exception.getResponse() as {
+    const exceptionResponse: {
       message: string | string[];
       error: string;
-      statusCode: number;
+    } = {
+      error: exception.message,
+      message: ExceptionStatusKeys.InternalServerError,
     };
+
+    if (isHttpException) {
+      const data = (exception as HttpException).getResponse() as {
+        message: string | string[];
+        error: string;
+        statusCode: number;
+      };
+      exceptionResponse.error = data.error;
+      exceptionResponse.message = data.message;
+    } else {
+      Logger.error(
+        `At endpoint: ${request.url}\n${exception.stack}`,
+        LoggerSide.Server
+      );
+    }
 
     response.status(status).json({
       error: exceptionResponse.error,

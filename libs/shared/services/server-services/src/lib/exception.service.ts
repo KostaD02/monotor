@@ -70,6 +70,10 @@ export class ExceptionService {
         status: 420,
         key: ExceptionStatusKeys.EnhanceYourCalm,
       },
+      {
+        status: 500,
+        key: ExceptionStatusKeys.InternalServerError,
+      },
     ];
   }
 
@@ -93,6 +97,8 @@ export class ExceptionService {
         return HttpStatus.UNSUPPORTED_MEDIA_TYPE;
       case ExceptionStatusKeys.Teapot:
         return HttpStatus.I_AM_A_TEAPOT;
+      case ExceptionStatusKeys.InternalServerError:
+        return HttpStatus.INTERNAL_SERVER_ERROR;
       default:
         return 420;
     }

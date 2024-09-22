@@ -1,0 +1,21 @@
+{
+  "name": "server-interceptors",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/shared/interceptors/server-interceptors/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/esbuild:esbuild",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/shared/interceptors/server-interceptors",
+        "main": "libs/shared/interceptors/server-interceptors/src/index.ts",
+        "tsConfig": "libs/shared/interceptors/server-interceptors/tsconfig.lib.json",
+        "assets": ["libs/shared/interceptors/server-interceptors/*.md"],
+        "generatePackageJson": true,
+        "format": ["cjs"]
+      }
+    }
+  }
+}

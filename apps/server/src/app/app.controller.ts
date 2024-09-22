@@ -1,13 +1,27 @@
 import { Controller, Get } from '@nestjs/common';
 
-import { AppService } from './app.service';
+import {
+  AuthExpectionKeys,
+  ExceptionStatusKeys,
+  GlobalExceptionKeys,
+} from '@fitmonitor/interfaces';
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
-
   @Get()
-  getData() {
-    return this.appService.getData();
+  base() {
+    return {
+      message: 'Welcome to FitMonitor API',
+      github: 'https://github.com/KostaD02/fitmonitor',
+    };
+  }
+
+  @Get('lang/errors')
+  getErrors() {
+    return Object.values({
+      ...ExceptionStatusKeys,
+      ...GlobalExceptionKeys,
+      ...AuthExpectionKeys,
+    });
   }
 }

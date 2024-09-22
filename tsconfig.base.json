@@ -20,7 +20,17 @@
       ],
       "@fitmonitor/consts": ["libs/shared/consts/src/index.ts"],
       "@fitmonitor/interfaces": ["libs/shared/interfaces/src/index.ts"],
+      "@fitmonitor/schemas": ["libs/shared/schemas/src/index.ts"],
       "@fitmonitor/server-auth": ["libs/auth/server-auth/src/index.ts"],
+      "@fitmonitor/server-decorators": [
+        "libs/shared/decorators/server-decorators/src/index.ts"
+      ],
+      "@fitmonitor/server-guards": [
+        "libs/shared/guards/server-guards/src/index.ts"
+      ],
+      "@fitmonitor/server-interceptors": [
+        "libs/shared/interceptors/server-interceptors/src/index.ts"
+      ],
       "@fitmonitor/server-services": [
         "libs/shared/services/server-services/src/index.ts"
       ],
