@@ -1,5 +1,13 @@
 # Fitmonitor
 
-Self-hosted fitenss monitoring app
+Self-hosted fitenss monitoring app. **Currently in development.**
 
-<!-- TODO: fill -->
+## To Do
+
+- Server
+  - ~~Auth~~
+  - Dyanmic data store
+  - Calendar
+  - Schedule for food
+- Client
+  - Implement everything

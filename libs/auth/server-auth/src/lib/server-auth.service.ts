@@ -339,7 +339,10 @@ export class AuthService {
   }
 
   async getAllUser() {
-    return await this.userModel.find({});
+    const users = await this.userModel.find({});
+    return users.map((user) =>
+      this.createPayload(user as unknown as UserInterface)
+    );
   }
 
   async deleteUserById(id: string) {
