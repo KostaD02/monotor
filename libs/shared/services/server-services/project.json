@@ -1,0 +1,21 @@
+{
+  "name": "server-services",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/shared/services/server-services/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/esbuild:esbuild",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/shared/services/server-services",
+        "main": "libs/shared/services/server-services/src/index.ts",
+        "tsConfig": "libs/shared/services/server-services/tsconfig.lib.json",
+        "assets": ["libs/shared/services/server-services/*.md"],
+        "generatePackageJson": true,
+        "format": ["cjs"]
+      }
+    }
+  }
+}

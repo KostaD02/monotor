@@ -1,0 +1,13 @@
+{
+  "name": "@fitmonitor/server-services",
+  "version": "0.0.1",
+  "dependencies": {
+    "@nestjs/common": "^10.0.2",
+    "bcrypt": "^5.1.1",
+    "@fitmonitor/interfaces": "0.0.1",
+    "mongoose": "^8.6.3"
+  },
+  "type": "commonjs",
+  "main": "./index.cjs",
+  "private": true
+}

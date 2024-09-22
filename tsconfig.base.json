@@ -15,8 +15,15 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@fitmonitor/client-services": [
+        "libs/shared/services/client-services/src/index.ts"
+      ],
       "@fitmonitor/consts": ["libs/shared/consts/src/index.ts"],
       "@fitmonitor/interfaces": ["libs/shared/interfaces/src/index.ts"],
+      "@fitmonitor/server-auth": ["libs/auth/server-auth/src/index.ts"],
+      "@fitmonitor/server-services": [
+        "libs/shared/services/server-services/src/index.ts"
+      ],
       "@fitmonitor/util": ["libs/shared/util/src/index.ts"]
     }
   },

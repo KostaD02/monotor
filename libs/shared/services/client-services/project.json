@@ -1,0 +1,21 @@
+{
+  "name": "client-services",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/shared/services/client-services/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/esbuild:esbuild",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/shared/services/client-services",
+        "main": "libs/shared/services/client-services/src/index.ts",
+        "tsConfig": "libs/shared/services/client-services/tsconfig.lib.json",
+        "assets": ["libs/shared/services/client-services/*.md"],
+        "generatePackageJson": true,
+        "format": ["cjs"]
+      }
+    }
+  }
+}
