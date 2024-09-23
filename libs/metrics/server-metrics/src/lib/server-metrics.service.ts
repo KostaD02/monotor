@@ -137,8 +137,9 @@ export class MetricsService {
     // Each time date should be sorted, if the last date is
     // greater than the new date then sort otherwise it's already sorted
     if (
+      metric.data.length > 1 &&
       new Date(metric.data[metric.data.length - 2].date).getTime() >
-      date.getTime()
+        date.getTime()
     ) {
       metric.data = metric.data.sort(
         (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()

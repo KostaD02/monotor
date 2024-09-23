@@ -13,7 +13,8 @@ export class HttpExceptionsFilter implements ExceptionFilter {
   catch(exception: Error, host: ArgumentsHost) {
     const isHttpException =
       exception.name === 'HttpException' ||
-      exception.name === 'NotFoundException:';
+      exception.name === 'NotFoundException' ||
+      exception.name === 'BadRequestException';
     const ctx = host.switchToHttp();
     const response = ctx.getResponse<Response>();
     const request = ctx.getRequest<Request>();
@@ -42,6 +43,10 @@ export class HttpExceptionsFilter implements ExceptionFilter {
         `At endpoint: ${request.url}\n${exception.stack}`,
         LoggerSide.Server
       );
+    }
+
+    if (exceptionResponse.message.includes('JSON at')) {
+      exceptionResponse.message = 'Invalid JSON format, check your body';
     }
 
     response.status(status).json({

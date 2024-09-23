@@ -37,7 +37,10 @@ export class MetricsController {
   @Get('name/:name')
   @UseGuards(JwtGuard)
   @UseInterceptors(CurrentUserInterceptor)
-  getMetricByName(@CurrentUser() user: UserPayload, name: string) {
+  getMetricByName(
+    @CurrentUser() user: UserPayload,
+    @Param('name') name: string
+  ) {
     return this.metricsService.getMetricByName(user, name);
   }
 
