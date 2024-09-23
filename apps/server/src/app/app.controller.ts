@@ -5,7 +5,8 @@ import {
   ExceptionStatusKeys,
   GlobalExceptionKeys,
 } from '@fitmonitor/interfaces';
-
+import { ApiTags } from '@nestjs/swagger';
+@ApiTags('Base')
 @Controller()
 export class AppController {
   @Get()

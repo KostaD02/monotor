@@ -31,6 +31,9 @@
       "@fitmonitor/server-interceptors": [
         "libs/shared/interceptors/server-interceptors/src/index.ts"
       ],
+      "@fitmonitor/server-metrics": [
+        "libs/metrics/server-metrics/src/index.ts"
+      ],
       "@fitmonitor/server-services": [
         "libs/shared/services/server-services/src/index.ts"
       ],

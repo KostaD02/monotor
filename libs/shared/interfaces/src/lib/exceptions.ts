@@ -55,3 +55,17 @@ export enum AuthExpectionKeys {
   MakeAdminShouldBeBoolean = 'errors.make_admin_should_be_boolean',
   AdminAlreadyExists = 'errors.admin_already_exists',
 }
+
+export enum MetricsExceptionKeys {
+  NotFound = 'errors.metrics_not_found',
+  NameShouldBeString = 'errors.metrics_name_should_be_string',
+  ValueShouldBeNumber = 'errors.metrics_value_should_be_number',
+  DateShouldBeString = 'errors.metrics_date_should_be_string',
+  NameTooShort = 'errors.metrics_name_too_short',
+  NameTooLong = 'errors.metrics_name_too_long',
+  ValueTooLow = 'errors.metrics_value_too_low',
+  DesiredValueTooLow = 'errors.metrics_desired_value_too_low',
+  NameAlreadyExists = 'errors.metrics_name_already_exists',
+  InvalidDate = 'errors.metrics_invalid_date',
+  DateAlreadyExists = 'errors.metrics_date_already_exists',
+}

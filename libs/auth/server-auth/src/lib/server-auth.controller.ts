@@ -30,7 +30,7 @@ import { UserPayload, UserRole } from '@fitmonitor/interfaces';
 import { ApiTags } from '@nestjs/swagger';
 import { MongooseValidatorService } from '@fitmonitor/server-services';
 
-@ApiTags('auth')
+@ApiTags('Auth')
 @Controller('auth')
 export class AuthController {
   constructor(

@@ -1,0 +1,9 @@
+{
+  "name": "server-metrics",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/metrics/server-metrics/src",
+  "projectType": "library",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project server-metrics --web",
+  "targets": {}
+}
