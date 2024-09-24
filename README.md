@@ -7,7 +7,7 @@ Self-hosted fitenss monitoring app. **Currently in development.**
 - Server
   - ~~Auth~~
   - ~~Dyanmic data store~~
-  - Calendar
+  - ~~Calendar~~
   - Schedule for food
 - Client
   - Implement everything
