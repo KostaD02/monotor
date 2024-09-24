@@ -9,6 +9,7 @@ import { UserModule } from '@fitmonitor/server-auth';
 
 import { AppController } from './app.controller';
 import { MetricsModule } from '@fitmonitor/server-metrics';
+import { CalendarModule } from '@fitmonitor/server-calendar';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { MetricsModule } from '@fitmonitor/server-metrics';
     MongooseModule.forRoot(process.env.DATABASE_URL),
     UserModule,
     MetricsModule,
+    CalendarModule,
   ],
   controllers: [AppController],
   providers: [ExceptionService, EncryptionService],

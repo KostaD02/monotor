@@ -28,11 +28,11 @@ import { Logger, LoggerSide } from '@fitmonitor/util';
 @Injectable()
 export class AuthService {
   constructor(
-    @InjectModel(User.name) private userModel: Model<UserDocument>,
-    private exceptionService: ExceptionService,
-    private encryptionService: EncryptionService,
-    private jwtService: JwtService,
-    private mongooseValidator: MongooseValidatorService
+    @InjectModel(User.name) private readonly userModel: Model<UserDocument>,
+    private readonly exceptionService: ExceptionService,
+    private readonly encryptionService: EncryptionService,
+    private readonly jwtService: JwtService,
+    private readonly mongooseValidator: MongooseValidatorService
   ) {}
 
   async getCurrentUser(payload: UserPayload) {

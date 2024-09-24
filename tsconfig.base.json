@@ -22,6 +22,9 @@
       "@fitmonitor/interfaces": ["libs/shared/interfaces/src/index.ts"],
       "@fitmonitor/schemas": ["libs/shared/schemas/src/index.ts"],
       "@fitmonitor/server-auth": ["libs/auth/server-auth/src/index.ts"],
+      "@fitmonitor/server-calendar": [
+        "libs/calendar/server-calendar/src/index.ts"
+      ],
       "@fitmonitor/server-decorators": [
         "libs/shared/decorators/server-decorators/src/index.ts"
       ],

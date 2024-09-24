@@ -15,6 +15,7 @@ import { UserPayload } from '@fitmonitor/interfaces';
 import { JwtGuard } from '@fitmonitor/server-guards';
 import { CurrentUserInterceptor } from '@fitmonitor/server-interceptors';
 import { CurrentUser } from '@fitmonitor/server-decorators';
+import { MongooseValidatorService } from '@fitmonitor/server-services';
 import {
   MetricsDataDto,
   MetricsDto,
@@ -25,7 +26,10 @@ import {
 @ApiTags('Metrics')
 @Controller('metrics')
 export class MetricsController {
-  constructor(private metricsService: MetricsService) {}
+  constructor(
+    private readonly metricsService: MetricsService,
+    private readonly mongooseValidator: MongooseValidatorService
+  ) {}
 
   @Get('all')
   @UseGuards(JwtGuard)
@@ -82,6 +86,7 @@ export class MetricsController {
     @Param('name') name: string,
     @Param('id') id: string
   ) {
+    this.mongooseValidator.isValidObjectId(id);
     return this.metricsService.updateDataInMetric(user, name, id, body);
   }
 
@@ -100,6 +105,7 @@ export class MetricsController {
     @Param('name') name: string,
     @Param('id') id: string
   ) {
+    this.mongooseValidator.isValidObjectId(id);
     return this.metricsService.deleteDataFromMetric(user, name, id);
   }
 

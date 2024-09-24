@@ -6,7 +6,7 @@ Self-hosted fitenss monitoring app. **Currently in development.**
 
 - Server
   - ~~Auth~~
-  - Dyanmic data store
+  - ~~Dyanmic data store~~
   - Calendar
   - Schedule for food
 - Client

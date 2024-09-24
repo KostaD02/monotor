@@ -69,3 +69,12 @@ export enum MetricsExceptionKeys {
   InvalidDate = 'errors.metrics_invalid_date',
   DateAlreadyExists = 'errors.metrics_date_already_exists',
 }
+
+export enum CalendarExceptionKeys {
+  NotFound = 'errors.calendar_not_found',
+  NameShouldBeString = 'errors.calendar_name_should_be_string',
+  NameTooShort = 'errors.calendar_name_too_short',
+  NameTooLong = 'errors.calendar_name_too_long',
+  NameAlreadyExists = 'errors.calendar_name_already_exists',
+  CalendarDataShouldBeString = 'errors.calendar_data_should_be_string',
+}
