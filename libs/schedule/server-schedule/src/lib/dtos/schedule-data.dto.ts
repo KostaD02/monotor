@@ -5,6 +5,7 @@ import { IsBoolean, IsObject, IsOptional } from 'class-validator';
 export class ScheduleDataDto {
   @ApiProperty({
     required: false,
+    default: true,
   })
   @IsOptional()
   @IsBoolean({
@@ -14,6 +15,9 @@ export class ScheduleDataDto {
 
   @ApiProperty({
     required: false,
+    default: {
+      '10:00': 'workout',
+    },
   })
   @IsOptional()
   @IsObject({
@@ -23,6 +27,9 @@ export class ScheduleDataDto {
 
   @ApiProperty({
     required: false,
+    default: {
+      '10:00': 'workout',
+    },
   })
   @IsOptional()
   @IsObject({
@@ -32,6 +39,9 @@ export class ScheduleDataDto {
 
   @ApiProperty({
     required: false,
+    default: {
+      '10:00': 'workout',
+    },
   })
   @IsOptional()
   @IsObject({
@@ -41,6 +51,9 @@ export class ScheduleDataDto {
 
   @ApiProperty({
     required: false,
+    default: {
+      '10:00': 'workout',
+    },
   })
   @IsOptional()
   @IsObject({
@@ -50,6 +63,9 @@ export class ScheduleDataDto {
 
   @ApiProperty({
     required: false,
+    default: {
+      '10:00': 'workout',
+    },
   })
   @IsOptional()
   @IsObject({
@@ -59,6 +75,9 @@ export class ScheduleDataDto {
 
   @ApiProperty({
     required: false,
+    default: {
+      '10:00': 'workout',
+    },
   })
   @IsOptional()
   @IsObject({
@@ -68,6 +87,9 @@ export class ScheduleDataDto {
 
   @ApiProperty({
     required: false,
+    default: {
+      '10:00': 'workout',
+    },
   })
   @IsOptional()
   @IsObject({

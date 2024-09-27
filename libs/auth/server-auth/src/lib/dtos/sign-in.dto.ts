@@ -5,12 +5,14 @@ import { ApiProperty } from '@nestjs/swagger';
 export class SignInDto {
   @ApiProperty({
     required: true,
+    default: 'konstantine@datunishvili.ge',
   })
   @IsEmail({}, { message: AuthExpectionKeys.InvalidEmail })
   email!: string;
 
   @ApiProperty({
     required: true,
+    default: 'somestrongpassword123',
   })
   @IsString()
   password!: string;

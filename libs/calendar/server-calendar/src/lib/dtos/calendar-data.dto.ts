@@ -5,6 +5,7 @@ import { ApiProperty } from '@nestjs/swagger';
 export class CalendarDataDto {
   @ApiProperty({
     required: false,
+    default: 'something1',
   })
   @IsOptional()
   @IsString({
@@ -14,6 +15,7 @@ export class CalendarDataDto {
 
   @ApiProperty({
     required: false,
+    default: 'something2',
   })
   @IsOptional()
   @IsString({
@@ -23,6 +25,7 @@ export class CalendarDataDto {
 
   @ApiProperty({
     required: false,
+    default: 'something3',
   })
   @IsOptional()
   @IsString({
@@ -32,6 +35,7 @@ export class CalendarDataDto {
 
   @ApiProperty({
     required: false,
+    default: 'something4',
   })
   @IsOptional()
   @IsString({
@@ -41,6 +45,7 @@ export class CalendarDataDto {
 
   @ApiProperty({
     required: false,
+    default: 'something5',
   })
   @IsOptional()
   @IsString({
@@ -50,6 +55,7 @@ export class CalendarDataDto {
 
   @ApiProperty({
     required: false,
+    default: 'something6',
   })
   @IsOptional()
   @IsString({
@@ -59,6 +65,7 @@ export class CalendarDataDto {
 
   @ApiProperty({
     required: false,
+    default: 'something7',
   })
   @IsOptional()
   @IsString({

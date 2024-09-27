@@ -6,12 +6,14 @@ import { ApiProperty } from '@nestjs/swagger';
 export class UpdateUserPasswordDto {
   @ApiProperty({
     required: true,
+    default: 'somestrongpassword123',
   })
   @IsString({ message: AuthExpectionKeys.InvalidOldPassword })
   oldPassword!: string;
 
   @ApiProperty({
     required: true,
+    default: 'somestrongpassword1234',
   })
   @IsString({ message: AuthExpectionKeys.InvalidChangePassword })
   @MinLength(API_CONFIG.MIN_PASSWORD_LENGTH, {

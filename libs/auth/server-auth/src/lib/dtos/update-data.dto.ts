@@ -7,6 +7,7 @@ export class UpdateUserDto {
   @IsOptional()
   @ApiProperty({
     required: false,
+    default: 'konstantine',
   })
   @IsString({
     message: AuthExpectionKeys.FirstnameShouldBeString,
@@ -22,6 +23,7 @@ export class UpdateUserDto {
   @IsOptional()
   @ApiProperty({
     required: false,
+    default: 'datunishvili',
   })
   @IsString({
     message: AuthExpectionKeys.LastnameShouldBeString,

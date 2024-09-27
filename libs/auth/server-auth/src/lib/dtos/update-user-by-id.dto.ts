@@ -14,6 +14,7 @@ export class UpdateUserByIdDto {
   @IsOptional()
   @ApiProperty({
     required: false,
+    default: 'konstantine',
   })
   @IsString({
     message: AuthExpectionKeys.FirstnameShouldBeString,
@@ -29,6 +30,7 @@ export class UpdateUserByIdDto {
   @IsOptional()
   @ApiProperty({
     required: false,
+    default: 'datunishvili',
   })
   @IsString({
     message: AuthExpectionKeys.LastnameShouldBeString,
@@ -44,6 +46,7 @@ export class UpdateUserByIdDto {
   @IsOptional()
   @ApiProperty({
     required: false,
+    default: 'konstantine@datunishvili.ge',
   })
   @IsEmail({}, { message: AuthExpectionKeys.InvalidEmail })
   email!: string;
@@ -51,6 +54,7 @@ export class UpdateUserByIdDto {
   @IsOptional()
   @ApiProperty({
     required: false,
+    default: 'somestrongpassword123',
   })
   @IsString({ message: AuthExpectionKeys.InvalidChangePassword })
   @MinLength(API_CONFIG.MIN_PASSWORD_LENGTH, {
@@ -62,6 +66,10 @@ export class UpdateUserByIdDto {
   password!: string;
 
   @IsOptional()
+  @ApiProperty({
+    required: false,
+    default: true,
+  })
   @IsBoolean({
     message: AuthExpectionKeys.MakeAdminShouldBeBoolean,
   })

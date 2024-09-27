@@ -6,6 +6,7 @@ import { IsString, MinLength, MaxLength } from 'class-validator';
 export class ScheduleDto {
   @ApiProperty({
     required: false,
+    default: 'workout',
   })
   @IsString({
     message: ScheduleExpceptionKeys.NameShouldBeString,

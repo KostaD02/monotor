@@ -12,6 +12,7 @@ import { MetricsExceptionKeys } from '@fitmonitor/interfaces';
 export class MetricsDto {
   @ApiProperty({
     required: true,
+    default: 'workout',
   })
   @IsString({
     message: MetricsExceptionKeys.NameShouldBeString,
@@ -26,6 +27,7 @@ export class MetricsDto {
 
   @ApiProperty({
     required: true,
+    default: 22,
   })
   @IsNumber({}, { message: MetricsExceptionKeys.ValueShouldBeNumber })
   @IsPositive({ message: MetricsExceptionKeys.ValueShouldBeNumber })

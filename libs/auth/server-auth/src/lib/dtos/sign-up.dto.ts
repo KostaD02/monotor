@@ -6,6 +6,7 @@ import { ApiProperty } from '@nestjs/swagger';
 export class SignUpDto {
   @ApiProperty({
     required: true,
+    default: 'konstantine',
   })
   @IsString({
     message: AuthExpectionKeys.FirstnameShouldBeString,
@@ -20,6 +21,7 @@ export class SignUpDto {
 
   @ApiProperty({
     required: true,
+    default: 'datunishvili',
   })
   @IsString({
     message: AuthExpectionKeys.LastnameShouldBeString,
@@ -34,12 +36,14 @@ export class SignUpDto {
 
   @ApiProperty({
     required: true,
+    default: 'konstantine@datunishvili.ge',
   })
   @IsEmail({}, { message: AuthExpectionKeys.InvalidEmail })
   email!: string;
 
   @ApiProperty({
     required: true,
+    default: 'somestrongpassword123',
   })
   @IsString({ message: AuthExpectionKeys.InvalidPassword })
   @MinLength(API_CONFIG.MIN_PASSWORD_LENGTH, {

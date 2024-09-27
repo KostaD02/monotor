@@ -6,6 +6,7 @@ import { API_CONFIG } from '@fitmonitor/consts';
 export class CalendarDto {
   @ApiProperty({
     required: false,
+    default: 'workout',
   })
   @IsString({
     message: CalendarExceptionKeys.NameShouldBeString,

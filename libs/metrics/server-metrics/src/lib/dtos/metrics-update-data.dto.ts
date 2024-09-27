@@ -5,6 +5,7 @@ import { MetricsExceptionKeys } from '@fitmonitor/interfaces';
 export class MetricsUpdateDataDto {
   @ApiProperty({
     required: false,
+    default: '2024-09-27T16:07:47.496Z',
   })
   @IsOptional()
   @IsString({
@@ -14,6 +15,7 @@ export class MetricsUpdateDataDto {
 
   @ApiProperty({
     required: false,
+    default: 1,
   })
   @IsOptional()
   @IsNumber({}, { message: MetricsExceptionKeys.ValueTooLow })
