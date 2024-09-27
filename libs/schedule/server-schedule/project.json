@@ -1,0 +1,9 @@
+{
+  "name": "server-schedule",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/schedule/server-schedule/src",
+  "projectType": "library",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project server-schedule --web",
+  "targets": {}
+}

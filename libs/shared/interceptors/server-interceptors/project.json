@@ -13,7 +13,6 @@
         "main": "libs/shared/interceptors/server-interceptors/src/index.ts",
         "tsConfig": "libs/shared/interceptors/server-interceptors/tsconfig.lib.json",
         "assets": ["libs/shared/interceptors/server-interceptors/*.md"],
-        "generatePackageJson": true,
         "format": ["cjs"]
       }
     }

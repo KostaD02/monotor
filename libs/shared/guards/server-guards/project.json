@@ -13,7 +13,6 @@
         "main": "libs/shared/guards/server-guards/src/index.ts",
         "tsConfig": "libs/shared/guards/server-guards/tsconfig.lib.json",
         "assets": ["libs/shared/guards/server-guards/*.md"],
-        "generatePackageJson": true,
         "format": ["cjs"]
       }
     }

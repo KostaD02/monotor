@@ -2,10 +2,14 @@ import { Controller, Get } from '@nestjs/common';
 
 import {
   AuthExpectionKeys,
+  CalendarExceptionKeys,
   ExceptionStatusKeys,
   GlobalExceptionKeys,
+  MetricsExceptionKeys,
+  ScheduleExpceptionKeys,
 } from '@fitmonitor/interfaces';
 import { ApiTags } from '@nestjs/swagger';
+
 @ApiTags('Base')
 @Controller()
 export class AppController {
@@ -23,6 +27,9 @@ export class AppController {
       ...ExceptionStatusKeys,
       ...GlobalExceptionKeys,
       ...AuthExpectionKeys,
+      ...MetricsExceptionKeys,
+      ...CalendarExceptionKeys,
+      ...ScheduleExpceptionKeys,
     });
   }
 }

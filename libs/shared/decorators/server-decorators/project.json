@@ -13,7 +13,6 @@
         "main": "libs/shared/decorators/server-decorators/src/index.ts",
         "tsConfig": "libs/shared/decorators/server-decorators/tsconfig.lib.json",
         "assets": ["libs/shared/decorators/server-decorators/*.md"],
-        "generatePackageJson": true,
         "format": ["cjs"]
       }
     }

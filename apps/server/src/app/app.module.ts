@@ -10,6 +10,7 @@ import { UserModule } from '@fitmonitor/server-auth';
 import { AppController } from './app.controller';
 import { MetricsModule } from '@fitmonitor/server-metrics';
 import { CalendarModule } from '@fitmonitor/server-calendar';
+import { ScheduleModule } from '@fitmonitor/server-schedule';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { CalendarModule } from '@fitmonitor/server-calendar';
     UserModule,
     MetricsModule,
     CalendarModule,
+    ScheduleModule,
   ],
   controllers: [AppController],
   providers: [ExceptionService, EncryptionService],

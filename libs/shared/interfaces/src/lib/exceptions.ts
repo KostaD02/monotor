@@ -78,3 +78,16 @@ export enum CalendarExceptionKeys {
   NameAlreadyExists = 'errors.calendar_name_already_exists',
   CalendarDataShouldBeString = 'errors.calendar_data_should_be_string',
 }
+
+export enum ScheduleExpceptionKeys {
+  NotFound = 'errors.schedule_not_found',
+  NameShouldBeString = 'errors.schedule_name_should_be_string',
+  NameTooShort = 'errors.schedule_name_too_short',
+  NameTooLong = 'errors.schedule_name_too_long',
+  NameAlreadyExists = 'errors.schedule_name_already_exists',
+  ScheduleDataShouldBeString = 'errors.schedule_data_should_be_string',
+  DataShouldBeAnObject = 'errors.schedule_data_should_be_an_object',
+  DataDuplicateShouldBeABoolean = 'errors.schedule_data_duplicate_should_be_a_boolean',
+  NoDataProvided = 'errors.schedule_no_data_provided',
+  ProvidedDateIsIncorrecrtFormat = 'errors.schedule_provided_date_is_incorrect_format',
+}

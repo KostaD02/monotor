@@ -1,0 +1,1701 @@
+{
+	"info": {
+		"_postman_id": "1ad206cf-5af3-410b-af86-d1aec93661dc",
+		"name": "FitMonitor",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15236555"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "current user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": []
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"followRedirects": true,
+						"disableUrlEncoding": false,
+						"disableCookies": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "User-Agent",
+								"value": "insomnia/2023.5.8"
+							}
+						],
+						"url": {
+							"raw": "{{ _.baseUrl }}/auth",
+							"host": [
+								"{{ _.baseUrl }}"
+							],
+							"path": [
+								"auth"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "is admin registered",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": []
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"followRedirects": true,
+						"disableUrlEncoding": false,
+						"disableCookies": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "User-Agent",
+								"value": "insomnia/2023.5.8"
+							}
+						],
+						"url": {
+							"raw": "{{ _.baseUrl }}/auth/is_admin_registered",
+							"host": [
+								"{{ _.baseUrl }}"
+							],
+							"path": [
+								"auth",
+								"is_admin_registered"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "all user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": []
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"followRedirects": true,
+						"disableUrlEncoding": false,
+						"disableCookies": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "User-Agent",
+								"value": "insomnia/2023.5.8"
+							}
+						],
+						"url": {
+							"raw": "{{ _.baseUrl }}/auth/all",
+							"host": [
+								"{{ _.baseUrl }}"
+							],
+							"path": [
+								"auth",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user by id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": []
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"followRedirects": true,
+						"disableUrlEncoding": false,
+						"disableCookies": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "User-Agent",
+								"value": "insomnia/2023.5.8"
+							}
+						],
+						"url": {
+							"raw": "{{ _.baseUrl }}/auth/id/66f0493eee6f555068f39d3b",
+							"host": [
+								"{{ _.baseUrl }}"
+							],
+							"path": [
+								"auth",
+								"id",
+								"66f0493eee6f555068f39d3b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "sign up",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": []
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"followRedirects": true,
+						"disableUrlEncoding": false,
+						"disableCookies": false
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "User-Agent",
+								"value": "insomnia/2023.5.8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"firstName\": \"test\",\n\t\"lastName\": \"test\",\n\t\"email\": \"test@gmail.com\",\n\t\"password\": \"test\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{ _.baseUrl }}/auth/sign_up",
+							"host": [
+								"{{ _.baseUrl }}"
+							],
+							"path": [
+								"auth",
+								"sign_up"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "sign in",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": []
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"followRedirects": true,
+						"disableUrlEncoding": false,
+						"disableCookies": false
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "User-Agent",
+								"value": "insomnia/2023.5.8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"test@gmail.com\",\n\t\"password\": \"test\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{ _.baseUrl }}/auth/sign_in",
+							"host": [
+								"{{ _.baseUrl }}"
+							],
+							"path": [
+								"auth",
+								"sign_in"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "sign out",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": []
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"followRedirects": true,
+						"disableUrlEncoding": false,
+						"disableCookies": false
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "User-Agent",
+								"value": "insomnia/2023.5.8"
+							}
+						],
+						"url": {
+							"raw": "{{ _.baseUrl }}/auth/sign_out",
+							"host": [
+								"{{ _.baseUrl }}"
+							],
+							"path": [
+								"auth",
+								"sign_out"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "refresh token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": []
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"followRedirects": true,
+						"disableUrlEncoding": false,
+						"disableCookies": false
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "User-Agent",
+								"value": "insomnia/2023.5.8"
+							}
+						],
+						"url": {
+							"raw": "{{ _.baseUrl }}/auth/refresh",
+							"host": [
+								"{{ _.baseUrl }}"
+							],
+							"path": [
+								"auth",
+								"refresh"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": []
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"followRedirects": true,
+						"disableUrlEncoding": false,
+						"disableCookies": false
+					},
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "User-Agent",
+								"value": "insomnia/2023.5.8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"firstName\": \"kosta\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{ _.baseUrl }}/auth/update",
+							"host": [
+								"{{ _.baseUrl }}"
+							],
+							"path": [
+								"auth",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update by id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": []
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"followRedirects": true,
+						"disableUrlEncoding": false,
+						"disableCookies": false
+					},
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "User-Agent",
+								"value": "insomnia/2023.5.8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"makeAdmin\": false\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{ _.baseUrl }}/auth/update/66f0493eee6f555068f39d3b",
+							"host": [
+								"{{ _.baseUrl }}"
+							],
+							"path": [
+								"auth",
+								"update",
+								"66f0493eee6f555068f39d3b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "change password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": []
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"followRedirects": true,
+						"disableUrlEncoding": false,
+						"disableCookies": false
+					},
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "User-Agent",
+								"value": "insomnia/2023.5.8"
+							}
+						],
+						"url": {
+							"raw": "{{ _.baseUrl }}/auth/change_password",
+							"host": [
+								"{{ _.baseUrl }}"
+							],
+							"path": [
+								"auth",
+								"change_password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete current user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": []
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"followRedirects": true,
+						"disableUrlEncoding": false,
+						"disableCookies": false
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "User-Agent",
+								"value": "insomnia/2023.5.8"
+							}
+						],
+						"url": {
+							"raw": "{{ _.baseUrl }}/auth/delete",
+							"host": [
+								"{{ _.baseUrl }}"
+							],
+							"path": [
+								"auth",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete user by id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": []
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"followRedirects": true,
+						"disableUrlEncoding": false,
+						"disableCookies": false
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "User-Agent",
+								"value": "insomnia/2023.5.8"
+							}
+						],
+						"url": {
+							"raw": "{{ _.baseUrl }}/auth/delete/66f04c80cea8c15b19d352aa",
+							"host": [
+								"{{ _.baseUrl }}"
+							],
+							"path": [
+								"auth",
+								"delete",
+								"66f04c80cea8c15b19d352aa"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "metrics",
+			"item": [
+				{
+					"name": "all metric",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": []
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"followRedirects": true,
+						"disableUrlEncoding": false,
+						"disableCookies": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "User-Agent",
+								"value": "insomnia/2023.5.8"
+							}
+						],
+						"url": {
+							"raw": "{{ _.baseUrl }}/metrics/all",
+							"host": [
+								"{{ _.baseUrl }}"
+							],
+							"path": [
+								"metrics",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "metric by name",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": []
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"followRedirects": true,
+						"disableUrlEncoding": false,
+						"disableCookies": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "User-Agent",
+								"value": "insomnia/2023.5.8"
+							}
+						],
+						"url": {
+							"raw": "{{ _.baseUrl }}/metrics/name/wyali",
+							"host": [
+								"{{ _.baseUrl }}"
+							],
+							"path": [
+								"metrics",
+								"name",
+								"wyali"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "metric add",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": []
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"followRedirects": true,
+						"disableUrlEncoding": false,
+						"disableCookies": false
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "User-Agent",
+								"value": "insomnia/2023.5.8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"something\",\n\t\"desiredValue\": 10\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{ _.baseUrl }}/metrics/add",
+							"host": [
+								"{{ _.baseUrl }}"
+							],
+							"path": [
+								"metrics",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "metric data add",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": []
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"followRedirects": true,
+						"disableUrlEncoding": false,
+						"disableCookies": false
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "User-Agent",
+								"value": "insomnia/2023.5.8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"value\": 6,\n\t\"date\": \"Tue Sep 24 2024 00:20:33 GMT+0400\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{ _.baseUrl }}/metrics/add-data/buqni",
+							"host": [
+								"{{ _.baseUrl }}"
+							],
+							"path": [
+								"metrics",
+								"add-data",
+								"buqni"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "metric update",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": []
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"followRedirects": true,
+						"disableUrlEncoding": false,
+						"disableCookies": false
+					},
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "User-Agent",
+								"value": "insomnia/2023.5.8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"desiredValue\": 3\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{ _.baseUrl }}/metrics/update/buqni",
+							"host": [
+								"{{ _.baseUrl }}"
+							],
+							"path": [
+								"metrics",
+								"update",
+								"buqni"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "metric data update",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": []
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"followRedirects": true,
+						"disableUrlEncoding": false,
+						"disableCookies": false
+					},
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "User-Agent",
+								"value": "insomnia/2023.5.8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"value\": 3\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{ _.baseUrl }}/metrics/update-data/buqni/66f1cf2c3dc0d0110ba705a0",
+							"host": [
+								"{{ _.baseUrl }}"
+							],
+							"path": [
+								"metrics",
+								"update-data",
+								"buqni",
+								"66f1cf2c3dc0d0110ba705a0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "metric delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": []
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"followRedirects": true,
+						"disableUrlEncoding": false,
+						"disableCookies": false
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "User-Agent",
+								"value": "insomnia/2023.5.8"
+							}
+						],
+						"url": {
+							"raw": "{{ _.baseUrl }}/metrics/delete/buqni",
+							"host": [
+								"{{ _.baseUrl }}"
+							],
+							"path": [
+								"metrics",
+								"delete",
+								"buqni"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "metric data delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": []
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"followRedirects": true,
+						"disableUrlEncoding": false,
+						"disableCookies": false
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "User-Agent",
+								"value": "insomnia/2023.5.8"
+							}
+						],
+						"url": {
+							"raw": "{{ _.baseUrl }}/metrics/delete-data/buqni/66f1cf2c3dc0d0110ba705a0",
+							"host": [
+								"{{ _.baseUrl }}"
+							],
+							"path": [
+								"metrics",
+								"delete-data",
+								"buqni",
+								"66f1cf2c3dc0d0110ba705a0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete all metric",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": []
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"followRedirects": true,
+						"disableUrlEncoding": false,
+						"disableCookies": false
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "User-Agent",
+								"value": "insomnia/2023.5.8"
+							}
+						],
+						"url": {
+							"raw": "{{ _.baseUrl }}/metrics/all",
+							"host": [
+								"{{ _.baseUrl }}"
+							],
+							"path": [
+								"metrics",
+								"all"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "calendar",
+			"item": [
+				{
+					"name": "all calendar",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": []
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"followRedirects": true,
+						"disableUrlEncoding": false,
+						"disableCookies": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "User-Agent",
+								"value": "insomnia/2023.5.8"
+							}
+						],
+						"url": {
+							"raw": "{{ _.baseUrl }}/calendar/all",
+							"host": [
+								"{{ _.baseUrl }}"
+							],
+							"path": [
+								"calendar",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "calendar by name",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": []
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"followRedirects": true,
+						"disableUrlEncoding": false,
+						"disableCookies": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "User-Agent",
+								"value": "insomnia/2023.5.8"
+							}
+						],
+						"url": {
+							"raw": "{{ _.baseUrl }}/calendar/name/training",
+							"host": [
+								"{{ _.baseUrl }}"
+							],
+							"path": [
+								"calendar",
+								"name",
+								"training"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create calendar",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": []
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"followRedirects": true,
+						"disableUrlEncoding": false,
+						"disableCookies": false
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "User-Agent",
+								"value": "insomnia/2023.5.8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"training\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{ _.baseUrl }}/calendar/create",
+							"host": [
+								"{{ _.baseUrl }}"
+							],
+							"path": [
+								"calendar",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update calendar",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": []
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"followRedirects": true,
+						"disableUrlEncoding": false,
+						"disableCookies": false
+					},
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "User-Agent",
+								"value": "insomnia/2023.5.8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"training\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{ _.baseUrl }}/calendar/name/training",
+							"host": [
+								"{{ _.baseUrl }}"
+							],
+							"path": [
+								"calendar",
+								"name",
+								"training"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update calendar data",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": []
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"followRedirects": true,
+						"disableUrlEncoding": false,
+						"disableCookies": false
+					},
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "User-Agent",
+								"value": "insomnia/2023.5.8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"thu\": \"something\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{ _.baseUrl }}/calendar/data/training",
+							"host": [
+								"{{ _.baseUrl }}"
+							],
+							"path": [
+								"calendar",
+								"data",
+								"training"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete calendar",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": []
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"followRedirects": true,
+						"disableUrlEncoding": false,
+						"disableCookies": false
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "User-Agent",
+								"value": "insomnia/2023.5.8"
+							}
+						],
+						"url": {
+							"raw": "{{ _.baseUrl }}/calendar/name/something",
+							"host": [
+								"{{ _.baseUrl }}"
+							],
+							"path": [
+								"calendar",
+								"name",
+								"something"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete all calendar",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": []
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"followRedirects": true,
+						"disableUrlEncoding": false,
+						"disableCookies": false
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "User-Agent",
+								"value": "insomnia/2023.5.8"
+							}
+						],
+						"url": {
+							"raw": "{{ _.baseUrl }}/calendar/all",
+							"host": [
+								"{{ _.baseUrl }}"
+							],
+							"path": [
+								"calendar",
+								"all"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "schedule",
+			"item": [
+				{
+					"name": "all schedule",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": []
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"followRedirects": true,
+						"disableUrlEncoding": false,
+						"disableCookies": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "User-Agent",
+								"value": "insomnia/2023.5.8"
+							}
+						],
+						"url": {
+							"raw": "{{ _.baseUrl }}/schedule/all",
+							"host": [
+								"{{ _.baseUrl }}"
+							],
+							"path": [
+								"schedule",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "schedule by name",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": []
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"followRedirects": true,
+						"disableUrlEncoding": false,
+						"disableCookies": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "User-Agent",
+								"value": "insomnia/2023.5.8"
+							}
+						],
+						"url": {
+							"raw": "{{ _.baseUrl }}/schedule/name/diet",
+							"host": [
+								"{{ _.baseUrl }}"
+							],
+							"path": [
+								"schedule",
+								"name",
+								"diet"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": []
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"followRedirects": true,
+						"disableUrlEncoding": false,
+						"disableCookies": false
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "User-Agent",
+								"value": "insomnia/2023.5.8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"something\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{ _.baseUrl }}/schedule/create",
+							"host": [
+								"{{ _.baseUrl }}"
+							],
+							"path": [
+								"schedule",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update name",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": []
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"followRedirects": true,
+						"disableUrlEncoding": false,
+						"disableCookies": false
+					},
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "User-Agent",
+								"value": "insomnia/2023.5.8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"something1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{ _.baseUrl }}/schedule/update/something",
+							"host": [
+								"{{ _.baseUrl }}"
+							],
+							"path": [
+								"schedule",
+								"update",
+								"something"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "modify data",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": []
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"followRedirects": true,
+						"disableUrlEncoding": false,
+						"disableCookies": false
+					},
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "User-Agent",
+								"value": "insomnia/2023.5.8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"duplicate\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{ _.baseUrl }}/schedule/modify/diet",
+							"host": [
+								"{{ _.baseUrl }}"
+							],
+							"path": [
+								"schedule",
+								"modify",
+								"diet"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "clear by name",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": []
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"followRedirects": true,
+						"disableUrlEncoding": false,
+						"disableCookies": false
+					},
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "User-Agent",
+								"value": "insomnia/2023.5.8"
+							}
+						],
+						"url": {
+							"raw": "{{ _.baseUrl }}/schedule/clear/diet",
+							"host": [
+								"{{ _.baseUrl }}"
+							],
+							"path": [
+								"schedule",
+								"clear",
+								"diet"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete by name",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": []
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"followRedirects": true,
+						"disableUrlEncoding": false,
+						"disableCookies": false
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "User-Agent",
+								"value": "insomnia/2023.5.8"
+							}
+						],
+						"url": {
+							"raw": "{{ _.baseUrl }}/schedule/delete/something1",
+							"host": [
+								"{{ _.baseUrl }}"
+							],
+							"path": [
+								"schedule",
+								"delete",
+								"something1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete all",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": []
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"followRedirects": true,
+						"disableUrlEncoding": false,
+						"disableCookies": false
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "User-Agent",
+								"value": "insomnia/2023.5.8"
+							}
+						],
+						"url": {
+							"raw": "{{ _.baseUrl }}/schedule/all",
+							"host": [
+								"{{ _.baseUrl }}"
+							],
+							"path": [
+								"schedule",
+								"all"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "base",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": []
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"followRedirects": true,
+				"disableUrlEncoding": false,
+				"disableCookies": false
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "User-Agent",
+						"value": "insomnia/2023.5.8"
+					}
+				],
+				"url": {
+					"raw": "{{ _.baseUrl }}/",
+					"host": [
+						"{{ _.baseUrl }}"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "errors",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": []
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"followRedirects": true,
+				"disableUrlEncoding": false,
+				"disableCookies": false
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "User-Agent",
+						"value": "insomnia/2023.5.8"
+					}
+				],
+				"url": {
+					"raw": "{{ _.baseUrl }}/lang/errors",
+					"host": [
+						"{{ _.baseUrl }}"
+					],
+					"path": [
+						"lang",
+						"errors"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": " _.baseUrl ",
+			"value": "http://localhost:2222/api"
+		}
+	]
+}

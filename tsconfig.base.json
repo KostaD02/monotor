@@ -37,6 +37,9 @@
       "@fitmonitor/server-metrics": [
         "libs/metrics/server-metrics/src/index.ts"
       ],
+      "@fitmonitor/server-schedule": [
+        "libs/schedule/server-schedule/src/index.ts"
+      ],
       "@fitmonitor/server-services": [
         "libs/shared/services/server-services/src/index.ts"
       ],

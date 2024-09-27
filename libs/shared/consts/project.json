@@ -13,7 +13,6 @@
         "main": "libs/shared/consts/src/index.ts",
         "tsConfig": "libs/shared/consts/tsconfig.lib.json",
         "assets": ["libs/shared/consts/*.md"],
-        "generatePackageJson": true,
         "format": ["cjs"]
       }
     }
