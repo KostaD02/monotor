@@ -5,3 +5,5 @@ export * from './calendar';
 export * from './schedule';
 export * from './week';
 export * from './timestamps';
+export * from './languages';
+export * from './stroage';
