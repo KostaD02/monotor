@@ -22,4 +22,6 @@ describe('angular-lib generator', () => {
     const config = readProjectConfiguration(tree, 'test');
     expect(config).toBeDefined();
   });
+
+  // TODO: Write more tests
 });
