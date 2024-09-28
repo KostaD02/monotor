@@ -3,7 +3,12 @@
     "angular-lib": {
       "factory": "./src/angular-lib/generator",
       "schema": "./src/angular-lib/schema.json",
-      "description": "Generate angular library with current structure"
+      "description": "Generate Angular library with current architecture"
+    },
+    "angular-lib-component": {
+      "factory": "./src/angular-lib-component/generator",
+      "schema": "./src/angular-lib-component/schema.json",
+      "description": "Generate single angular component library"
     }
   }
 }

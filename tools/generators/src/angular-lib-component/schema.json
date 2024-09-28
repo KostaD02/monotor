@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/schema",
+  "$id": "AngularLibComponent",
+  "title": "Angular single component library generator",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Angular library name",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      },
+      "x-prompt": "What name would you like to use?"
+    },
+    "path": {
+      "type": "string",
+      "description": "Path of library: libs/...",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      },
+      "x-prompt": "Where do you want your, library?"
+    }
+  },
+  "required": ["name", "path"]
+}

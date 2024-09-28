@@ -24,7 +24,10 @@ export async function angularLibGenerator(
     flat: true,
   };
   if (options.createBaseComponent) {
-    await libraryGenerator(tree, config);
+    await libraryGenerator(tree, {
+      ...config,
+      importPath: `@fitmonitor/${options.name}/feature/base`,
+    });
   }
   if (options.createDataAccess) {
     await libraryGenerator(tree, {
@@ -64,7 +67,7 @@ export async function angularLibGenerator(
     strict: true,
     prefix: 'fitmonitor',
     directory: `${projectRoot}/features`,
-    importPath: `@fitmonitor/${options.name}/shell`,
+    importPath: `@fitmonitor/${options.name}/feature/shell`,
     unitTestRunner: UnitTestRunner.Jest,
     routing: true,
   });
