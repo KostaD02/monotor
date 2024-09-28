@@ -1,0 +1,9 @@
+{
+  "generators": {
+    "angular-lib": {
+      "factory": "./src/angular-lib/generator",
+      "schema": "./src/angular-lib/schema.json",
+      "description": "Generate angular library with current structure"
+    }
+  }
+}

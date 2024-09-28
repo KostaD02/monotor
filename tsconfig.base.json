@@ -22,6 +22,7 @@
       "@fitmonitor/data-access": [
         "libs/auth/client-auth/data-access/src/index.ts"
       ],
+      "@fitmonitor/generators": ["tools/generators/src/index.ts"],
       "@fitmonitor/interfaces": ["libs/shared/interfaces/src/index.ts"],
       "@fitmonitor/schemas": ["libs/shared/schemas/src/index.ts"],
       "@fitmonitor/server-auth": ["libs/auth/server-auth/src/index.ts"],
