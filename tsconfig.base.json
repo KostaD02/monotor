@@ -43,6 +43,12 @@
       "@fitmonitor/server-services": [
         "libs/shared/services/server-services/src/index.ts"
       ],
+      "@fitmonitor/shell": [
+        "libs/auth/client-auth/features/shell/src/index.ts"
+      ],
+      "@fitmonitor/sign-in": [
+        "libs/auth/client-auth/features/sign-in/src/index.ts"
+      ],
       "@fitmonitor/util": ["libs/shared/util/src/index.ts"]
     }
   },

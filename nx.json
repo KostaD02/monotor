@@ -76,7 +76,14 @@
     },
     "@nx/angular:library": {
       "linter": "eslint",
-      "unitTestRunner": "jest"
+      "unitTestRunner": "jest",
+      "style": "scss",
+      "changeDetection": "OnPush",
+      "standalone": true,
+      "prefix": "fitmonitor",
+      "simpleName": true,
+      "strict": true,
+      "flat": true
     },
     "@nx/angular:component": {
       "style": "scss"
