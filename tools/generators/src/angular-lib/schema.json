@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/schema",
   "$id": "AngularLib",
-  "title": "",
+  "title": "Angular Library Generator",
   "type": "object",
   "properties": {
     "name": {
@@ -12,7 +12,26 @@
         "index": 0
       },
       "x-prompt": "What name would you like to use?"
+    },
+    "path": {
+      "type": "string",
+      "description": "Path of library: libs/...",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      },
+      "x-prompt": "Where do you want your, library?"
+    },
+    "createBaseComponent": {
+      "type": "boolean",
+      "description": "Create a base component",
+      "default": true
+    },
+    "createDataAccess": {
+      "type": "boolean",
+      "description": "Create a data-access lib",
+      "default": true
     }
   },
-  "required": ["name"]
+  "required": ["name", "path"]
 }

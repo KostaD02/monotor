@@ -6,7 +6,12 @@ import { AngularLibGeneratorSchema } from './schema';
 
 describe('angular-lib generator', () => {
   let tree: Tree;
-  const options: AngularLibGeneratorSchema = { name: 'test' };
+  const options: AngularLibGeneratorSchema = {
+    name: 'test',
+    path: 'something',
+    createBaseComponent: true,
+    createDataAccess: true,
+  };
 
   beforeEach(() => {
     tree = createTreeWithEmptyWorkspace();
