@@ -19,6 +19,9 @@
         "libs/shared/services/client-services/src/index.ts"
       ],
       "@fitmonitor/consts": ["libs/shared/consts/src/index.ts"],
+      "@fitmonitor/data-access": [
+        "libs/auth/client-auth/data-access/src/index.ts"
+      ],
       "@fitmonitor/interfaces": ["libs/shared/interfaces/src/index.ts"],
       "@fitmonitor/schemas": ["libs/shared/schemas/src/index.ts"],
       "@fitmonitor/server-auth": ["libs/auth/server-auth/src/index.ts"],
