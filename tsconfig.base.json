@@ -27,6 +27,9 @@
       "@fitmonitor/client-auth/feature/shell": [
         "libs/auth/client-auth/features/shell/src/index.ts"
       ],
+      "@fitmonitor/client-interceptors": [
+        "libs/shared/interceptors/client-interceptors/src/index.ts"
+      ],
       "@fitmonitor/client-services": [
         "libs/shared/services/client-services/src/index.ts"
       ],

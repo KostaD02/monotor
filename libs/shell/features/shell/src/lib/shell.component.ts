@@ -72,9 +72,6 @@ export class ShellComponent {
   readonly currentRoute$ = this.router.events.pipe(
     filter((event) => event instanceof NavigationEnd),
     map(() => this.router.url),
-    map((url) => {
-      return url;
-    }),
   );
 
   readonly windowResied$ = fromEvent(

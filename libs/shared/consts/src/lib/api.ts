@@ -11,3 +11,7 @@ export const API_CONFIG = {
   MIN_CALENDAR_NAME_LENGTH: 2,
   MAX_CALENDAR_NAME_LENGTH: 20,
 };
+
+export const API_PROTOCOL = 'http';
+export const API_DOMAIN = 'localhost:2222';
+export const API_URL = `${API_PROTOCOL}://${API_DOMAIN}/api`;

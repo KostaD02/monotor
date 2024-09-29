@@ -1,13 +1,20 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  signal,
+} from '@angular/core';
 
 import { TranslateModule } from '@ngx-translate/core';
 
 import { SignInComponent } from '@fitmonitor/auth/client-auth/ui/sign-in';
 import { SignUpComponent } from '@fitmonitor/auth/client-auth/ui/sign-up';
 import { UserLoginData, UserRegistrationData } from '@fitmonitor/interfaces';
+import { AuthService } from '@fitmonitor/data-access';
 
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
+import { catchError, of, take, tap } from 'rxjs';
 
 @Component({
   selector: 'fitmonitor-auth',
@@ -24,10 +31,24 @@ import { NzLayoutModule } from 'ng-zorro-antd/layout';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AuthComponent {
+  private readonly authService = inject(AuthService);
+
   readonly currentTabIndex = signal(0);
 
   onAuth(data: UserLoginData) {
-    console.log(data);
+    this.authService
+      .signIn(data)
+      .pipe(
+        take(1),
+        tap((result) => {
+          console.log(result);
+        }),
+        catchError((error) => {
+          console.log(error);
+          return of(false);
+        }),
+      )
+      .subscribe();
   }
 
   onRegistration(data: UserRegistrationData) {

@@ -41,8 +41,11 @@ export class SignInComponent {
   private readonly notificationService = inject(NzNotificationService);
 
   readonly form = this.fb.group({
-    email: this.fb.control('', [Validators.required, Validators.email]),
-    password: this.fb.control('', [
+    email: this.fb.control('testdev22@gmail.com', [
+      Validators.required,
+      Validators.email,
+    ]),
+    password: this.fb.control('testdev22K!', [
       Validators.required,
       Validators.minLength(API_CONFIG.MIN_PASSWORD_LENGTH),
       Validators.maxLength(API_CONFIG.MAX_PASSWORD_LENGTH),

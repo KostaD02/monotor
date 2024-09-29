@@ -1,7 +1,9 @@
 import { inject, Injectable, signal } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
 import { LanguageLocals, StorageKeys } from '@fitmonitor/interfaces';
 import { LANGUAGES } from '@fitmonitor/consts';
+
+import { TranslateService } from '@ngx-translate/core';
+
 import { LocalStorageService } from './storage.service';
 
 @Injectable({
