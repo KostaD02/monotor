@@ -8,3 +8,8 @@ export enum ThemeOptions {
   Dark = 'dark',
   OS = 'os',
 }
+
+export interface ThemeItem {
+  local: string;
+  value: ThemeOptions;
+}

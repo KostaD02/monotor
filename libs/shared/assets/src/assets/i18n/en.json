@@ -1,1 +1,14 @@
-{}
+{
+  "navigation": {
+    "home": "Home",
+    "auth": "Auth"
+  },
+  "theme": {
+    "light": "Light",
+    "dark": "Dark",
+    "os": "System"
+  },
+  "general": {
+    "country-image": "Country image"
+  }
+}

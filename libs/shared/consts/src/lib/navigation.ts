@@ -4,12 +4,12 @@ export const NAVIGATION: Navigation[] = [
   {
     title: 'navigation.home',
     icon: 'home',
-    link: '/',
+    routerLink: '/',
   },
   {
     title: 'navigation.auth',
     icon: 'lock',
-    link: '/auth',
+    routerLink: '/auth',
     showAfterAuth: false,
   },
 ];

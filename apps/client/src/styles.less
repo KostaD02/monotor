@@ -1,4 +1,5 @@
 @import '../../../node_modules/ng-zorro-antd/ng-zorro-antd.less';
+@import './variables.less';
 
 * {
   margin: 0;
@@ -12,4 +13,113 @@ html {
   .ant-layout {
     background-color: @body-background;
   }
+
+  .ant-menu {
+    background-color: transparent;
+  }
+
+  .ant-drawer-content-wrapper {
+    max-width: 100%;
+  }
+
+  .ant-back-top {
+    background-color: var(--gray);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .ant-drawer-body {
+    .ant-menu-sub.ant-menu-inline {
+      background-color: transparent;
+    }
+  }
+
+  &.dark {
+    // TODO: Something not right, fix it
+
+    @import './dark.less';
+
+    .ant-layout {
+      background-color: @body-background;
+    }
+
+    .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item-selected::after {
+      border-bottom: none;
+    }
+
+    .ant-menu-horizontal > .ant-menu-item a {
+      color: #ffffffd9;
+    }
+
+    .ant-menu {
+      box-shadow: none;
+
+      .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
+        background-color: transparent;
+        color: #ffffffd9;
+      }
+    }
+
+    .ant-menu .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
+      background-color: @primary-2;
+    }
+
+    header {
+      ul.is-open {
+        .ant-menu-item-selected {
+          background-color: transparent;
+        }
+      }
+    }
+
+    .ant-tree .ant-tree-node-content-wrapper.ant-tree-node-selected {
+      background-color: @primary-2;
+    }
+  }
+}
+
+.p-3 {
+  padding: 0 10px !important;
+}
+
+.pr-3 {
+  padding-right: 10px;
+}
+
+.d-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.space-between {
+  justify-content: space-between;
+}
+
+.gap-3 {
+  gap: 10px;
+}
+
+.flag {
+  width: 24px;
+  height: 24px;
+}
+
+::-webkit-scrollbar {
+  width: @scrllbar-thicc;
+  height: @scrllbar-thicc;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--gray);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--gray-lifted);
 }

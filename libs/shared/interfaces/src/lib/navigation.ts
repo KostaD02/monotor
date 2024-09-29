@@ -1,7 +1,7 @@
 export interface Navigation {
   title: string;
   icon: string;
-  link: string;
+  routerLink: string;
   /**
    * Indicates if the item should be shown after authentication.
    * @default true

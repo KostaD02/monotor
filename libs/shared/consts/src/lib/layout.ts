@@ -1,0 +1,1 @@
+export const BURGER_MENU_BREAKPOINT = 830;
