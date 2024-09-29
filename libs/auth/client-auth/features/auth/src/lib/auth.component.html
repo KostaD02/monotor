@@ -1,1 +1,17 @@
-<p>auth works!</p>
+<nz-layout class="inner flex-center">
+  <section class="wrapper">
+    <nz-tabset
+      [nzSelectedIndex]="currentTabIndex()"
+      (nzSelectedIndexChange)="currentTabIndex.set($event)"
+    >
+      <nz-tab [nzTitle]="'auth.sign-in' | translate">
+        <fitmonitor-sign-in (formSubmit)="onAuth($event)"></fitmonitor-sign-in>
+      </nz-tab>
+      <nz-tab [nzTitle]="'auth.sign-up' | translate">
+        <fitmonitor-sign-up
+          (formSubmit)="onRegistration($event)"
+        ></fitmonitor-sign-up>
+      </nz-tab>
+    </nz-tabset>
+  </section>
+</nz-layout>

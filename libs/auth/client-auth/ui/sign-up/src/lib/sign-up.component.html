@@ -1,0 +1,23 @@
+<form nz-form [formGroup]="form" (ngSubmit)="onSubmit()">
+  @for (item of formItems; track item.name) {
+    <nz-form-item>
+      <nz-form-control nzHasFeedback [nzErrorTip]="item.invalid | translate">
+        <nz-form-label [nzFor]="item.name">
+          {{ item.label | translate }}
+        </nz-form-label>
+        <nz-input-group>
+          <input
+            nz-input
+            [id]="item.name"
+            [type]="item.type"
+            [formControlName]="item.name"
+            [placeholder]="item.placeholder | translate"
+          />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+  }
+  <button [disabled]="form.invalid" nz-button nzType="primary">
+    {{ 'auth.create' | translate }}
+  </button>
+</form>

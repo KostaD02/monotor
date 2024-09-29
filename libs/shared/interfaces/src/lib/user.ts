@@ -16,3 +16,9 @@ export interface User extends Timestamps {
 
 export type UserUnwantedKeys = 'password';
 export type UserPayload = Omit<User, UserUnwantedKeys>;
+
+export type UserRegistrationData = Pick<
+  User,
+  'firstName' | 'lastName' | 'email' | 'password'
+>;
+export type UserLoginData = Pick<User, 'email' | 'password'>;
