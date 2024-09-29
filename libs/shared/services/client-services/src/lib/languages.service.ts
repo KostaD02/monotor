@@ -1,10 +1,4 @@
-import {
-  inject,
-  Injectable,
-  OnInit,
-  signal,
-  WritableSignal,
-} from '@angular/core';
+import { inject, Injectable, signal } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { LanguageLocals, StorageKeys } from '@fitmonitor/interfaces';
 import { LANGUAGES } from '@fitmonitor/consts';
@@ -13,14 +7,14 @@ import { LocalStorageService } from './storage.service';
 @Injectable({
   providedIn: 'root',
 })
-export class LanguageService implements OnInit {
+export class LanguageService {
   private readonly translateService = inject(TranslateService);
   private readonly localStorageService = inject(LocalStorageService);
 
-  readonly state: WritableSignal<LanguageLocals> = signal(LanguageLocals.EN);
+  readonly state = signal(LanguageLocals.EN);
 
   get language() {
-    return this.translateService.currentLang;
+    return this.localStorageService.getItem(StorageKeys.Language) || '';
   }
 
   set language(language: string) {
@@ -28,13 +22,15 @@ export class LanguageService implements OnInit {
       language = LanguageLocals.EN;
     }
 
-    this.localStorageService.setItem(StorageKeys.Language, language);
+    const local = this.getLanguageLocal(language);
+
+    this.localStorageService.setItem(StorageKeys.Language, local);
     this.translateService.use(language);
 
-    this.state.set(this.getLanguageLocal(language));
+    this.state.set(local);
   }
 
-  ngOnInit(): void {
+  init() {
     const prev = this.language;
     this.language = prev;
   }

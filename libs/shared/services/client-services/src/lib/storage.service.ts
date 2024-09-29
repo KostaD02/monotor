@@ -40,9 +40,9 @@ export abstract class BaseStorageService {
 
   constructor(token: string) {
     if (this.isSupported(token)) {
-      this.storage = new MemoryStorage();
-    } else {
       this.storage = this.window[token];
+    } else {
+      this.storage = new MemoryStorage();
     }
   }
 
@@ -135,14 +135,18 @@ export abstract class BaseStorageService {
   }
 }
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class LocalStorageService extends BaseStorageService {
   constructor() {
     super('localStorage');
   }
 }
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class SessionStorageService extends BaseStorageService {
   constructor() {
     super('sessionStorage');

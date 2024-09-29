@@ -1,0 +1,84 @@
+@menuBreakPoint: 830px;
+@headerSize: 66px;
+
+nz-layout.root {
+  width: 100%;
+  max-width: 100%;
+  min-height: 100vh;
+}
+
+header {
+  height: @headerSize;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  box-sizing: border-box;
+  transition: 0.5s all;
+  background-color: transparent;
+
+  .brand {
+    display: flex;
+    align-items: center;
+    a {
+      padding: 0 8px;
+      font-size: 1.5rem;
+    }
+  }
+
+  .burger {
+    display: none;
+
+    @media (max-width: @menuBreakPoint) {
+      display: block;
+    }
+  }
+
+  nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .ant-menu-horizontal {
+      border-bottom: none;
+    }
+
+    ul {
+      width: 100%;
+
+      li {
+        &.without-border:hover::after,
+        &.without-border::after {
+          border-bottom: none;
+        }
+
+        .grouped {
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+          gap: 10px;
+        }
+
+        span {
+          font-size: 20px;
+        }
+      }
+
+      @media (max-width: @menuBreakPoint) {
+        height: 100%;
+        display: block;
+        position: fixed;
+        top: @headerSize;
+        right: -100%;
+        transition: 0.5s all;
+        z-index: 1000;
+
+        &.is-open {
+          right: 0;
+          padding: 0 20px;
+        }
+      }
+    }
+  }
+}

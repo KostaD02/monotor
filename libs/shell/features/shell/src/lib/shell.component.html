@@ -1,0 +1,13 @@
+<nz-layout class="root">
+  <header>
+    <div class="brand">
+      <a routerLink="/">FitMonitor</a>
+    </div>
+    <nav>
+      <ul nz-menu [nzMode]="menuMode()"></ul>
+    </nav>
+  </header>
+  <nz-content>
+    <router-outlet></router-outlet>
+  </nz-content>
+</nz-layout>

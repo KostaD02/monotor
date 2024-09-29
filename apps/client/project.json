@@ -17,6 +17,7 @@
         "tsConfig": "apps/client/tsconfig.app.json",
         "inlineStyleLanguage": "less",
         "assets": [
+          "apps/client/src/favicon.ico",
           {
             "glob": "**/*",
             "input": "libs/shared/assets/src/assets/",
