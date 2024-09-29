@@ -2,6 +2,24 @@
   <header>
     <div class="brand">
       <a routerLink="/">FitMonitor</a>
+      <button
+        nz-button
+        nz-dropdown
+        nzType="text"
+        nzPlacement="bottomRight"
+        [nzDropdownMenu]="themeMenu"
+      >
+        <span nz-icon nzType="bg-colors" nzTheme="outline"></span>
+      </button>
+      <nz-dropdown-menu #themeMenu="nzDropdownMenu">
+        <ul nz-menu>
+          @for (theme of themeOptions; track theme.local) {
+            <li nz-menu-item (click)="changeTheme(theme.value)">
+              {{ theme.local }}
+            </li>
+          }
+        </ul>
+      </nz-dropdown-menu>
     </div>
     <nav>
       <ul nz-menu [nzMode]="menuMode()" [class.is-open]="isOpen()">
@@ -12,13 +30,15 @@
             [nzMatchRouterExact]="$index === 0"
             [nzSelected]="nav.routerLink === currentRoute()"
           >
-            <a [routerLink]="nav.routerLink">
-              <span
-                nz-icon
-                class="pr-3"
-                nzTheme="outline"
-                [nzType]="nav.icon"
-              ></span>
+            <a [routerLink]="nav.routerLink" (click)="isOpen.set(false)">
+              @if (showIcons()) {
+                <span
+                  nz-icon
+                  class="pr-3"
+                  nzTheme="outline"
+                  [nzType]="nav.icon"
+                ></span>
+              }
               {{ nav.title }}
             </a>
           </li>
@@ -26,36 +46,18 @@
         @if (isUserAuthorized()) {
           <li nz-menu-item>
             <a routerLink="/" (click)="logOut()">
-              <span
-                nz-icon
-                class="pr-3"
-                nzType="logout"
-                nzTheme="outline"
-              ></span>
+              @if (showIcons()) {
+                <span
+                  nz-icon
+                  class="pr-3"
+                  nzType="logout"
+                  nzTheme="outline"
+                ></span>
+              }
               Log out
             </a>
           </li>
         }
-        <li nz-menu-item class="without-border p-3">
-          <button
-            nz-button
-            nz-dropdown
-            nzType="text"
-            nzPlacement="bottomRight"
-            [nzDropdownMenu]="themeMenu"
-          >
-            <span nz-icon nzType="bg-colors" nzTheme="outline"></span>
-          </button>
-          <nz-dropdown-menu #themeMenu="nzDropdownMenu">
-            <ul nz-menu>
-              @for (theme of themeOptions; track theme.local) {
-                <li nz-menu-item (click)="changeTheme(theme.value)">
-                  {{ theme.local }}
-                </li>
-              }
-            </ul>
-          </nz-dropdown-menu>
-        </li>
       </ul>
       <button
         nz-button
@@ -67,7 +69,7 @@
       </button>
     </nav>
   </header>
-  <nz-content>
+  <nz-content class="inner-content">
     <router-outlet></router-outlet>
   </nz-content>
 </nz-layout>

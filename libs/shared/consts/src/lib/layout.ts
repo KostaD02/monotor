@@ -1,1 +1,1 @@
-export const BURGER_MENU_BREAKPOINT = 830;
+export const BURGER_MENU_BREAKPOINT = 925;

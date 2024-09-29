@@ -1,1 +1,2 @@
-export * from './auth.service';
+export * from './services';
+export * from './guards';

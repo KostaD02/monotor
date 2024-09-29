@@ -36,6 +36,12 @@ html {
     }
   }
 
+  header {
+    .is-open {
+      background-color: @body-background;
+    }
+  }
+
   &.dark {
     // TODO: Something not right, fix it
 
@@ -51,6 +57,12 @@ html {
 
     .ant-menu-horizontal > .ant-menu-item a {
       color: #ffffffd9;
+    }
+
+    header {
+      .is-open {
+        background-color: @body-background;
+      }
     }
 
     .ant-menu {
@@ -86,12 +98,16 @@ nz-layout.inner {
   min-height: calc(100vh - 66px);
 }
 
+nz-content.inner-content {
+  padding: 0 25px;
+}
+
 .p-3 {
   padding: 0 10px !important;
 }
 
 .pr-3 {
-  padding-right: 10px;
+  padding-right: 5px;
 }
 
 .flex-center {

@@ -10,6 +10,7 @@ export const NAVIGATION = new InjectionToken<Navigation[]>('NAVIGATION', {
         ...nav,
         showAfterAuth: nav.showAfterAuth ?? true,
         showBeforeAuth: nav.showBeforeAuth ?? true,
+        adminOnly: nav.adminOnly ?? false,
       };
     }),
 });

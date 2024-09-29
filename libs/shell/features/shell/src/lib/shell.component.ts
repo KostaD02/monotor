@@ -80,6 +80,9 @@ export class ShellComponent {
   );
   readonly isUserAuthorized = computed(() => this.authService.user() !== null);
   readonly resizedWindowSize = toSignal(this.windowResied$);
+  readonly showIcons = computed(
+    () => (this.resizedWindowSize() || this.document.body.clientWidth) > 1150,
+  );
   readonly currentRoute = toSignal(this.currentRoute$);
   readonly navigation: Signal<Navigation[]> = computed(() => {
     const isUserAuthorized = this.isUserAuthorized();

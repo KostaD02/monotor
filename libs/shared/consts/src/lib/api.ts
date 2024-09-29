@@ -15,3 +15,4 @@ export const API_CONFIG = {
 export const API_PROTOCOL = 'http';
 export const API_DOMAIN = 'localhost:2222';
 export const API_URL = `${API_PROTOCOL}://${API_DOMAIN}/api`;
+export const RETRY_AUTH_CHECK = 300000;
