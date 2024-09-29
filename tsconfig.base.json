@@ -50,6 +50,10 @@
       "@fitmonitor/shell": [
         "libs/auth/client-auth/features/shell/src/index.ts"
       ],
+      "@fitmonitor/shell/data-access": ["libs/shell/data-access/src/index.ts"],
+      "@fitmonitor/shell/feature/shell": [
+        "libs/shell/features/shell/src/index.ts"
+      ],
       "@fitmonitor/sign-in": [
         "libs/auth/client-auth/features/sign-in/src/index.ts"
       ],
