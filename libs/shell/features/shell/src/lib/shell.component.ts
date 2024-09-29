@@ -23,6 +23,7 @@ import { Navigation, ThemeOptions } from '@fitmonitor/interfaces';
 import { NAVIGATION } from '@fitmonitor/providers';
 import {
   BURGER_MENU_BREAKPOINT,
+  HIDE_ICONS_BREAKPOINT,
   LANGUAGES,
   THEME_ITEMS,
 } from '@fitmonitor/consts';
@@ -80,9 +81,10 @@ export class ShellComponent {
   );
   readonly isUserAuthorized = computed(() => this.authService.user() !== null);
   readonly resizedWindowSize = toSignal(this.windowResied$);
-  readonly showIcons = computed(
-    () => (this.resizedWindowSize() || this.document.body.clientWidth) > 1150,
-  );
+  readonly showIcons = computed(() => {
+    const size = this.resizedWindowSize() || this.document.body.clientWidth;
+    return size > HIDE_ICONS_BREAKPOINT || size < BURGER_MENU_BREAKPOINT;
+  });
   readonly currentRoute = toSignal(this.currentRoute$);
   readonly navigation: Signal<Navigation[]> = computed(() => {
     const isUserAuthorized = this.isUserAuthorized();
