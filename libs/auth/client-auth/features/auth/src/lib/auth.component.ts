@@ -5,8 +5,6 @@ import {
   signal,
 } from '@angular/core';
 
-import { TranslateModule } from '@ngx-translate/core';
-
 import { SignInComponent } from '@fitmonitor/auth/client-auth/ui/sign-in';
 import { SignUpComponent } from '@fitmonitor/auth/client-auth/ui/sign-up';
 import { UserLoginData, UserRegistrationData } from '@fitmonitor/interfaces';
@@ -19,13 +17,7 @@ import { catchError, of, take, tap } from 'rxjs';
 @Component({
   selector: 'fitmonitor-auth',
   standalone: true,
-  imports: [
-    NzLayoutModule,
-    NzTabsModule,
-    TranslateModule,
-    SignInComponent,
-    SignUpComponent,
-  ],
+  imports: [NzLayoutModule, NzTabsModule, SignInComponent, SignUpComponent],
   templateUrl: './auth.component.html',
   styleUrl: './auth.component.less',
   changeDetection: ChangeDetectionStrategy.OnPush,

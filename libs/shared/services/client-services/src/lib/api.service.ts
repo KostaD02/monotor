@@ -1,7 +1,5 @@
 import { inject, Injectable } from '@angular/core';
 
-import { TranslateService } from '@ngx-translate/core';
-
 import { ErrorResponse } from '@fitmonitor/interfaces';
 
 import { NzModalService } from 'ng-zorro-antd/modal';
@@ -11,7 +9,6 @@ import { NzModalService } from 'ng-zorro-antd/modal';
 })
 export class ApiService {
   private readonly modalService = inject(NzModalService);
-  private readonly translateService = inject(TranslateService);
 
   handleError(response: ErrorResponse) {
     console.log(response);

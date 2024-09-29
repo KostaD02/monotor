@@ -1,4 +1,3 @@
-import { TranslateModule } from '@ngx-translate/core';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
@@ -9,13 +8,7 @@ import { NzResultModule } from 'ng-zorro-antd/result';
 @Component({
   selector: 'fitmonitor-notfound',
   standalone: true,
-  imports: [
-    RouterLink,
-    NzResultModule,
-    NzButtonModule,
-    NzLayoutModule,
-    TranslateModule,
-  ],
+  imports: [RouterLink, NzResultModule, NzButtonModule, NzLayoutModule],
   templateUrl: './notfound.component.html',
   styleUrl: './notfound.component.less',
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -19,7 +19,7 @@
                 nzTheme="outline"
                 [nzType]="nav.icon"
               ></span>
-              {{ nav.title | translate }}
+              {{ nav.title }}
             </a>
           </li>
         }
@@ -37,36 +37,7 @@
             <ul nz-menu>
               @for (theme of themeOptions; track theme.local) {
                 <li nz-menu-item (click)="changeTheme(theme.value)">
-                  {{ theme.local | translate }}
-                </li>
-              }
-            </ul>
-          </nz-dropdown-menu>
-        </li>
-        <li nz-menu-item class="without-border p-3">
-          <button
-            nz-button
-            nz-dropdown
-            nzType="text"
-            nzPlacement="bottomRight"
-            [nzDropdownMenu]="languageMenu"
-          >
-            <span nz-icon nzType="global" nzTheme="outline"></span>
-          </button>
-          <nz-dropdown-menu #languageMenu="nzDropdownMenu">
-            <ul nz-menu>
-              @for (language of languages; track language.local) {
-                <li
-                  nz-menu-item
-                  class="flex-center gap-3 space-between"
-                  (click)="changeLanguage(language.local)"
-                >
-                  <img
-                    class="flag"
-                    [src]="language.image"
-                    [alt]="'general.country-image' | translate"
-                  />
-                  {{ language.title }}
+                  {{ theme.local }}
                 </li>
               }
             </ul>

@@ -2,15 +2,15 @@ import { ThemeItem, ThemeOptions } from '@fitmonitor/interfaces';
 
 export const THEME_ITEMS: ThemeItem[] = [
   {
-    local: 'theme.light',
+    local: 'Light',
     value: ThemeOptions.Light,
   },
   {
-    local: 'theme.dark',
+    local: 'Dark',
     value: ThemeOptions.Dark,
   },
   {
-    local: 'theme.os',
+    local: 'System',
     value: ThemeOptions.OS,
-  }
-]
+  },
+];

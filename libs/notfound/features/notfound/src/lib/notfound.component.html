@@ -2,12 +2,10 @@
   <nz-result
     nzStatus="404"
     nzTitle="404"
-    [nzSubTitle]="'routing.not-found' | translate"
+    nzSubTitle="Sorry, the page you visited does not exist."
   >
     <div nz-result-extra>
-      <a routerLink="/" nz-button nzType="primary">
-        {{ 'routing.back-to-home' | translate }}
-      </a>
+      <a routerLink="/" nz-button nzType="primary"> Back to home </a>
     </div>
   </nz-result>
 </nz-layout>

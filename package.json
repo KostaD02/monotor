@@ -79,8 +79,6 @@
     "@nestjs/passport": "^10.0.3",
     "@nestjs/platform-express": "^10.0.2",
     "@nestjs/swagger": "^7.4.2",
-    "@ngx-translate/core": "^15.0.0",
-    "@ngx-translate/http-loader": "^8.0.0",
     "@nx/devkit": "19.8.2",
     "@nx/plugin": "^19.8.2",
     "axios": "^1.6.0",

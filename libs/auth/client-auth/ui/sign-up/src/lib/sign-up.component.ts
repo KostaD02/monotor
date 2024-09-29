@@ -7,10 +7,8 @@ import {
 } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 
-import { LanguageService } from '@fitmonitor/client-services';
-import { API_CONFIG } from '@fitmonitor/consts';
+import { API_CONFIG, REGISTER_FORM_DATA } from '@fitmonitor/consts';
 import { UserRegistrationData } from '@fitmonitor/interfaces';
-import { TranslateModule } from '@ngx-translate/core';
 
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzFormModule } from 'ng-zorro-antd/form';
@@ -27,7 +25,6 @@ import { NzNotificationService } from 'ng-zorro-antd/notification';
     NzInputModule,
     NzAlertModule,
     NzButtonModule,
-    TranslateModule,
   ],
   templateUrl: './sign-up.component.html',
   styleUrl: './sign-up.component.less',
@@ -37,7 +34,6 @@ export class SignUpComponent {
   @Output() formSubmit = new EventEmitter<UserRegistrationData>();
 
   private readonly fb = inject(FormBuilder);
-  private readonly languageService = inject(LanguageService);
   private readonly notificationService = inject(NzNotificationService);
 
   readonly form = this.fb.group({
@@ -59,23 +55,11 @@ export class SignUpComponent {
     ]),
   });
 
-  readonly formItems = Object.keys(this.form.controls).map((key) => {
-    return {
-      name: key,
-      label: `auth.${key}.label`,
-      invalid: `auth.${key}.invalid`,
-      placeholder: `auth.${key}.placeholder`,
-      type:
-        key === 'password' ? 'password' : key === 'email' ? 'email' : 'text',
-    };
-  });
+  readonly formItems = REGISTER_FORM_DATA;
 
   onSubmit() {
     if (this.form.invalid) {
-      this.notificationService.error(
-        this.languageService.translate('general.error'),
-        this.languageService.translate('auth.invalid-form-data'),
-      );
+      this.notificationService.error('Error', 'Invalid form data');
       return;
     }
     this.formSubmit.emit(this.form.value as UserRegistrationData);

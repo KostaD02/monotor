@@ -2,12 +2,12 @@ import { Navigation } from '@fitmonitor/interfaces';
 
 export const NAVIGATION: Navigation[] = [
   {
-    title: 'navigation.home',
+    title: 'Home',
     icon: 'home',
     routerLink: '/',
   },
   {
-    title: 'navigation.auth',
+    title: 'Auth',
     icon: 'lock',
     routerLink: '/auth',
     showAfterAuth: false,

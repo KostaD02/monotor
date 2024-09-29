@@ -16,12 +16,9 @@ import {
   provideHttpClient,
   withFetch,
   withInterceptorsFromDi,
-  HttpClient,
   HTTP_INTERCEPTORS,
 } from '@angular/common/http';
 
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { JwtModule } from '@auth0/angular-jwt';
 
 import { HttpErrorInterceptor } from '@fitmonitor/client-interceptors';
@@ -32,10 +29,6 @@ import { API_DOMAIN } from '@fitmonitor/consts';
 import { en_US, ka_GE, NZ_I18N } from 'ng-zorro-antd/i18n';
 
 import { APP_ROUTES } from './app/app.routes';
-
-export function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
-}
 
 bootstrapApplication(AppComponent, {
   providers: [
@@ -50,13 +43,6 @@ bootstrapApplication(AppComponent, {
     provideHttpClient(withFetch(), withInterceptorsFromDi()),
     provideAnimations(),
     importProvidersFrom(
-      TranslateModule.forRoot({
-        loader: {
-          provide: TranslateLoader,
-          useFactory: HttpLoaderFactory,
-          deps: [HttpClient],
-        },
-      }),
       JwtModule.forRoot({
         config: {
           tokenGetter: () => {

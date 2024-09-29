@@ -17,15 +17,9 @@ import { DOCUMENT, ViewportScroller } from '@angular/common';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { filter, fromEvent, map, startWith } from 'rxjs';
 
-import { TranslateModule } from '@ngx-translate/core';
-
-import { LanguageService, ThemeService } from '@fitmonitor/client-services';
+import { ThemeService } from '@fitmonitor/client-services';
 import { AuthService } from '@fitmonitor/data-access';
-import {
-  LanguageLocals,
-  Navigation,
-  ThemeOptions,
-} from '@fitmonitor/interfaces';
+import { Navigation, ThemeOptions } from '@fitmonitor/interfaces';
 import { NAVIGATION } from '@fitmonitor/providers';
 import {
   BURGER_MENU_BREAKPOINT,
@@ -50,7 +44,6 @@ import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
     NzMenuModule,
     NzButtonModule,
     NzDropDownModule,
-    TranslateModule,
   ],
   templateUrl: './shell.component.html',
   styleUrls: ['./shell.component.less'],
@@ -60,7 +53,6 @@ export class ShellComponent {
   private readonly router = inject(Router);
   private readonly authService = inject(AuthService);
   private readonly themeService = inject(ThemeService);
-  private readonly languageService = inject(LanguageService);
   private readonly viewport = inject(ViewportScroller);
   private readonly navigationData = inject(NAVIGATION);
   private readonly document = inject(DOCUMENT);
@@ -100,7 +92,6 @@ export class ShellComponent {
   });
 
   constructor() {
-    this.languageService.init();
     this.themeService.init().pipe().subscribe();
     effect(
       () => {
@@ -122,9 +113,5 @@ export class ShellComponent {
 
   changeTheme(value: ThemeOptions) {
     this.themeService.setTheme(value);
-  }
-
-  changeLanguage(local: LanguageLocals) {
-    this.languageService.language = local;
   }
 }
