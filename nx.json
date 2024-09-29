@@ -76,13 +76,13 @@
     "@nx/angular:application": {
       "e2eTestRunner": "cypress",
       "linter": "eslint",
-      "style": "scss",
+      "style": "less",
       "unitTestRunner": "jest"
     },
     "@nx/angular:library": {
       "linter": "eslint",
       "unitTestRunner": "jest",
-      "style": "scss",
+      "style": "less",
       "changeDetection": "OnPush",
       "standalone": true,
       "prefix": "fitmonitor",
@@ -91,7 +91,7 @@
       "flat": true
     },
     "@nx/angular:component": {
-      "style": "scss"
+      "style": "less"
     }
   }
 }

@@ -4,7 +4,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   selector: 'fitmonitor-shell',
   standalone: true,
   templateUrl: './shell.component.html',
-  styleUrls: ['./shell.component.scss'],
+  styleUrls: ['./shell.component.less'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class ShellComponent {}

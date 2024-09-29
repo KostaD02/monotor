@@ -6,7 +6,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './sign-in.component.html',
-  styleUrl: './sign-in.component.scss',
+  styleUrl: './sign-in.component.less',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SignInComponent {}

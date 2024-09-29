@@ -14,7 +14,7 @@ export async function angularLibGenerator(
     standalone: true,
     commonModule: false,
     prefix: 'fitmonitor',
-    style: 'scss',
+    style: 'less',
     changeDetection: 'OnPush',
     directory: `${projectRoot}/features`,
     importPath: `@fitmonitor/${options.name}`,

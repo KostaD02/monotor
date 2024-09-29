@@ -13,7 +13,7 @@ export async function angularLibComponentGenerator(
     standalone: true,
     commonModule: false,
     prefix: 'fitmonitor',
-    style: 'scss',
+    style: 'less',
     changeDetection: 'OnPush',
     directory: projectRoot,
     importPath: `@fitmonitor/${options.path}/${options.name}`,

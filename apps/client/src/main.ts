@@ -1,15 +1,19 @@
 import { bootstrapApplication } from '@angular/platform-browser';
 import { AppComponent } from './app/app.component';
 import {
-  ApplicationConfig,
   importProvidersFrom,
+  LOCALE_ID,
   provideZoneChangeDetection,
 } from '@angular/core';
-import { provideRouter } from '@angular/router';
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import {
+  provideRouter,
+  withEnabledBlockingInitialNavigation,
+  withInMemoryScrolling,
+} from '@angular/router';
+import { provideAnimations } from '@angular/platform-browser/animations';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { appRoutes } from './app/app.routes';
+import { APP_ROUTES } from './app/app.routes';
 import {
   provideHttpClient,
   withFetch,
@@ -17,12 +21,24 @@ import {
   HttpClient,
 } from '@angular/common/http';
 
-export const appConfig: ApplicationConfig = {
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
+
+import { en_US, ka_GE, NZ_I18N } from 'ng-zorro-antd/i18n';
+
+bootstrapApplication(AppComponent, {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
-    provideRouter(appRoutes),
+    provideRouter(
+      APP_ROUTES,
+      withInMemoryScrolling({
+        scrollPositionRestoration: 'top',
+      }),
+      withEnabledBlockingInitialNavigation()
+    ),
     provideHttpClient(withFetch(), withInterceptorsFromDi()),
-    provideAnimationsAsync(),
+    provideAnimations(),
     importProvidersFrom(
       TranslateModule.forRoot({
         loader: {
@@ -32,13 +48,19 @@ export const appConfig: ApplicationConfig = {
         },
       })
     ),
+    {
+      provide: NZ_I18N,
+      useFactory: (localeId: string) => {
+        switch (localeId) {
+          case 'en':
+            return en_US;
+          case 'ka':
+            return ka_GE;
+          default:
+            return en_US;
+        }
+      },
+      deps: [LOCALE_ID],
+    },
   ],
-};
-
-export function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
-}
-
-bootstrapApplication(AppComponent, appConfig).catch((err) =>
-  console.error(err)
-);
+}).catch((err) => console.error(err));

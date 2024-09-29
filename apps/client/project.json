@@ -15,14 +15,20 @@
         "browser": "apps/client/src/main.ts",
         "polyfills": ["zone.js"],
         "tsConfig": "apps/client/tsconfig.app.json",
-        "inlineStyleLanguage": "scss",
+        "inlineStyleLanguage": "less",
         "assets": [
           {
             "glob": "**/*",
-            "input": "apps/client/public"
+            "input": "libs/shared/assets/src/assets/",
+            "output": "assets"
+          },
+          {
+            "glob": "*/**",
+            "input": "node_modules/@ant-design/icons-angular/src/inline-svg/",
+            "output": "assets"
           }
         ],
-        "styles": ["apps/client/src/styles.scss"],
+        "styles": ["apps/client/src/styles.less"],
         "scripts": []
       },
       "configurations": {
