@@ -23,6 +23,19 @@
             </a>
           </li>
         }
+        @if (isUserAuthorized()) {
+          <li nz-menu-item>
+            <a routerLink="/" (click)="logOut()">
+              <span
+                nz-icon
+                class="pr-3"
+                nzType="logout"
+                nzTheme="outline"
+              ></span>
+              Log out
+            </a>
+          </li>
+        }
         <li nz-menu-item class="without-border p-3">
           <button
             nz-button

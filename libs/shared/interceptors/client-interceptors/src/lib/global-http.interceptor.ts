@@ -12,6 +12,7 @@ import { Observable, catchError, throwError } from 'rxjs';
 import { API_URL } from '@fitmonitor/consts';
 import { ErrorResponse } from '@fitmonitor/interfaces';
 import { ApiService } from '@fitmonitor/client-services';
+import { Logger, LoggerSide } from '@fitmonitor/util';
 
 @Injectable()
 export class HttpErrorInterceptor implements HttpInterceptor {
@@ -31,6 +32,11 @@ export class HttpErrorInterceptor implements HttpInterceptor {
 
         const errorResponse = response.error as ErrorResponse;
         this.apiService.handleError(errorResponse);
+
+        Logger.error(
+          `Error on API request, at ${errorResponse.path}, reason: ${errorResponse.error}, status: ${errorResponse.statusCode}, keys: ${errorResponse.errorKeys}`,
+          LoggerSide.Client,
+        );
 
         return throwError(() => errorResponse);
       }),

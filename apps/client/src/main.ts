@@ -22,13 +22,14 @@ import {
 import { JwtModule } from '@auth0/angular-jwt';
 
 import { HttpErrorInterceptor } from '@fitmonitor/client-interceptors';
-import { LocalStorageService } from '@fitmonitor/client-services';
+import { ApiService, LocalStorageService } from '@fitmonitor/client-services';
 import { StorageKeys } from '@fitmonitor/interfaces';
 import { API_DOMAIN } from '@fitmonitor/consts';
 
 import { en_US, ka_GE, NZ_I18N } from 'ng-zorro-antd/i18n';
 
 import { APP_ROUTES } from './app/app.routes';
+import { NzModalService } from 'ng-zorro-antd/modal';
 
 bootstrapApplication(AppComponent, {
   providers: [
@@ -67,6 +68,8 @@ bootstrapApplication(AppComponent, {
       },
       deps: [LOCALE_ID],
     },
+    NzModalService,
+    ApiService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: HttpErrorInterceptor,

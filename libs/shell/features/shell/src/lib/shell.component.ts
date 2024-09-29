@@ -114,4 +114,8 @@ export class ShellComponent {
   changeTheme(value: ThemeOptions) {
     this.themeService.setTheme(value);
   }
+
+  logOut() {
+    this.authService.signOut();
+  }
 }
