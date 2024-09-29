@@ -1,0 +1,13 @@
+<nz-layout class="inner flex-center">
+  <nz-result
+    nzStatus="404"
+    nzTitle="404"
+    [nzSubTitle]="'routing.not-found' | translate"
+  >
+    <div nz-result-extra>
+      <a routerLink="/" nz-button nzType="primary">
+        {{ 'routing.back-to-home' | translate }}
+      </a>
+    </div>
+  </nz-result>
+</nz-layout>

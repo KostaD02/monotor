@@ -15,6 +15,12 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@fitmonitor/auth/client-auth/features/auth": [
+        "libs/auth/client-auth/features/auth/src/index.ts"
+      ],
+      "@fitmonitor/client-auth/feature/shell": [
+        "libs/auth/client-auth/features/shell/src/index.ts"
+      ],
       "@fitmonitor/client-services": [
         "libs/shared/services/client-services/src/index.ts"
       ],
@@ -23,7 +29,18 @@
         "libs/auth/client-auth/data-access/src/index.ts"
       ],
       "@fitmonitor/generators": ["tools/generators/src/index.ts"],
+      "@fitmonitor/home/data-access": ["libs/home/data-access/src/index.ts"],
+      "@fitmonitor/home/feature/base": ["libs/home/features/home/src/index.ts"],
+      "@fitmonitor/home/feature/shell": [
+        "libs/home/features/shell/src/index.ts"
+      ],
       "@fitmonitor/interfaces": ["libs/shared/interfaces/src/index.ts"],
+      "@fitmonitor/notfound/feature/base": [
+        "libs/notfound/features/notfound/src/index.ts"
+      ],
+      "@fitmonitor/notfound/feature/shell": [
+        "libs/notfound/features/shell/src/index.ts"
+      ],
       "@fitmonitor/providers": ["libs/shared/providers/src/index.ts"],
       "@fitmonitor/schemas": ["libs/shared/schemas/src/index.ts"],
       "@fitmonitor/server-auth": ["libs/auth/server-auth/src/index.ts"],
@@ -48,15 +65,9 @@
       "@fitmonitor/server-services": [
         "libs/shared/services/server-services/src/index.ts"
       ],
-      "@fitmonitor/shell": [
-        "libs/auth/client-auth/features/shell/src/index.ts"
-      ],
       "@fitmonitor/shell/data-access": ["libs/shell/data-access/src/index.ts"],
       "@fitmonitor/shell/feature/shell": [
         "libs/shell/features/shell/src/index.ts"
-      ],
-      "@fitmonitor/sign-in": [
-        "libs/auth/client-auth/features/sign-in/src/index.ts"
       ],
       "@fitmonitor/util": ["libs/shared/util/src/index.ts"]
     }

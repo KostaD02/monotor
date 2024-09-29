@@ -1,9 +1,8 @@
 export default {
-  displayName: 'sign-in',
-  preset: '../../../../../jest.preset.js',
+  displayName: 'home-data-access',
+  preset: '../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
-  coverageDirectory:
-    '../../../../../coverage/libs/auth/client-auth/features/sign-in',
+  coverageDirectory: '../../../coverage/libs/home/data-access',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': [
       'jest-preset-angular',

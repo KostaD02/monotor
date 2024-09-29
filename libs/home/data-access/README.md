@@ -1,7 +1,7 @@
-# sign-in
+# home-data-access
 
 This library was generated with [Nx](https://nx.dev).
 
 ## Running unit tests
 
-Run `nx test sign-in` to execute the unit tests.
+Run `nx test home-data-access` to execute the unit tests.

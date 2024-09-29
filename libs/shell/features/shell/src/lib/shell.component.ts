@@ -56,7 +56,7 @@ import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
   styleUrls: ['./shell.component.less'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class ShellComponent {
+export class ShellComponent {
   private readonly router = inject(Router);
   private readonly authService = inject(AuthService);
   private readonly themeService = inject(ThemeService);

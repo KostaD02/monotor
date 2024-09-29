@@ -8,6 +8,10 @@
     "dark": "Dark",
     "os": "System"
   },
+  "routing": {
+    "not-found": "Sorry, the page you visited does not exist.",
+    "back-to-home": "Back to home"
+  },
   "general": {
     "country-image": "Country image"
   }
