@@ -33,6 +33,8 @@ import { NzNotificationService } from 'ng-zorro-antd/notification';
 export class SignUpComponent {
   @Output() formSubmit = new EventEmitter<UserRegistrationData>();
 
+  // TODO: Use shared/ui/FormComponent
+
   private readonly fb = inject(FormBuilder);
   private readonly notificationService = inject(NzNotificationService);
 

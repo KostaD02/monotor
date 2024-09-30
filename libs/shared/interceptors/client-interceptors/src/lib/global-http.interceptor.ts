@@ -25,12 +25,18 @@ export class HttpErrorInterceptor implements HttpInterceptor {
     return next.handle(req).pipe(
       catchError((response: HttpErrorResponse) => {
         const isFitMonitorServerRequest = req.url.includes(API_URL);
-
-        if (!isFitMonitorServerRequest) {
+        if (
+          !isFitMonitorServerRequest ||
+          response.error.message === 'Failed to fetch'
+        ) {
           return throwError(() => response);
         }
 
         const errorResponse = response.error as ErrorResponse;
+
+        if (!errorResponse?.errorKeys || !errorResponse?.error) {
+          return throwError(() => response);
+        }
 
         if (errorResponse.errorKeys.includes('errors.token_expired')) {
           return throwError(() => errorResponse);

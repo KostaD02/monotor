@@ -5,3 +5,4 @@ export * from './navigation';
 export * from './layout';
 export * from './theme';
 export * from './auth';
+export * from './metrics';

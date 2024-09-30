@@ -5,7 +5,7 @@ import { Schema } from '@nx/angular/src/generators/library/schema';
 
 export async function angularLibGenerator(
   tree: Tree,
-  options: AngularLibGeneratorSchema
+  options: AngularLibGeneratorSchema,
 ) {
   const projectRoot = `libs/${options.path}`;
   const config: Schema = {
@@ -39,13 +39,13 @@ export async function angularLibGenerator(
     const srcDataAccessPath = joinPathFragments(
       projectRoot,
       'data-access',
-      'src'
+      'src',
     );
 
     const dataAccessLibPath = joinPathFragments(
       srcDataAccessPath,
       'lib',
-      `${options.name}-data-access`
+      `${options.name}-data-access`,
     );
 
     if (tree.exists(dataAccessLibPath)) {
@@ -76,7 +76,7 @@ export async function angularLibGenerator(
     projectRoot,
     'features',
     'shell',
-    'src'
+    'src',
   );
 
   const shellComponentDir = joinPathFragments(srcShellPath, 'lib/shell');
@@ -91,7 +91,11 @@ export async function angularLibGenerator(
     const updatedContent = `
 import { Route } from '@angular/router';
 
-export const ${options.name.toUpperCase()}_ROUTES: Route[] = [];
+export const ${options.name
+      .toUpperCase()
+      .split('')
+      .map((char) => (char === '-' ? '_' : char))
+      .join('')}_ROUTES: Route[] = [];
     `;
 
     tree.write(routesPath, updatedContent);

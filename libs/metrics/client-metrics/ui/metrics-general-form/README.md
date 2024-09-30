@@ -1,0 +1,7 @@
+# metrics-client-metrics-ui-metrics-general-form
+
+This library was generated with [Nx](https://nx.dev).
+
+## Running unit tests
+
+Run `nx test metrics-client-metrics-ui-metrics-general-form` to execute the unit tests.

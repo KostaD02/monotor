@@ -47,7 +47,7 @@ export class AuthService {
     }),
     catchError((error: ErrorResponse) => {
       if (
-        error.errorKeys.includes('errors.token_expired') &&
+        error?.errorKeys?.includes('errors.token_expired') &&
         this.refreshToken
       ) {
         this.handleRefresh();

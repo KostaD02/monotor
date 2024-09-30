@@ -22,6 +22,13 @@ export const SHELL_ROUTES: Route[] = [
           ),
       },
       {
+        path: 'metrics',
+        loadChildren: () =>
+          import('@fitmonitor/client-metrics/feature/shell').then(
+            (m) => m.METRICS_ROUTES,
+          ),
+      },
+      {
         path: '**',
         loadChildren: () =>
           import('@fitmonitor/notfound/feature/shell').then(

@@ -30,6 +30,15 @@
       "@fitmonitor/client-interceptors": [
         "libs/shared/interceptors/client-interceptors/src/index.ts"
       ],
+      "@fitmonitor/client-metrics/data-access": [
+        "libs/metrics/client-metrics/data-access/src/index.ts"
+      ],
+      "@fitmonitor/client-metrics/feature/base": [
+        "libs/metrics/client-metrics/features/client-metrics/src/index.ts"
+      ],
+      "@fitmonitor/client-metrics/feature/shell": [
+        "libs/metrics/client-metrics/features/shell/src/index.ts"
+      ],
       "@fitmonitor/client-services": [
         "libs/shared/services/client-services/src/index.ts"
       ],
@@ -44,6 +53,9 @@
         "libs/home/features/shell/src/index.ts"
       ],
       "@fitmonitor/interfaces": ["libs/shared/interfaces/src/index.ts"],
+      "@fitmonitor/metrics/client-metrics/ui/metrics-general-form": [
+        "libs/metrics/client-metrics/ui/metrics-general-form/src/index.ts"
+      ],
       "@fitmonitor/notfound/feature/base": [
         "libs/notfound/features/notfound/src/index.ts"
       ],
@@ -74,6 +86,7 @@
       "@fitmonitor/server-services": [
         "libs/shared/services/server-services/src/index.ts"
       ],
+      "@fitmonitor/shared/ui/form": ["libs/shared/ui/form/src/index.ts"],
       "@fitmonitor/shell/data-access": ["libs/shell/data-access/src/index.ts"],
       "@fitmonitor/shell/feature/shell": [
         "libs/shell/features/shell/src/index.ts"
