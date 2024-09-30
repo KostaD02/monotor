@@ -32,7 +32,7 @@ export class AuthService {
     private readonly exceptionService: ExceptionService,
     private readonly encryptionService: EncryptionService,
     private readonly jwtService: JwtService,
-    private readonly mongooseValidator: MongooseValidatorService
+    private readonly mongooseValidator: MongooseValidatorService,
   ) {}
 
   async getCurrentUser(payload: UserPayload) {
@@ -42,7 +42,7 @@ export class AuthService {
       this.exceptionService.throwError(
         ExceptionStatusKeys.NotFound,
         'User not found',
-        AuthExpectionKeys.UserNotFound
+        AuthExpectionKeys.UserNotFound,
       );
     }
 
@@ -55,7 +55,7 @@ export class AuthService {
       this.exceptionService.throwError(
         ExceptionStatusKeys.Conflict,
         'Email is already in use',
-        AuthExpectionKeys.EmailInUse
+        AuthExpectionKeys.EmailInUse,
       );
     }
 
@@ -79,12 +79,12 @@ export class AuthService {
         `Someone tried to register as admin, when admin already exists, here is few detail:\n${
           isCleanIP ? `IP:${req.ip?.slice(7)}\n` : `IP:${req.ip}\n`
         }User-Agent:${req.headers['user-agent']}`,
-        LoggerSide.Server
+        LoggerSide.Server,
       );
       this.exceptionService.throwError(
         ExceptionStatusKeys.Conflict,
         'Admin already exists',
-        AuthExpectionKeys.AdminAlreadyExists
+        AuthExpectionKeys.AdminAlreadyExists,
       );
     }
 
@@ -119,7 +119,7 @@ export class AuthService {
     const refreshToken = this.jwtService.sign(user, { expiresIn: '7d' });
     response.cookie('access_token', accessToken, {
       expires: new Date(
-        Date.now() + Number(process.env['JWT_EXPIRES_IN']) * 60 * 60 * 1000
+        Date.now() + Number(process.env['JWT_EXPIRES_IN']) * 60 * 60 * 1000,
       ),
       httpOnly: true,
       secure: true,
@@ -128,7 +128,7 @@ export class AuthService {
     response.cookie('refresh_token', refreshToken, {
       expires: new Date(
         Date.now() +
-          Number(process.env['JWT_EXPIRES_IN']) * 7 * 24 * 60 * 60 * 1000
+          Number(process.env['JWT_EXPIRES_IN']) * 7 * 24 * 60 * 60 * 1000,
       ),
       httpOnly: true,
       secure: true,
@@ -155,17 +155,17 @@ export class AuthService {
       this.exceptionService.throwError(
         ExceptionStatusKeys.BadRequest,
         'Refresh token not found',
-        AuthExpectionKeys.TokenNotFound
+        AuthExpectionKeys.TokenNotFound,
       );
     }
     const data = this.jwtService.decode(refreshToken) as UserPayload;
     const user = await this.userModel.findOne({ email: data.email });
     const accessToken = this.jwtService.sign(
-      this.createPayload(user as unknown as UserInterface)
+      this.createPayload(user as unknown as UserInterface),
     );
     response.cookie('access_token', accessToken, {
       expires: new Date(
-        Date.now() + Number(process.env['JWT_EXPIRES_IN']) * 60 * 60 * 1000
+        Date.now() + Number(process.env['JWT_EXPIRES_IN']) * 60 * 60 * 1000,
       ),
       httpOnly: true,
       secure: true,
@@ -181,7 +181,7 @@ export class AuthService {
       this.exceptionService.throwError(
         ExceptionStatusKeys.BadRequest,
         `Nothing to update, provide at least one property`,
-        AuthExpectionKeys.NothingToUpdate
+        AuthExpectionKeys.NothingToUpdate,
       );
     }
     const user = await this.userModel.findOneAndUpdate(
@@ -189,7 +189,7 @@ export class AuthService {
       {
         firstName: body.firstName,
         lastName: body.lastName,
-      }
+      },
     );
 
     const updatedUser = await this.userModel.findOne({ _id: user?.id });
@@ -208,7 +208,7 @@ export class AuthService {
       this.exceptionService.throwError(
         ExceptionStatusKeys.BadRequest,
         `Nothing to update, provide at least one property`,
-        AuthExpectionKeys.NothingToUpdate
+        AuthExpectionKeys.NothingToUpdate,
       );
     }
 
@@ -241,7 +241,7 @@ export class AuthService {
         this.exceptionService.throwError(
           ExceptionStatusKeys.Conflict,
           `Email is already in use`,
-          AuthExpectionKeys.EmailInUse
+          AuthExpectionKeys.EmailInUse,
         );
       }
     }
@@ -249,7 +249,7 @@ export class AuthService {
     const user = await this.userModel.findOneAndUpdate(
       { _id: id },
       { ...data },
-      { new: true }
+      { new: true },
     );
     return user;
   }
@@ -257,13 +257,13 @@ export class AuthService {
   async updateUserPassword(
     userPayload: UserPayload,
     body: UpdateUserPasswordDto,
-    response: Response
+    response: Response,
   ) {
     if (body.newPassword === body.oldPassword) {
       this.exceptionService.throwError(
         ExceptionStatusKeys.BadRequest,
         `Old and new passwords can not be same`,
-        AuthExpectionKeys.NewPasswordMatchesOld
+        AuthExpectionKeys.NewPasswordMatchesOld,
       );
     }
 
@@ -273,21 +273,21 @@ export class AuthService {
       this.exceptionService.throwError(
         ExceptionStatusKeys.BadRequest,
         `User not found`,
-        AuthExpectionKeys.UserNotFound
+        AuthExpectionKeys.UserNotFound,
       );
       return;
     }
 
     const isCorrect = await this.encryptionService.compareHash(
       body.oldPassword,
-      user.password
+      user.password,
     );
 
     if (!isCorrect) {
       this.exceptionService.throwError(
         ExceptionStatusKeys.BadRequest,
         `Old password is incorrect`,
-        AuthExpectionKeys.OldPasswordIncorrect
+        AuthExpectionKeys.OldPasswordIncorrect,
       );
     }
 
@@ -297,7 +297,7 @@ export class AuthService {
 
     return this.signIn(
       this.createPayload(user as unknown as UserInterface),
-      response
+      response,
     );
   }
 
@@ -310,7 +310,7 @@ export class AuthService {
       this.exceptionService.throwError(
         ExceptionStatusKeys.BadRequest,
         `User already deleted`,
-        AuthExpectionKeys.UserAlreadyDeleted
+        AuthExpectionKeys.UserAlreadyDeleted,
       );
     }
 
@@ -331,7 +331,7 @@ export class AuthService {
       this.exceptionService.throwError(
         ExceptionStatusKeys.BadRequest,
         `User with this '${id}' does not exist`,
-        AuthExpectionKeys.UserNotFound
+        AuthExpectionKeys.UserNotFound,
       );
     }
 
@@ -341,7 +341,7 @@ export class AuthService {
   async getAllUser() {
     const users = await this.userModel.find({});
     return users.map((user) =>
-      this.createPayload(user as unknown as UserInterface)
+      this.createPayload(user as unknown as UserInterface),
     );
   }
 
@@ -351,7 +351,7 @@ export class AuthService {
       this.exceptionService.throwError(
         ExceptionStatusKeys.BadRequest,
         `User with this '${id}' does not exist`,
-        AuthExpectionKeys.UserNotFound
+        AuthExpectionKeys.UserNotFound,
       );
     }
 
@@ -363,7 +363,7 @@ export class AuthService {
       this.exceptionService.throwError(
         ExceptionStatusKeys.BadRequest,
         `User already deleted`,
-        AuthExpectionKeys.UserAlreadyDeleted
+        AuthExpectionKeys.UserAlreadyDeleted,
       );
     }
 

@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
 import {
+  ErrorResponse,
   StorageKeys,
   Tokens,
   UserLoginData,
@@ -15,6 +16,7 @@ import {
 import { API_URL, RETRY_AUTH_CHECK } from '@fitmonitor/consts';
 import { LocalStorageService } from '@fitmonitor/client-services';
 import { catchError, filter, NEVER, switchMap, tap, timer } from 'rxjs';
+import { Logger, LoggerSide } from '@fitmonitor/util';
 
 @Injectable()
 export class AuthService {
@@ -25,17 +27,34 @@ export class AuthService {
 
   readonly user: WritableSignal<UserPayload | null> = signal(null);
 
-  readonly checkAuthorizedUser = timer(RETRY_AUTH_CHECK).pipe(
-    filter(() => this.user() !== null),
+  readonly checkAuthorizedUser = timer(0, RETRY_AUTH_CHECK).pipe(
+    tap(() => {
+      if (this.accessToken && !this.refreshToken) {
+        this.removeTokens();
+      }
+    }),
+    filter(
+      () =>
+        this.user() !== null ||
+        this.accessToken !== null ||
+        this.refreshToken !== null,
+    ),
     switchMap(() => this.getCurrentUser()),
     tap((user) => {
       if (user) {
         this.user.set(user);
       }
     }),
-    catchError((error) => {
-      console.log(error);
-      this.handleRefresh();
+    catchError((error: ErrorResponse) => {
+      if (
+        error.errorKeys.includes('errors.token_expired') &&
+        this.refreshToken
+      ) {
+        this.handleRefresh();
+        Logger.info('Accces token expired, refreshing...', LoggerSide.Client);
+        return NEVER;
+      }
+      this.removeTokens();
       return NEVER;
     }),
   );
@@ -75,8 +94,27 @@ export class AuthService {
     this.user.set(this.jwtService.decodeToken(tokens.access_token));
   }
 
+  removeTokens() {
+    this.localStorageService.removeItem(StorageKeys.AccessToken);
+    this.localStorageService.removeItem(StorageKeys.RefreshToken);
+  }
+
   handleRefresh() {
-    // TODO: handle refresh token
+    this.http
+      .post<Pick<Tokens, 'access_token'>>(`${this.baseUrl}/refresh`, {
+        refresh_token: this.refreshToken,
+      })
+      .pipe(
+        tap((token) => {
+          this.accessToken = token.access_token;
+        }),
+        catchError(() => {
+          this.signOut();
+          this.router.navigate(['/auth']);
+          return NEVER;
+        }),
+      )
+      .subscribe();
   }
 
   getCurrentUser() {
@@ -96,8 +134,7 @@ export class AuthService {
   }
 
   signOut() {
-    this.localStorageService.removeItem(StorageKeys.AccessToken);
-    this.localStorageService.removeItem(StorageKeys.RefreshToken);
+    this.removeTokens();
     this.user.set(null);
   }
 

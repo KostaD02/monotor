@@ -45,7 +45,7 @@
         }
         @if (isUserAuthorized()) {
           <li nz-menu-item>
-            <a routerLink="/" (click)="logOut()">
+            <a routerLink="/" (click)="logOut(); isOpen.set(false)">
               @if (showIcons()) {
                 <span
                   nz-icon

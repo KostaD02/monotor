@@ -11,10 +11,13 @@ import { Request, Response } from 'express';
 @Catch()
 export class HttpExceptionsFilter implements ExceptionFilter {
   catch(exception: Error, host: ArgumentsHost) {
-    const isHttpException =
-      exception.name === 'HttpException' ||
-      exception.name === 'NotFoundException' ||
-      exception.name === 'BadRequestException';
+    const expections = [
+      'HttpException',
+      'NotFoundException',
+      'BadRequestException',
+      'UnauthorizedException',
+    ];
+    const isHttpException = expections.includes(exception.name);
     const ctx = host.switchToHttp();
     const response = ctx.getResponse<Response>();
     const request = ctx.getRequest<Request>();
@@ -41,7 +44,7 @@ export class HttpExceptionsFilter implements ExceptionFilter {
     } else {
       Logger.error(
         `At endpoint: ${request.url}\n${exception.stack}`,
-        LoggerSide.Server
+        LoggerSide.Server,
       );
     }
 

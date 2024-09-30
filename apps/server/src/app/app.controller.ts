@@ -18,6 +18,7 @@ export class AppController {
     return {
       message: 'Welcome to FitMonitor API',
       github: 'https://github.com/KostaD02/fitmonitor',
+      swagger: `http://localhost:2222/api/swagger`,
     };
   }
 

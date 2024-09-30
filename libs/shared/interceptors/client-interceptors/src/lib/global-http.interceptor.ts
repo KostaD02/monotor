@@ -31,6 +31,11 @@ export class HttpErrorInterceptor implements HttpInterceptor {
         }
 
         const errorResponse = response.error as ErrorResponse;
+
+        if (errorResponse.errorKeys.includes('errors.token_expired')) {
+          return throwError(() => errorResponse);
+        }
+
         this.apiService.handleError(errorResponse);
 
         Logger.error(
