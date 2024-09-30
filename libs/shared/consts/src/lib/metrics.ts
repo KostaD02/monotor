@@ -1,5 +1,6 @@
-import { Validators } from '@angular/forms';
 import { FormItem } from '@fitmonitor/interfaces';
+
+import { API_CONFIG } from './api';
 
 export const METRICS_FORM_DATA: FormItem[] = [
   {
@@ -7,21 +8,21 @@ export const METRICS_FORM_DATA: FormItem[] = [
     type: 'text',
     icon: 'file-text',
     label: 'Enter metric name',
-    invalid: 'Please enter valid metric name (min 2, max 20 characters)',
+    invalid: `Please enter valid metric name (min ${API_CONFIG.MIN_METRICS_NAME_LENGTH}, max ${API_CONFIG.MAX_METRICS_NAME_LENGTH} characters)`,
     placeholder: 'For example "Weight"',
-    validators: [
-      Validators.required,
-      Validators.minLength(2),
-      Validators.maxLength(20),
-    ],
+    validators: {
+      required: true,
+      minLength: API_CONFIG.MIN_METRICS_NAME_LENGTH,
+      maxLength: API_CONFIG.MAX_METRICS_NAME_LENGTH,
+    },
   },
   {
     name: 'desiredValue',
     type: 'number',
     icon: 'field-number',
     label: 'Enter desired value',
-    invalid: 'Please enter valid desired value (min 1)',
+    invalid: `Please enter valid desired value (min ${API_CONFIG.MIN_DESIRED_METRICS_VALUE})`,
     placeholder: 'For example "70"',
-    validators: [Validators.required, Validators.min(1)],
+    validators: { required: true, min: API_CONFIG.MIN_DESIRED_METRICS_VALUE },
   },
 ];

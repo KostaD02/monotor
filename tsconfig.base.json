@@ -18,12 +18,6 @@
       "@fitmonitor/auth/client-auth/features/auth": [
         "libs/auth/client-auth/features/auth/src/index.ts"
       ],
-      "@fitmonitor/auth/client-auth/ui/sign-in": [
-        "libs/auth/client-auth/ui/sign-in/src/index.ts"
-      ],
-      "@fitmonitor/auth/client-auth/ui/sign-up": [
-        "libs/auth/client-auth/ui/sign-up/src/index.ts"
-      ],
       "@fitmonitor/client-auth/feature/shell": [
         "libs/auth/client-auth/features/shell/src/index.ts"
       ],

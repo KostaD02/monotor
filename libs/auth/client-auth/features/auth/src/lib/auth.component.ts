@@ -7,8 +7,6 @@ import {
 
 import { catchError, NEVER, tap } from 'rxjs';
 
-import { SignInComponent } from '@fitmonitor/auth/client-auth/ui/sign-in';
-import { SignUpComponent } from '@fitmonitor/auth/client-auth/ui/sign-up';
 import { UserLoginData, UserRegistrationData } from '@fitmonitor/interfaces';
 import { AuthService } from '@fitmonitor/data-access';
 
@@ -16,11 +14,13 @@ import { NzTabsModule } from 'ng-zorro-antd/tabs';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { Router } from '@angular/router';
+import { FormComponent } from '@fitmonitor/shared/ui/form';
+import { LOGIN_FORM_DATA, REGISTER_FORM_DATA } from '@fitmonitor/consts';
 
 @Component({
   selector: 'fitmonitor-auth',
   standalone: true,
-  imports: [NzLayoutModule, NzTabsModule, SignInComponent, SignUpComponent],
+  imports: [NzLayoutModule, NzTabsModule, FormComponent],
   templateUrl: './auth.component.html',
   styleUrl: './auth.component.less',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -32,9 +32,12 @@ export class AuthComponent {
 
   readonly currentTabIndex = signal(0);
 
-  onAuth(data: UserLoginData) {
+  readonly signInFormItems = LOGIN_FORM_DATA;
+  readonly signUpFormItems = REGISTER_FORM_DATA;
+
+  onAuth(data: unknown) {
     this.authService
-      .signIn(data)
+      .signIn(data as UserLoginData)
       .pipe(
         tap((result) => {
           this.notificationService.info('Sign in successful', 'Welcome back!');
@@ -46,9 +49,9 @@ export class AuthComponent {
       .subscribe();
   }
 
-  onRegistration(data: UserRegistrationData) {
+  onRegistration(data: unknown) {
     this.authService
-      .signUp(data)
+      .signUp(data as UserRegistrationData)
       .pipe(
         tap(() => {
           this.notificationService.info(

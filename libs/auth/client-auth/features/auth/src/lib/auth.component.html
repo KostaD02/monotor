@@ -5,12 +5,16 @@
       (nzSelectedIndexChange)="currentTabIndex.set($event)"
     >
       <nz-tab nzTitle="Sign in">
-        <fitmonitor-sign-in (formSubmit)="onAuth($event)"></fitmonitor-sign-in>
+        <fitmonitor-form
+          [formItems]="signInFormItems"
+          (formSubmit)="onAuth($event)"
+        ></fitmonitor-form>
       </nz-tab>
       <nz-tab nzTitle="Sign up">
-        <fitmonitor-sign-up
+        <fitmonitor-form
+          [formItems]="signUpFormItems"
           (formSubmit)="onRegistration($event)"
-        ></fitmonitor-sign-up>
+        ></fitmonitor-form>
       </nz-tab>
     </nz-tabset>
   </section>
