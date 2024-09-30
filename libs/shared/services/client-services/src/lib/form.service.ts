@@ -14,7 +14,10 @@ export class FormService {
     formItems.forEach((item) => {
       form.addControl(
         item.name,
-        this.fb.control('', this.createValidators(item?.validators || null)),
+        this.fb.control(
+          '',
+          this.createValidators(item?.validators || undefined),
+        ),
       );
     });
 
@@ -22,7 +25,7 @@ export class FormService {
   }
 
   createValidators(
-    validators: Record<string, string | boolean | number> | null,
+    validators: Record<string, string | boolean | number> | undefined,
   ) {
     if (!validators) {
       return [];

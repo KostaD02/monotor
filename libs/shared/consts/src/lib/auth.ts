@@ -37,7 +37,7 @@ export const REGISTER_FORM_DATA: FormItem[] = [
     placeholder: 'Enter your first name',
     invalid: `Please enter valid first name (min ${API_CONFIG.MIN_FIRSTNAME_LENGTH}, max ${API_CONFIG.MAX_FIRSTNAME_LENGTH} characters)`,
     type: 'text',
-    icon: 'user',
+    icon: 'info',
     validators: {
       required: true,
       minLength: API_CONFIG.MIN_FIRSTNAME_LENGTH,
