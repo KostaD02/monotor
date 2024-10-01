@@ -18,9 +18,11 @@
         </nz-form-control>
       </nz-form-item>
     }
-    <button [disabled]="form().invalid" nz-button nzType="primary">
-      Create
-    </button>
+    <div class="controls flex-center">
+      <button [disabled]="form().invalid" nz-button nzType="primary">
+        Create
+      </button>
+    </div>
   </form>
 } @else {
   <nz-alert

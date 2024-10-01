@@ -47,9 +47,6 @@
         "libs/home/features/shell/src/index.ts"
       ],
       "@fitmonitor/interfaces": ["libs/shared/interfaces/src/index.ts"],
-      "@fitmonitor/metrics/client-metrics/ui/metrics-general-form": [
-        "libs/metrics/client-metrics/ui/metrics-general-form/src/index.ts"
-      ],
       "@fitmonitor/notfound/feature/base": [
         "libs/notfound/features/notfound/src/index.ts"
       ],

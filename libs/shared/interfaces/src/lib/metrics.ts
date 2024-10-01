@@ -14,3 +14,5 @@ export interface MetricsData {
   date: string;
   desiredValueReached: boolean;
 }
+
+export type MetricsFormData = Pick<Metrics, 'name' | 'desiredValue'>;

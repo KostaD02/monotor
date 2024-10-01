@@ -54,7 +54,7 @@ export class AuthService {
         Logger.info('Accces token expired, refreshing...', LoggerSide.Client);
         return NEVER;
       }
-      this.removeTokens();
+      // this.removeTokens();
       return NEVER;
     }),
   );
