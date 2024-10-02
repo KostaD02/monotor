@@ -1,1 +1,96 @@
-<p>metric works!</p>
+@if (metric) {
+  <nz-card [nzActions]="[addRef, deleteRef, viewRef]" [nzTitle]="title">
+    <section class="content" [ngStyle]="{ 'max-width': chartSize() }">
+      @if (isChartPreview()) {
+        @if (renderChart()) {
+          <ngx-charts-line-chart
+            [xAxis]="true"
+            [yAxis]="true"
+            [showXAxisLabel]="true"
+            [showXAxisLabel]="true"
+            [showRefLines]="true"
+            [referenceLines]="charReferenceLines()"
+            [results]="chartData()"
+            (select)="onSelect($event._id)"
+          ></ngx-charts-line-chart>
+        } @else {
+          <nz-empty nzNotFoundContent="Add data to display chart"></nz-empty>
+        }
+      } @else {
+        <nz-table #metricTable [nzData]="metric.data" [nzTotal]="3" nzBordered>
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Time</th>
+              <th scope="col">Value</th>
+              <th scope="col">Desired value reached</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (item of metricTable.data; track item._id) {
+              <tr>
+                <td>{{ $index + 1 }}</td>
+                <td>{{ item.date | date: 'medium' }}</td>
+                <td>{{ item.value }}</td>
+                <td>{{ item.desiredValueReached ? 'Yes' : 'No' }}</td>
+                <td>
+                  <div class="flex-center start gap-3">
+                    <button nz-button (click)="updateMetric(metric._id)">
+                      Edit
+                    </button>
+                    <button
+                      nz-button
+                      nzDanger
+                      (click)="deleteMetric(metric._id)"
+                    >
+                      Delete
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            }
+          </tbody>
+        </nz-table>
+      }
+    </section>
+  </nz-card>
+  <ng-template #title>
+    <div class="title">
+      <p><span>Name</span>: {{ metric.name }}</p>
+      <p><span>Desired value</span>: {{ metric.desiredValue }}</p>
+      <p><span>Last update</span>: {{ metric.updatedAt | date }}</p>
+    </div>
+  </ng-template>
+  <ng-template #addRef>
+    <button nz-button nzType="text" nz-tooltip="Add data">
+      <span nz-icon nzType="file-add" nzTheme="outline"></span>
+    </button>
+  </ng-template>
+  <ng-template #deleteRef>
+    <button nz-button nzType="text" nz-tooltip="Delete whole metric">
+      <span nz-icon nzType="delete" nzTheme="outline"></span>
+    </button>
+  </ng-template>
+  <ng-template #viewRef>
+    <button
+      (click)="updateMetricView()"
+      nz-button
+      nz-tooltip="Switch to {{ isChartPreview() ? 'table' : 'chart' }}"
+      nzType="text"
+    >
+      <span
+        nz-icon
+        [nzType]="isChartPreview() ? 'table' : 'line-chart'"
+        nzTheme="outline"
+      ></span>
+    </button>
+  </ng-template>
+} @else {
+  <nz-alert
+    nzType="error"
+    nzMessage="Error"
+    nzDescription="Provide metric data"
+    nzShowIcon
+  ></nz-alert>
+}

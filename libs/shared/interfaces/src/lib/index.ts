@@ -13,3 +13,4 @@ export * from './tokens';
 export * from './api';
 export * from './form';
 export * from './actions';
+export * from './chart';

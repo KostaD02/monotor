@@ -4,11 +4,11 @@ import {
   inject,
   signal,
 } from '@angular/core';
-import { AsyncPipe, JsonPipe } from '@angular/common';
 import { toSignal } from '@angular/core/rxjs-interop';
 
 import { BehaviorSubject, catchError, NEVER, switchMap, tap } from 'rxjs';
 
+import { MetricComponent } from '@fitmonitor/metrics/client-metrics/features/ui/metric';
 import {
   CREATE_ACTION_BUTTON,
   DELETE_ALL_ACTION_BUTTON,
@@ -29,6 +29,7 @@ import { NzButtonComponent } from 'ng-zorro-antd/button';
 import { NzLayoutComponent } from 'ng-zorro-antd/layout';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
+import { NzEmptyModule } from 'ng-zorro-antd/empty';
 
 @Component({
   selector: 'fitmonitor-client-metrics',
@@ -39,8 +40,8 @@ import { NzNotificationService } from 'ng-zorro-antd/notification';
     NzButtonComponent,
     NzModalModule,
     FormComponent,
-    JsonPipe,
-    AsyncPipe,
+    NzEmptyModule,
+    MetricComponent,
   ],
   templateUrl: './client-metrics.component.html',
   styleUrl: './client-metrics.component.less',

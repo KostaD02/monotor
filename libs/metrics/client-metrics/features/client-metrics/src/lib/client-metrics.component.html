@@ -13,7 +13,9 @@
   </section>
   <section class="metrics">
     @for (metric of allMetrics(); track metric._id) {
-      {{ metric | json }}
+      <fitmonitor-metric [metric]="metric"></fitmonitor-metric>
+    } @empty {
+      <nz-empty></nz-empty>
     }
   </section>
 </nz-layout>

@@ -3,4 +3,5 @@ export enum StorageKeys {
   RefreshToken = 'refresh_token',
   Language = 'language',
   Theme = 'theme',
+  MetricView = 'metric_view',
 }
