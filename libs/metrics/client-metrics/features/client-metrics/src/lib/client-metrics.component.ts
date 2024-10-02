@@ -5,12 +5,15 @@ import {
   signal,
 } from '@angular/core';
 import { AsyncPipe, JsonPipe } from '@angular/common';
+import { toSignal } from '@angular/core/rxjs-interop';
+
+import { BehaviorSubject, catchError, NEVER, switchMap, tap } from 'rxjs';
+
 import {
   CREATE_ACTION_BUTTON,
   DELETE_ALL_ACTION_BUTTON,
   METRICS_FORM_DATA,
 } from '@fitmonitor/consts';
-
 import {
   Action,
   ActionTypes,
@@ -24,8 +27,8 @@ import { MetricsService } from '@fitmonitor/client-metrics/data-access';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzButtonComponent } from 'ng-zorro-antd/button';
 import { NzLayoutComponent } from 'ng-zorro-antd/layout';
-import { BehaviorSubject, catchError, NEVER, switchMap, tap } from 'rxjs';
-import { toSignal } from '@angular/core/rxjs-interop';
+import { NzModalService } from 'ng-zorro-antd/modal';
+import { NzNotificationService } from 'ng-zorro-antd/notification';
 
 @Component({
   selector: 'fitmonitor-client-metrics',
@@ -45,6 +48,9 @@ import { toSignal } from '@angular/core/rxjs-interop';
 })
 export class ClientMetricsComponent {
   private readonly metricsService = inject(MetricsService);
+  private readonly modalService = inject(NzModalService);
+  private readonly notificationService = inject(NzNotificationService);
+
   readonly ActionTypes = ActionTypes;
 
   readonly showCreateModal = signal(false);
@@ -53,7 +59,7 @@ export class ClientMetricsComponent {
   readonly createMetricsFormData = METRICS_FORM_DATA;
 
   readonly refershGetAll$ = new BehaviorSubject<void>(undefined);
-  readonly getAll = toSignal(
+  readonly allMetrics = toSignal(
     this.refershGetAll$.pipe(
       switchMap(() => this.metricsService.getAllMetrics()),
     ),
@@ -67,10 +73,23 @@ export class ClientMetricsComponent {
   handleAction(action: ActionTypes) {
     switch (action) {
       case ActionTypes.Create:
-        this.handleCreate();
+        this.showCreateModal.set(true);
         break;
       case ActionTypes.DeleteAll:
-        this.handleDeleteAll();
+        if (this.allMetrics()?.length === 0) {
+          this.notificationService.warning(
+            'Warning',
+            'There are no metrics to delete.',
+          );
+          break;
+        }
+        this.modalService.confirm({
+          nzTitle: 'Are you sure you want to delete all metrics?',
+          nzContent: 'This action cannot be undone.',
+          nzOnOk: () => {
+            this.handleDeleteAll();
+          },
+        });
         break;
       default:
         Logger.warn('Unknown action', LoggerSide.Client);
@@ -94,13 +113,17 @@ export class ClientMetricsComponent {
       .subscribe();
   }
 
-  private handleCreate() {
-    this.showCreateModal.set(true);
-    this.showDeleteAllModal.set(false);
-  }
-
   private handleDeleteAll() {
-    this.showDeleteAllModal.set(true);
-    this.showCreateModal.set(false);
+    this.metricsService
+      .deleteAllMetrics()
+      .pipe(
+        tap((result) => {
+          this.notificationService.success(
+            'Success',
+            `Successfully deleted ${result.deletedCount} metrics.`,
+          );
+        }),
+      )
+      .subscribe();
   }
 }

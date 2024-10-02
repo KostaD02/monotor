@@ -2,7 +2,11 @@ import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { API_URL } from '@fitmonitor/consts';
-import { Metrics, MetricsFormData } from '@fitmonitor/interfaces';
+import {
+  DeleteResponse,
+  Metrics,
+  MetricsFormData,
+} from '@fitmonitor/interfaces';
 
 @Injectable()
 export class MetricsService {
@@ -20,5 +24,9 @@ export class MetricsService {
 
   createMetrics(data: MetricsFormData) {
     return this.http.post<Metrics>(`${this.baseUrl}/add`, data);
+  }
+
+  deleteAllMetrics() {
+    return this.http.delete<DeleteResponse>(`${this.baseUrl}/all`);
   }
 }

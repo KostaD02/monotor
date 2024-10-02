@@ -12,7 +12,7 @@
     }
   </section>
   <section class="metrics">
-    @for (metric of getAll(); track metric._id) {
+    @for (metric of allMetrics(); track metric._id) {
       {{ metric | json }}
     }
   </section>

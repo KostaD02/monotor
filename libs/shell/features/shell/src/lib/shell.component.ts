@@ -97,7 +97,7 @@ export class ShellComponent {
   });
 
   constructor() {
-    this.themeService.init().pipe().subscribe();
+    this.themeService.init().subscribe();
     effect(
       () => {
         const size = this.resizedWindowSize() || this.document.body.clientWidth;

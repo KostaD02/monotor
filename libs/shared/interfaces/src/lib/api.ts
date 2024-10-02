@@ -6,3 +6,8 @@ export interface ErrorResponse {
   statusCode: number;
   timestamp: string;
 }
+
+export interface DeleteResponse {
+  deletedCount: number;
+  acknowledged: boolean;
+}
