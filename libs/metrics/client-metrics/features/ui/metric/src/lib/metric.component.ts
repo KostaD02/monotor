@@ -251,6 +251,18 @@ export class MetricComponent implements OnInit, OnChanges {
                 'Success',
                 'Metric deleted successfully',
               );
+
+              const metricsView = this.localStorageService.getItem(
+                StorageKeys.MetricView,
+              );
+
+              if (metricsView) {
+                this.localStorageService.setItem(
+                  StorageKeys.MetricView,
+                  metricsView.filter((id: string) => id !== this.metric?._id),
+                );
+              }
+
               this.deleted.emit();
             }),
           )

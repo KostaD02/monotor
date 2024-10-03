@@ -19,6 +19,7 @@ import {
   ActionTypes,
   ErrorResponse,
   MetricsFormData,
+  StorageKeys,
 } from '@fitmonitor/interfaces';
 import { FormComponent } from '@fitmonitor/shared/ui/form';
 import { Logger, LoggerSide } from '@fitmonitor/util';
@@ -30,6 +31,7 @@ import { NzLayoutComponent } from 'ng-zorro-antd/layout';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { NzEmptyModule } from 'ng-zorro-antd/empty';
+import { LocalStorageService } from '@fitmonitor/client-services';
 
 @Component({
   selector: 'fitmonitor-client-metrics',
@@ -47,8 +49,9 @@ import { NzEmptyModule } from 'ng-zorro-antd/empty';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ClientMetricsComponent {
-  private readonly metricsService = inject(MetricsService);
   private readonly modalService = inject(NzModalService);
+  private readonly metricsService = inject(MetricsService);
+  private readonly localStorageService = inject(LocalStorageService);
   private readonly notificationService = inject(NzNotificationService);
 
   readonly ActionTypes = ActionTypes;
@@ -121,6 +124,7 @@ export class ClientMetricsComponent {
             'Success',
             `Successfully deleted ${result.deletedCount} metrics.`,
           );
+          this.localStorageService.removeItem(StorageKeys.MetricView);
         }),
       )
       .subscribe();
