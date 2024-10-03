@@ -13,7 +13,10 @@
   </section>
   <section class="metrics">
     @for (metric of allMetrics(); track metric._id) {
-      <fitmonitor-metric [metric]="metric"></fitmonitor-metric>
+      <fitmonitor-metric
+        [metric]="metric"
+        (deleted)="refershGetAll$.next()"
+      ></fitmonitor-metric>
     } @empty {
       <nz-empty></nz-empty>
     }

@@ -15,4 +15,18 @@ export interface MetricsData {
   desiredValueReached: boolean;
 }
 
+export interface MetricsSingleFormData {
+  value: number;
+  date: string;
+  time: string;
+}
+
+export interface MetricChartSelectData {
+  _id: string;
+  name: string;
+  value: string;
+  series: string;
+}
+
 export type MetricsFormData = Pick<Metrics, 'name' | 'desiredValue'>;
+export type MetricsSingleData = Pick<MetricsData, 'value' | 'date'>;

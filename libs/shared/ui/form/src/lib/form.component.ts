@@ -13,6 +13,7 @@ import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { FormService } from '@fitmonitor/client-services';
 
 import { FormItem } from '@fitmonitor/interfaces';
+import { isAllValueEmpty } from '@fitmonitor/util';
 
 import { NzAlertModule } from 'ng-zorro-antd/alert';
 import { NzButtonModule } from 'ng-zorro-antd/button';
@@ -55,6 +56,11 @@ export class FormComponent implements OnChanges {
   onSubmit() {
     if (this.form().invalid) {
       this.notificationService.error('Error', 'Invalid form data');
+      return;
+    }
+    if (isAllValueEmpty(this.form().value)) {
+      this.notificationService.warning('Warning', 'Nothing to update');
+      this.formSubmit.emit(this.form().value);
       return;
     }
     this.formSubmit.emit(this.form().value);

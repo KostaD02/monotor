@@ -35,7 +35,6 @@ import { NzEmptyModule } from 'ng-zorro-antd/empty';
   selector: 'fitmonitor-client-metrics',
   standalone: true,
   imports: [
-    FormComponent,
     NzLayoutComponent,
     NzButtonComponent,
     NzModalModule,
@@ -102,8 +101,7 @@ export class ClientMetricsComponent {
     this.metricsService
       .createMetrics({ name, desiredValue })
       .pipe(
-        tap((response) => {
-          console.log(response);
+        tap(() => {
           this.refershGetAll$.next();
         }),
         catchError((error: ErrorResponse) => {

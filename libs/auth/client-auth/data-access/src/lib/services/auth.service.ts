@@ -107,6 +107,7 @@ export class AuthService {
       .pipe(
         tap((token) => {
           this.accessToken = token.access_token;
+          this.user.set(this.jwtService.decodeToken(token.access_token));
         }),
         catchError(() => {
           this.signOut();

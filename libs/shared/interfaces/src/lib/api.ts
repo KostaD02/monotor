@@ -11,3 +11,7 @@ export interface DeleteResponse {
   deletedCount: number;
   acknowledged: boolean;
 }
+
+export interface DeleteResposneSingleItem {
+  acknowledged: boolean;
+}

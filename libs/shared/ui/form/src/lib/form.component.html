@@ -18,9 +18,10 @@
         </nz-form-control>
       </nz-form-item>
     }
+    <ng-content select="[tip]"></ng-content>
     <div class="controls flex-center">
       <button [disabled]="form().invalid" nz-button nzType="primary">
-        Create
+        <ng-content select="[button-text]">Create</ng-content>
       </button>
     </div>
   </form>

@@ -15,7 +15,7 @@ export function convertToTime(time: string): Time {
 
   if (date.toString() === 'Invalid Date') {
     throw new Error(
-      `Invalid time, provided time should be in HH:MM format (${TIME_REGEX})`
+      `Invalid time, provided time should be in HH:MM format (${TIME_REGEX})`,
     );
   }
 
@@ -23,4 +23,20 @@ export function convertToTime(time: string): Time {
   const minutes = date.getMinutes().toString().padStart(2, '0');
 
   return `${hours}:${minutes}`;
+}
+
+export function concatDateAndTime(date: string, time: string) {
+  let concatedDate = new Date().toISOString();
+
+  if (date && time) {
+    concatedDate = new Date(`${date} ${time}`).toISOString();
+  } else if (date) {
+    concatedDate = new Date(date).toISOString();
+  } else if (time) {
+    concatedDate = new Date(
+      `${new Date().toLocaleDateString()} ${time}`,
+    ).toISOString();
+  }
+
+  return concatedDate;
 }

@@ -1,6 +1,9 @@
-@if (metric) {
-  <nz-card [nzActions]="[addRef, deleteRef, viewRef]" [nzTitle]="title">
-    <section class="content" [ngStyle]="{ 'max-width': chartSize() }">
+@if (renderMetric() && metric) {
+  <nz-card
+    [nzActions]="[addRef, editRef, deleteRef, viewRef]"
+    [nzTitle]="title"
+  >
+    <section class="content" [ngClass]="{ 'max-height-500': isChartPreview() }">
       @if (isChartPreview()) {
         @if (renderChart()) {
           <ngx-charts-line-chart
@@ -11,13 +14,25 @@
             [showRefLines]="true"
             [referenceLines]="charReferenceLines()"
             [results]="chartData()"
-            (select)="onSelect($event._id)"
-          ></ngx-charts-line-chart>
+            (select)="onSelect($event)"
+          >
+            <ng-template #tooltipTemplate let-model="model">
+              <div>
+                <p class="m-0">Value: {{ model.value }}</p>
+                <p class="m-0">Time: {{ model.date }}</p>
+              </div>
+            </ng-template>
+          </ngx-charts-line-chart>
         } @else {
           <nz-empty nzNotFoundContent="Add data to display chart"></nz-empty>
         }
       } @else {
-        <nz-table #metricTable [nzData]="metric.data" [nzTotal]="3" nzBordered>
+        <nz-table
+          #metricTable
+          nzBordered
+          nzShowQuickJumper="true"
+          [nzData]="metric.data"
+        >
           <thead>
             <tr>
               <th scope="col">#</th>
@@ -36,14 +51,13 @@
                 <td>{{ item.desiredValueReached ? 'Yes' : 'No' }}</td>
                 <td>
                   <div class="flex-center start gap-3">
-                    <button nz-button (click)="updateMetric(metric._id)">
-                      Edit
-                    </button>
                     <button
                       nz-button
-                      nzDanger
-                      (click)="deleteMetric(metric._id)"
+                      (click)="showUpdateMetricModal.set(item._id)"
                     >
+                      Edit
+                    </button>
+                    <button nz-button nzDanger (click)="deleteDialog(item._id)">
                       Delete
                     </button>
                   </div>
@@ -63,25 +77,50 @@
     </div>
   </ng-template>
   <ng-template #addRef>
-    <button nz-button nzType="text" nz-tooltip="Add data">
+    <button
+      class="w-100"
+      nz-button
+      nzType="text"
+      nz-tooltip="Add data"
+      (click)="showCreateMetricModal.set(true)"
+    >
       <span nz-icon nzType="file-add" nzTheme="outline"></span>
     </button>
   </ng-template>
+  <ng-template #editRef>
+    <button
+      class="w-100"
+      nz-button
+      nzType="text"
+      nz-tooltip="Edit metric"
+      (click)="showEditMetricModal.set(true)"
+    >
+      <span nz-icon nzType="edit" nzTheme="outline"></span>
+    </button>
+  </ng-template>
   <ng-template #deleteRef>
-    <button nz-button nzType="text" nz-tooltip="Delete whole metric">
+    <button
+      class="w-100"
+      nz-button
+      nzType="text"
+      nz-tooltip="Delete whole metric"
+      (click)="deleteMetric()"
+    >
       <span nz-icon nzType="delete" nzTheme="outline"></span>
     </button>
   </ng-template>
   <ng-template #viewRef>
+    @let isChartpreview = isChartPreview();
     <button
+      class="w-100"
       (click)="updateMetricView()"
       nz-button
-      nz-tooltip="Switch to {{ isChartPreview() ? 'table' : 'chart' }}"
+      nz-tooltip="Switch to {{ isChartpreview ? 'table' : 'chart' }}"
       nzType="text"
     >
       <span
         nz-icon
-        [nzType]="isChartPreview() ? 'table' : 'line-chart'"
+        [nzType]="isChartpreview ? 'table' : 'line-chart'"
         nzTheme="outline"
       ></span>
     </button>
@@ -93,4 +132,85 @@
     nzDescription="Provide metric data"
     nzShowIcon
   ></nz-alert>
+}
+
+@if (showCreateMetricModal()) {
+  <nz-modal
+    nzTitle="Add data"
+    [nzVisible]="true"
+    [nzFooter]="null"
+    (nzOnCancel)="showCreateMetricModal.set(false)"
+  >
+    <ng-container *nzModalContent>
+      <fitmonitor-form
+        [formItems]="addItemsForm"
+        (formSubmit)="onMetricDataAdd($event); showCreateMetricModal.set(false)"
+      >
+        <p tip>Date & Time should be unique from other metric data</p>
+        <span button-text>Add</span>
+      </fitmonitor-form>
+    </ng-container>
+  </nz-modal>
+}
+
+@if (showUpdateMetricModal(); as id) {
+  <nz-modal
+    nzTitle="Update data"
+    nzVisible="true"
+    [nzFooter]="null"
+    (nzOnCancel)="showUpdateMetricModal.set('')"
+  >
+    <ng-container *nzModalContent>
+      <fitmonitor-form
+        [formItems]="updateItemForm"
+        (formSubmit)="
+          onMetricDataUpdate($event, id); showUpdateMetricModal.set('')
+        "
+      >
+        <p tip>Date & Time should be unique from other metric data</p>
+        <span button-text>Add</span>
+      </fitmonitor-form>
+    </ng-container>
+  </nz-modal>
+}
+
+@if (showChartMetricModal(); as data) {
+  <nz-modal
+    nzTitle="Chart select item"
+    nzOkDanger="true"
+    nzVisible="true"
+    [nzOkText]="'Delete'"
+    (nzOnOk)="deleteDialog(data._id); showChartMetricModal.set(null)"
+    (nzOnCancel)="showChartMetricModal.set(null)"
+  >
+    <ng-container *nzModalContent>
+      <fitmonitor-form
+        [formItems]="updateItemForm"
+        (formSubmit)="
+          onMetricDataUpdate($event, data._id); showChartMetricModal.set(null)
+        "
+      >
+        <p tip>Date & Time should be unique from other metric data</p>
+        <span button-text>Update</span>
+      </fitmonitor-form>
+    </ng-container>
+  </nz-modal>
+}
+
+@if (showEditMetricModal()) {
+  <nz-modal
+    nzTitle="Edit metric"
+    nzVisible="true"
+    [nzFooter]="null"
+    (nzOnCancel)="showEditMetricModal.set(false)"
+  >
+    <ng-container *nzModalContent>
+      <fitmonitor-form
+        [formItems]="editItemForm"
+        (formSubmit)="editMetric($event); showEditMetricModal.set(false)"
+      >
+        <span button-text>Edit</span>
+      </fitmonitor-form>
+    </ng-container>
+  </nz-modal>
 }

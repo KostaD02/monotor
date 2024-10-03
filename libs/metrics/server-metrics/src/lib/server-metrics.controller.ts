@@ -18,6 +18,7 @@ import { CurrentUser } from '@fitmonitor/server-decorators';
 import { MongooseValidatorService } from '@fitmonitor/server-services';
 import {
   MetricsDataDto,
+  MetricsDeleteDto,
   MetricsDto,
   MetricsUpdateDataDto,
   MetricsUpdateDto,
@@ -28,7 +29,7 @@ import {
 export class MetricsController {
   constructor(
     private readonly metricsService: MetricsService,
-    private readonly mongooseValidator: MongooseValidatorService
+    private readonly mongooseValidator: MongooseValidatorService,
   ) {}
 
   @Get('all')
@@ -43,7 +44,7 @@ export class MetricsController {
   @UseInterceptors(CurrentUserInterceptor)
   getMetricByName(
     @CurrentUser() user: UserPayload,
-    @Param('name') name: string
+    @Param('name') name: string,
   ) {
     return this.metricsService.getMetricByName(user, name);
   }
@@ -61,7 +62,7 @@ export class MetricsController {
   addDataToMetric(
     @CurrentUser() user: UserPayload,
     @Body() body: MetricsDataDto,
-    @Param('name') name: string
+    @Param('name') name: string,
   ) {
     return this.metricsService.addDataToMetric(user, name, body);
   }
@@ -72,7 +73,7 @@ export class MetricsController {
   updateMetric(
     @CurrentUser() user: UserPayload,
     @Body() body: MetricsUpdateDto,
-    @Param('name') name: string
+    @Param('name') name: string,
   ) {
     return this.metricsService.updateMetric(user, name, body);
   }
@@ -84,17 +85,20 @@ export class MetricsController {
     @CurrentUser() user: UserPayload,
     @Body() body: MetricsUpdateDataDto,
     @Param('name') name: string,
-    @Param('id') id: string
+    @Param('id') id: string,
   ) {
     this.mongooseValidator.isValidObjectId(id);
     return this.metricsService.updateDataInMetric(user, name, id, body);
   }
 
-  @Delete('delete/:name')
+  @Delete('delete')
   @UseGuards(JwtGuard)
   @UseInterceptors(CurrentUserInterceptor)
-  deleteMetric(@CurrentUser() user: UserPayload, @Param('name') name: string) {
-    return this.metricsService.deleteMetric(user, name);
+  deleteMetric(
+    @CurrentUser() user: UserPayload,
+    @Body() body: MetricsDeleteDto,
+  ) {
+    return this.metricsService.deleteMetric(user, body);
   }
 
   @Delete('delete-data/:name/:id')
@@ -103,7 +107,7 @@ export class MetricsController {
   deleteDataFromMetric(
     @CurrentUser() user: UserPayload,
     @Param('name') name: string,
-    @Param('id') id: string
+    @Param('id') id: string,
   ) {
     this.mongooseValidator.isValidObjectId(id);
     return this.metricsService.deleteDataFromMetric(user, name, id);

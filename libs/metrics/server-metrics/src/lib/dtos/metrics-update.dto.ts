@@ -36,3 +36,21 @@ export class MetricsUpdateDto {
   @IsPositive({ message: MetricsExceptionKeys.ValueShouldBeNumber })
   desiredValue!: number;
 }
+
+export class MetricsDeleteDto {
+  @ApiProperty({
+    required: false,
+    default: 'workout',
+  })
+  @IsOptional()
+  @IsString({
+    message: MetricsExceptionKeys.NameShouldBeString,
+  })
+  @MinLength(API_CONFIG.MIN_METRICS_NAME_LENGTH, {
+    message: MetricsExceptionKeys.NameTooShort,
+  })
+  @MaxLength(API_CONFIG.MAX_METRICS_NAME_LENGTH, {
+    message: MetricsExceptionKeys.NameTooLong,
+  })
+  name!: string;
+}

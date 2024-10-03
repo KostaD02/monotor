@@ -12,6 +12,7 @@ import {
 import { InjectModel } from '@nestjs/mongoose';
 import {
   MetricsDataDto,
+  MetricsDeleteDto,
   MetricsDto,
   MetricsUpdateDataDto,
   MetricsUpdateDto,
@@ -31,7 +32,7 @@ export class MetricsService {
     @InjectModel(Metrics.name) private metricsModel: Model<MetricsDocument>,
     @InjectModel(MetricsData.name)
     private metricsDataModel: Model<MetricsDataDocument>,
-    private exceptionService: ExceptionService
+    private exceptionService: ExceptionService,
   ) {}
 
   async getAllMetricFromUser(user: UserPayload) {
@@ -46,7 +47,7 @@ export class MetricsService {
       this.exceptionService.throwError(
         ExceptionStatusKeys.NotFound,
         'Metric with given name not found',
-        MetricsExceptionKeys.NotFound
+        MetricsExceptionKeys.NotFound,
       );
       return;
     }
@@ -61,7 +62,7 @@ export class MetricsService {
       this.exceptionService.throwError(
         ExceptionStatusKeys.NotFound,
         'User with given ID not found',
-        AuthExpectionKeys.UserNotFound
+        AuthExpectionKeys.UserNotFound,
       );
       return;
     }
@@ -75,7 +76,7 @@ export class MetricsService {
       this.exceptionService.throwError(
         ExceptionStatusKeys.Conflict,
         'Metric with given name already exists',
-        MetricsExceptionKeys.NameAlreadyExists
+        MetricsExceptionKeys.NameAlreadyExists,
       );
       return;
     }
@@ -97,7 +98,7 @@ export class MetricsService {
       this.exceptionService.throwError(
         ExceptionStatusKeys.NotFound,
         'Metric with given name not found',
-        MetricsExceptionKeys.NotFound
+        MetricsExceptionKeys.NotFound,
       );
       return;
     }
@@ -108,20 +109,20 @@ export class MetricsService {
       this.exceptionService.throwError(
         ExceptionStatusKeys.BadRequest,
         'Invalid date',
-        MetricsExceptionKeys.InvalidDate
+        MetricsExceptionKeys.InvalidDate,
       );
       return;
     }
 
     const dataExists = metric.data.some(
-      (data) => data.date === date.toISOString()
+      (data) => data.date === date.toISOString(),
     );
 
     if (dataExists) {
       this.exceptionService.throwError(
         ExceptionStatusKeys.Conflict,
         'Data with given date already exists',
-        MetricsExceptionKeys.DateAlreadyExists
+        MetricsExceptionKeys.DateAlreadyExists,
       );
       return;
     }
@@ -142,7 +143,7 @@ export class MetricsService {
         date.getTime()
     ) {
       metric.data = metric.data.sort(
-        (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
+        (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime(),
       );
     }
 
@@ -155,7 +156,7 @@ export class MetricsService {
       this.exceptionService.throwError(
         ExceptionStatusKeys.BadRequest,
         'Nothing to update',
-        GlobalExceptionKeys.NothingToUpdate
+        GlobalExceptionKeys.NothingToUpdate,
       );
       return;
     }
@@ -173,7 +174,7 @@ export class MetricsService {
         this.exceptionService.throwError(
           ExceptionStatusKeys.BadRequest,
           'Desired value should be a number',
-          MetricsExceptionKeys.ValueShouldBeNumber
+          MetricsExceptionKeys.ValueShouldBeNumber,
         );
         return;
       }
@@ -188,7 +189,7 @@ export class MetricsService {
       this.exceptionService.throwError(
         ExceptionStatusKeys.NotFound,
         'Metric with given name not found',
-        MetricsExceptionKeys.NotFound
+        MetricsExceptionKeys.NotFound,
       );
       return;
     }
@@ -199,7 +200,7 @@ export class MetricsService {
         ownerID: user._id,
       },
       update,
-      { new: true }
+      { new: true },
     );
 
     return metric;
@@ -209,13 +210,13 @@ export class MetricsService {
     user: UserPayload,
     name: string,
     id: string,
-    body: MetricsUpdateDataDto
+    body: MetricsUpdateDataDto,
   ) {
     if (!body.value && !body.date) {
       this.exceptionService.throwError(
         ExceptionStatusKeys.BadRequest,
         'Nothing to update',
-        GlobalExceptionKeys.NothingToUpdate
+        GlobalExceptionKeys.NothingToUpdate,
       );
       return;
     }
@@ -229,7 +230,7 @@ export class MetricsService {
         this.exceptionService.throwError(
           ExceptionStatusKeys.BadRequest,
           'Value should be a number',
-          MetricsExceptionKeys.ValueShouldBeNumber
+          MetricsExceptionKeys.ValueShouldBeNumber,
         );
         return;
       }
@@ -242,7 +243,7 @@ export class MetricsService {
         this.exceptionService.throwError(
           ExceptionStatusKeys.BadRequest,
           'Invalid date',
-          MetricsExceptionKeys.InvalidDate
+          MetricsExceptionKeys.InvalidDate,
         );
         return;
       }
@@ -256,7 +257,7 @@ export class MetricsService {
       this.exceptionService.throwError(
         ExceptionStatusKeys.NotFound,
         'Metric with given name not found',
-        MetricsExceptionKeys.NotFound
+        MetricsExceptionKeys.NotFound,
       );
       return;
     }
@@ -270,28 +271,28 @@ export class MetricsService {
             date: string;
             desiredValueReached: boolean;
           }
-        )._id.toString() === id
+        )._id.toString() === id,
     );
 
     if (!data) {
       this.exceptionService.throwError(
         ExceptionStatusKeys.NotFound,
         'Data with given ID not found',
-        MetricsExceptionKeys.NotFound
+        MetricsExceptionKeys.NotFound,
       );
       return;
     }
 
     if (update['date']) {
       const dataExists = metric.data.some(
-        (item) => item.date === update['date']
+        (item) => item.date === update['date'],
       );
 
       if (dataExists) {
         this.exceptionService.throwError(
           ExceptionStatusKeys.Conflict,
           'Data with given date already exists',
-          MetricsExceptionKeys.DateAlreadyExists
+          MetricsExceptionKeys.DateAlreadyExists,
         );
         return;
       }
@@ -307,16 +308,16 @@ export class MetricsService {
     }
 
     metric.data = metric.data.sort(
-      (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
+      (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime(),
     );
 
     await metric.save();
     return this.metricsModel.findOne({ name, ownerID: user._id });
   }
 
-  async deleteMetric(user: UserPayload, name: string) {
+  async deleteMetric(user: UserPayload, body: MetricsDeleteDto) {
     const metric = await this.metricsModel.findOneAndDelete({
-      name,
+      name: body.name,
       ownerID: user._id,
     });
 
@@ -324,7 +325,7 @@ export class MetricsService {
       this.exceptionService.throwError(
         ExceptionStatusKeys.NotFound,
         'Metric with given name not found',
-        MetricsExceptionKeys.NotFound
+        MetricsExceptionKeys.NotFound,
       );
       return;
     }
@@ -341,7 +342,7 @@ export class MetricsService {
       this.exceptionService.throwError(
         ExceptionStatusKeys.NotFound,
         'Metric with given name not found',
-        MetricsExceptionKeys.NotFound
+        MetricsExceptionKeys.NotFound,
       );
       return;
     }
@@ -355,14 +356,14 @@ export class MetricsService {
             date: string;
             desiredValueReached: boolean;
           }
-        )._id.toString() === id
+        )._id.toString() === id,
     );
 
     if (index === -1) {
       this.exceptionService.throwError(
         ExceptionStatusKeys.NotFound,
         'Data with given ID not found',
-        MetricsExceptionKeys.NotFound
+        MetricsExceptionKeys.NotFound,
       );
       return;
     }
@@ -372,7 +373,7 @@ export class MetricsService {
 
     if (index + 1 !== length) {
       metric.data = metric.data.sort(
-        (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
+        (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime(),
       );
     }
 
