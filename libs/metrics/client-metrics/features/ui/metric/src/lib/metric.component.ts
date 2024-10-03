@@ -11,6 +11,7 @@ import {
   OnInit,
   Output,
   EventEmitter,
+  HostListener,
 } from '@angular/core';
 import { DatePipe, JsonPipe } from '@angular/common';
 
@@ -78,6 +79,7 @@ import { NzNotificationService } from 'ng-zorro-antd/notification';
 })
 export class MetricComponent implements OnInit, OnChanges {
   @Input({ required: true }) metric: Metrics | null = null;
+  @Input() isPreview = false;
   @Output() deleted = new EventEmitter<void>();
 
   private readonly modalService = inject(NzModalService);
@@ -85,10 +87,11 @@ export class MetricComponent implements OnInit, OnChanges {
   private readonly localStorageService = inject(LocalStorageService);
   private readonly notificationService = inject(NzNotificationService);
 
+  readonly editItemForm = METRIC_EDIT_FORM_DATA;
   readonly addItemsForm = METRICS_ITEM_FORM_DATA;
   readonly updateItemForm = METRIC_ITEM_UPDATE_FORM_DATA;
-  readonly editItemForm = METRIC_EDIT_FORM_DATA;
 
+  readonly view: WritableSignal<[number, number]> = signal([0, 0]);
   readonly showUpdateMetricModal = signal('');
   readonly showCreateMetricModal = signal(false);
   readonly showEditMetricModal = signal(false);
@@ -107,8 +110,14 @@ export class MetricComponent implements OnInit, OnChanges {
       this.charReferenceLines().length !== 0 && this.chartData().length !== 0,
   );
 
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    this.view.set([window.innerWidth / 1.3, 500]);
+  }
+
   ngOnInit() {
     this.setMetricView();
+    this.onResize();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -120,6 +129,9 @@ export class MetricComponent implements OnInit, OnChanges {
   }
 
   onSelect(data: MetricChartSelectData) {
+    if (this.isPreview) {
+      return;
+    }
     this.showChartMetricModal.set(data);
   }
 

@@ -2,12 +2,13 @@ import { Route } from '@angular/router';
 import { AuthService } from '@fitmonitor/data-access';
 
 import { ShellComponent } from './shell.component';
+import { MetricsService } from '@fitmonitor/client-metrics/data-access';
 
 export const SHELL_ROUTES: Route[] = [
   {
     path: '',
     component: ShellComponent,
-    providers: [AuthService],
+    providers: [AuthService, MetricsService],
     loadChildren: () => [
       {
         path: '',

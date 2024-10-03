@@ -1,1 +1,18 @@
-<p>home works!</p>
+<nz-layout class="inner">
+  <section class="metrics">
+    @if (metrics(); as metrics) {
+      @if (metrics?.length !== 0) {
+        <nz-tabset>
+          @for (metric of metrics; track metric._id) {
+            <nz-tab [nzTitle]="metric.name">
+              <fitmonitor-metric
+                [metric]="metric"
+                [isPreview]="true"
+              ></fitmonitor-metric>
+            </nz-tab>
+          }
+        </nz-tabset>
+      }
+    }
+  </section>
+</nz-layout>

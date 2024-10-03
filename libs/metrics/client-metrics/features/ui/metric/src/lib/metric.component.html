@@ -1,6 +1,6 @@
 @if (renderMetric() && metric) {
   <nz-card
-    [nzActions]="[addRef, editRef, deleteRef, viewRef]"
+    [nzActions]="isPreview ? [] : [addRef, editRef, deleteRef, viewRef]"
     [nzTitle]="title"
   >
     <section class="content" [ngClass]="{ 'max-height-500': isChartPreview() }">
@@ -12,6 +12,7 @@
             [showXAxisLabel]="true"
             [showXAxisLabel]="true"
             [showRefLines]="true"
+            [view]="view()"
             [referenceLines]="charReferenceLines()"
             [results]="chartData()"
             (select)="onSelect($event)"

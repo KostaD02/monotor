@@ -9,14 +9,20 @@ import {
   MetricsFormData,
   MetricsSingleData,
 } from '@fitmonitor/interfaces';
+import { AuthService } from '@fitmonitor/data-access';
+import { of } from 'rxjs';
 
 @Injectable()
 export class MetricsService {
   private readonly http = inject(HttpClient);
+  private readonly authService = inject(AuthService);
 
   readonly baseUrl = `${API_URL}/metrics`;
 
   getAllMetrics() {
+    if (!this.authService.user()) {
+      return of([]);
+    }
     return this.http.get<Metrics[]>(`${this.baseUrl}/all`);
   }
 
