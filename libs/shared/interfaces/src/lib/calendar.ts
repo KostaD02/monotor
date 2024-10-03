@@ -1,4 +1,6 @@
-export interface Calendar {
+import { Timestamps } from './timestamps';
+
+export interface Calendar extends Timestamps {
   _id: string;
   name: string;
   ownerID: string;

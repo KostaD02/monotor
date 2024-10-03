@@ -21,6 +21,15 @@
       "@fitmonitor/client-auth/feature/shell": [
         "libs/auth/client-auth/features/shell/src/index.ts"
       ],
+      "@fitmonitor/client-calendar/data-access": [
+        "libs/calendar/client-calendar/data-access/src/index.ts"
+      ],
+      "@fitmonitor/client-calendar/feature/base": [
+        "libs/calendar/client-calendar/features/client-calendar/src/index.ts"
+      ],
+      "@fitmonitor/client-calendar/feature/shell": [
+        "libs/calendar/client-calendar/features/shell/src/index.ts"
+      ],
       "@fitmonitor/client-interceptors": [
         "libs/shared/interceptors/client-interceptors/src/index.ts"
       ],

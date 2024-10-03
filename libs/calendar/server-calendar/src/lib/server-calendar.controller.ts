@@ -34,7 +34,7 @@ export class CalendarController {
   @UseInterceptors(CurrentUserInterceptor)
   getCalendarByName(
     @CurrentUser() user: UserPayload,
-    @Param('name') name: string
+    @Param('name') name: string,
   ) {
     return this.calendarService.getCalendarByName(user, name);
   }
@@ -52,7 +52,7 @@ export class CalendarController {
   updateCalendar(
     @CurrentUser() user: UserPayload,
     @Param('name') name: string,
-    @Body() body: CalendarDto
+    @Body() body: CalendarDto,
   ) {
     return this.calendarService.updateCalendarByName(user, name, body);
   }
@@ -63,7 +63,7 @@ export class CalendarController {
   updateCalendarData(
     @CurrentUser() user: UserPayload,
     @Param('name') name: string,
-    @Body() body: CalendarDataDto
+    @Body() body: CalendarDataDto,
   ) {
     return this.calendarService.modifyCalendarData(user, name, body);
   }
@@ -71,11 +71,8 @@ export class CalendarController {
   @Delete('name/:name')
   @UseGuards(JwtGuard)
   @UseInterceptors(CurrentUserInterceptor)
-  deleteCalendar(
-    @CurrentUser() user: UserPayload,
-    @Param('name') name: string
-  ) {
-    return this.calendarService.deleteCalendarByName(user, name);
+  deleteCalendar(@CurrentUser() user: UserPayload, @Body() body: CalendarDto) {
+    return this.calendarService.deleteCalendarByName(user, body);
   }
 
   @Delete('all')

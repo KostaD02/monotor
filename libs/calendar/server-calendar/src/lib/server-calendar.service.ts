@@ -27,7 +27,7 @@ export class CalendarService {
     private readonly calendarModel: Model<CalendarDocument>,
     @InjectModel(CalendarData.name)
     private readonly calendarDataModel: Model<CalendarDataDocument>,
-    private readonly exceptionService: ExceptionService
+    private readonly exceptionService: ExceptionService,
   ) {}
 
   async createCalendar(user: UserPayload, body: CalendarDto) {
@@ -37,7 +37,7 @@ export class CalendarService {
       this.exceptionService.throwError(
         ExceptionStatusKeys.NotFound,
         'User not found',
-        AuthExpectionKeys.UserNotFound
+        AuthExpectionKeys.UserNotFound,
       );
       return;
     }
@@ -51,7 +51,7 @@ export class CalendarService {
       this.exceptionService.throwError(
         ExceptionStatusKeys.Conflict,
         'Calendar already exists',
-        CalendarExceptionKeys.NameAlreadyExists
+        CalendarExceptionKeys.NameAlreadyExists,
       );
       return;
     }
@@ -80,7 +80,7 @@ export class CalendarService {
       this.exceptionService.throwError(
         ExceptionStatusKeys.NotFound,
         'User not found',
-        AuthExpectionKeys.UserNotFound
+        AuthExpectionKeys.UserNotFound,
       );
       return;
     }
@@ -97,7 +97,7 @@ export class CalendarService {
       this.exceptionService.throwError(
         ExceptionStatusKeys.NotFound,
         'User not found',
-        AuthExpectionKeys.UserNotFound
+        AuthExpectionKeys.UserNotFound,
       );
       return;
     }
@@ -111,7 +111,7 @@ export class CalendarService {
       this.exceptionService.throwError(
         ExceptionStatusKeys.NotFound,
         'Calendar not found',
-        CalendarExceptionKeys.NotFound
+        CalendarExceptionKeys.NotFound,
       );
       return;
     }
@@ -122,7 +122,7 @@ export class CalendarService {
   async updateCalendarByName(
     user: UserPayload,
     name: string,
-    body: CalendarDto
+    body: CalendarDto,
   ) {
     const userExists = await this.userModel.exists({ _id: user._id });
 
@@ -130,7 +130,7 @@ export class CalendarService {
       this.exceptionService.throwError(
         ExceptionStatusKeys.NotFound,
         'User not found',
-        AuthExpectionKeys.UserNotFound
+        AuthExpectionKeys.UserNotFound,
       );
       return;
     }
@@ -144,14 +144,14 @@ export class CalendarService {
       this.exceptionService.throwError(
         ExceptionStatusKeys.NotFound,
         'Calendar not found',
-        CalendarExceptionKeys.NotFound
+        CalendarExceptionKeys.NotFound,
       );
       return;
     }
 
     await this.calendarModel.updateOne(
       { ownerID: user._id, name },
-      { name: body.name }
+      { name: body.name },
     );
 
     return await this.calendarModel.findOne({
@@ -160,28 +160,28 @@ export class CalendarService {
     });
   }
 
-  async deleteCalendarByName(user: UserPayload, name: string) {
+  async deleteCalendarByName(user: UserPayload, body: CalendarDto) {
     const userExists = await this.userModel.exists({ _id: user._id });
 
     if (!userExists) {
       this.exceptionService.throwError(
         ExceptionStatusKeys.NotFound,
         'User not found',
-        AuthExpectionKeys.UserNotFound
+        AuthExpectionKeys.UserNotFound,
       );
       return;
     }
 
     const calendar = await this.calendarModel.findOne({
       ownerID: user._id,
-      name,
+      name: body.name,
     });
 
     if (!calendar) {
       this.exceptionService.throwError(
         ExceptionStatusKeys.NotFound,
         'Calendar not found',
-        CalendarExceptionKeys.NotFound
+        CalendarExceptionKeys.NotFound,
       );
       return;
     }
@@ -200,7 +200,7 @@ export class CalendarService {
       this.exceptionService.throwError(
         ExceptionStatusKeys.NotFound,
         'User not found',
-        AuthExpectionKeys.UserNotFound
+        AuthExpectionKeys.UserNotFound,
       );
       return;
     }
@@ -213,7 +213,7 @@ export class CalendarService {
   async modifyCalendarData(
     user: UserPayload,
     name: string,
-    body: CalendarData
+    body: CalendarData,
   ) {
     const userExists = await this.userModel.exists({ _id: user._id });
 
@@ -221,7 +221,7 @@ export class CalendarService {
       this.exceptionService.throwError(
         ExceptionStatusKeys.NotFound,
         'User not found',
-        AuthExpectionKeys.UserNotFound
+        AuthExpectionKeys.UserNotFound,
       );
       return;
     }
@@ -235,7 +235,7 @@ export class CalendarService {
       this.exceptionService.throwError(
         ExceptionStatusKeys.NotFound,
         'Calendar not found',
-        CalendarExceptionKeys.NotFound
+        CalendarExceptionKeys.NotFound,
       );
       return;
     }
