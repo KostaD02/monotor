@@ -1,0 +1,162 @@
+@if (calendar && renderCalendar()) {
+  <nz-card
+    class="w-100"
+    [nzActions]="isPreview ? [] : [resetRef, editRef, deleteRef, viewRef]"
+    [nzTitle]="title"
+  >
+    @let isCalendarView = this.showCalendar();
+    <section class="content">
+      @if (isCalendarView) {
+        <nz-calendar
+          [(ngModel)]="date"
+          [nzFullscreen]="false"
+          [nzMode]="mode()"
+          (nzSelectChange)="selectChange($event)"
+        >
+        </nz-calendar>
+        <div class="selected">
+          <nz-alert
+            [nzMessage]="selectedTitle"
+            [nzDescription]="selectedDescription"
+          ></nz-alert>
+          <ng-template #selectedTitle>
+            <div [innerHTML]="selectedDateTitle()"></div>
+          </ng-template>
+          <ng-template #selectedDescription>
+            <div [innerHTML]="selectedDateDescription()"></div>
+          </ng-template>
+        </div>
+      } @else {
+        <nz-table
+          #calendarTable
+          nzBordered
+          [nzData]="tableData()"
+          [nzFrontPagination]="false"
+        >
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Time</th>
+              <th scope="col">Value</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (item of calendarTable.data; track item.key) {
+              <tr>
+                <td>{{ $index + 1 }}</td>
+                <td>{{ item.key }}</td>
+                <td>{{ item.value || 'Nothing' }}</td>
+                <td>
+                  <div class="flex-center start gap-3">
+                    <button nz-button (click)="showWeekEdit.set(item.key)">
+                      Edit
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            }
+          </tbody>
+        </nz-table>
+      }
+      <ng-template #title>
+        <div class="title">
+          <p><span>Name</span>: {{ calendar.name }}</p>
+          <p><span>Last update</span>: {{ calendar.updatedAt | date }}</p>
+        </div>
+      </ng-template>
+      <ng-template #resetRef>
+        <button
+          class="w-100"
+          nz-button
+          nzType="text"
+          nz-tooltip="Reset date"
+          (click)="date = currentDate()"
+        >
+          <span nz-icon nzType="reload" nzTheme="outline"></span>
+        </button>
+      </ng-template>
+      <ng-template #editRef>
+        <button
+          class="w-100"
+          nz-button
+          nzType="text"
+          nz-tooltip="Edit name"
+          (click)="showEditCalendarName.set(true)"
+        >
+          <span nz-icon nzType="edit" nzTheme="outline"></span>
+        </button>
+      </ng-template>
+      <ng-template #deleteRef>
+        <button
+          class="w-100"
+          nz-button
+          nzType="text"
+          nz-tooltip="Delete calendar"
+          (click)="deleteCalendar()"
+        >
+          <span nz-icon nzType="delete" nzTheme="outline"></span>
+        </button>
+      </ng-template>
+      <ng-template #viewRef>
+        <button
+          class="w-100"
+          nz-button
+          nzType="text"
+          nz-tooltip="Switch to {{ isCalendarView ? 'Table' : 'Calendar' }}"
+          (click)="showCalendar.set(!isCalendarView)"
+        >
+          <span
+            nz-icon
+            [nzType]="isCalendarView ? 'table' : 'calendar'"
+            nzTheme="outline"
+          ></span>
+        </button>
+      </ng-template>
+    </section>
+  </nz-card>
+} @else {
+  <nz-alert
+    nzType="error"
+    nzMessage="Error"
+    nzDescription="Provide metric data"
+    nzShowIcon
+  ></nz-alert>
+}
+
+@if (showEditCalendarName()) {
+  <nz-modal
+    nzTitle="Update calenadar name"
+    [nzFooter]="null"
+    [nzVisible]="showEditCalendarName()"
+    (nzOnCancel)="showEditCalendarName.set(false)"
+  >
+    <ng-container *nzModalContent>
+      <fitmonitor-form
+        [formItems]="calendarFormItems"
+        (formSubmit)="
+          handleEditCalendar($event); showEditCalendarName.set(false)
+        "
+      ></fitmonitor-form>
+    </ng-container>
+  </nz-modal>
+}
+
+@if (showWeekEdit()) {
+  <nz-modal
+    nzTitle="Update calenadar name"
+    [nzFooter]="null"
+    [nzVisible]="showWeekEdit()"
+    (nzOnCancel)="showWeekEdit.set('')"
+  >
+    <ng-container *nzModalContent>
+      <fitmonitor-form
+        [canBeEmpty]="true"
+        [formItems]="calendarFormDataItems"
+        (formSubmit)="
+          handleEditCalendarData($event, showWeekEdit()); showWeekEdit.set('')
+        "
+      ></fitmonitor-form>
+    </ng-container>
+  </nz-modal>
+}

@@ -68,7 +68,7 @@ export class CalendarController {
     return this.calendarService.modifyCalendarData(user, name, body);
   }
 
-  @Delete('name/:name')
+  @Delete('delete')
   @UseGuards(JwtGuard)
   @UseInterceptors(CurrentUserInterceptor)
   deleteCalendar(@CurrentUser() user: UserPayload, @Body() body: CalendarDto) {

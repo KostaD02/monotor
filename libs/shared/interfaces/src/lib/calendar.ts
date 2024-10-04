@@ -16,3 +16,9 @@ export interface CalendarData {
   sat: string;
   sun: string;
 }
+
+export interface CalendarDataForm {
+  [key: string]: string;
+}
+
+export type CalendarForm = Pick<Calendar, 'name'>;

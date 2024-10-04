@@ -41,6 +41,7 @@ export class FormComponent implements OnChanges {
   private readonly notificationService = inject(NzNotificationService);
 
   @Input({ required: true }) formItems: FormItem[] = [];
+  @Input() canBeEmpty = false;
 
   // ? TODO: Can emit T instead of unknown?
   @Output() formSubmit = new EventEmitter<unknown>();
@@ -58,7 +59,7 @@ export class FormComponent implements OnChanges {
       this.notificationService.error('Error', 'Invalid form data');
       return;
     }
-    if (isAllValueEmpty(this.form().value)) {
+    if (isAllValueEmpty(this.form().value) && !this.canBeEmpty) {
       this.notificationService.warning('Warning', 'Nothing to update');
       this.formSubmit.emit(this.form().value);
       return;

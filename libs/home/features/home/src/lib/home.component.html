@@ -1,6 +1,6 @@
 <nz-layout class="inner">
-  <section class="metrics">
-    @if (metrics(); as metrics) {
+  @if (metrics(); as metrics) {
+    <section class="metrics">
       @if (metrics?.length !== 0) {
         <nz-tabset>
           @for (metric of metrics; track metric._id) {
@@ -13,6 +13,22 @@
           }
         </nz-tabset>
       }
-    }
-  </section>
+    </section>
+  }
+  @if (calendars(); as calendars) {
+    <section class="calendars">
+      @if (calendars?.length !== 0) {
+        <nz-tabset>
+          @for (calendar of calendars; track calendar._id) {
+            <nz-tab [nzTitle]="calendar.name">
+              <fitmonitor-calendar
+                [calendar]="calendar"
+                [isPreview]="true"
+              ></fitmonitor-calendar>
+            </nz-tab>
+          }
+        </nz-tabset>
+      }
+    </section>
+  }
 </nz-layout>

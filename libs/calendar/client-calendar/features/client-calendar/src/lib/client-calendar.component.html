@@ -1,1 +1,40 @@
-<p>client-calendar works!</p>
+<nz-layout class="inner">
+  <section class="controls">
+    @for (button of buttonActions; track button.type) {
+      <button
+        nz-button
+        nzType="primary"
+        [nzDanger]="button.type === ActionTypes.DeleteAll ? true : null"
+        (click)="handleAction(button.type)"
+      >
+        {{ button.label }}
+      </button>
+    }
+  </section>
+  <section class="calendars">
+    @for (calendar of allCalendar(); track calendar._id) {
+      <fitmonitor-calendar
+        [calendar]="calendar"
+        (deleted)="refershGetAll$.next()"
+      ></fitmonitor-calendar>
+    } @empty {
+      <nz-empty></nz-empty>
+    }
+  </section>
+</nz-layout>
+
+@if (showCreateModal()) {
+  <nz-modal
+    nzTitle="Create metric"
+    [nzFooter]="null"
+    [nzVisible]="showCreateModal()"
+    (nzOnCancel)="showCreateModal.set(false)"
+  >
+    <ng-container *nzModalContent>
+      <fitmonitor-form
+        [formItems]="calendarFormItems"
+        (formSubmit)="handleCreateModel($event); showCreateModal.set(false)"
+      ></fitmonitor-form>
+    </ng-container>
+  </nz-modal>
+}

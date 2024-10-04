@@ -186,7 +186,7 @@ export class CalendarService {
       return;
     }
 
-    await this.calendarModel.deleteOne({ ownerID: user._id, name });
+    await this.calendarModel.deleteOne({ ownerID: user._id, name: body.name });
 
     return {
       acknowledged: true,
@@ -253,31 +253,35 @@ export class CalendarService {
   private getWeeks(body: CalendarData): Record<string, string> {
     const weeks: Record<string, string> = {};
 
-    if (body.mon) {
+    const haveValue = (value: string) => {
+      return value || value === '';
+    };
+
+    if (haveValue(body.mon)) {
       weeks['mon'] = body.mon;
     }
 
-    if (body.tue) {
+    if (haveValue(body.tue)) {
       weeks['tue'] = body.tue;
     }
 
-    if (body.wed) {
+    if (haveValue(body.wed)) {
       weeks['wed'] = body.wed;
     }
 
-    if (body.thu) {
+    if (haveValue(body.thu)) {
       weeks['thu'] = body.thu;
     }
 
-    if (body.fri) {
+    if (haveValue(body.fri)) {
       weeks['fri'] = body.fri;
     }
 
-    if (body.sat) {
+    if (haveValue(body.sat)) {
       weeks['sat'] = body.sat;
     }
 
-    if (body.sun) {
+    if (haveValue(body.sun)) {
       weeks['sun'] = body.sun;
     }
 

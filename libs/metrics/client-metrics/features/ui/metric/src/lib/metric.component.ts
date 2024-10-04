@@ -333,7 +333,7 @@ export class MetricComponent implements OnInit, OnChanges {
   private setMetricView() {
     const metricView = this.localStorageService.getItem(StorageKeys.MetricView);
 
-    if (!metricView) {
+    if (!metricView || this.isPreview) {
       return;
     }
 

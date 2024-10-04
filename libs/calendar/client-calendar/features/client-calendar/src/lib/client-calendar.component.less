@@ -1,0 +1,26 @@
+nz-layout.inner {
+  align-items: center;
+
+  section {
+    &.controls {
+      margin: 25px 0;
+      width: fit-content;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    &.calendars {
+      width: 100%;
+      // display: flex;
+      // justify-content: center;
+      // align-items: center;
+      // align-content: center;
+      // flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+  }
+}

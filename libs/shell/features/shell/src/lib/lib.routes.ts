@@ -3,12 +3,13 @@ import { AuthService } from '@fitmonitor/data-access';
 
 import { ShellComponent } from './shell.component';
 import { MetricsService } from '@fitmonitor/client-metrics/data-access';
+import { CalendarService } from '@fitmonitor/client-calendar/data-access';
 
 export const SHELL_ROUTES: Route[] = [
   {
     path: '',
     component: ShellComponent,
-    providers: [AuthService, MetricsService],
+    providers: [AuthService, MetricsService, CalendarService],
     loadChildren: () => [
       {
         path: '',
@@ -27,6 +28,13 @@ export const SHELL_ROUTES: Route[] = [
         loadChildren: () =>
           import('@fitmonitor/client-metrics/feature/shell').then(
             (m) => m.METRICS_ROUTES,
+          ),
+      },
+      {
+        path: 'calendar',
+        loadChildren: () =>
+          import('@fitmonitor/client-calendar/feature/shell').then(
+            (m) => m.CALENDAR_ROUTES,
           ),
       },
       {

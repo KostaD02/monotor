@@ -1,13 +1,14 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
 
 import { MetricsService } from '@fitmonitor/client-metrics/data-access';
 import { MetricComponent } from '@fitmonitor/metrics/client-metrics/features/ui/metric';
+import { CalendarService } from '@fitmonitor/client-calendar/data-access';
+import { CalendarComponent } from '@fitmonitor/calendar/client-calendar/features/ui/calendar';
 import { FormComponent } from '@fitmonitor/shared/ui/form';
 
-import { NzTabsModule } from 'ng-zorro-antd/tabs';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
-import { JsonPipe } from '@angular/common';
-import { toSignal } from '@angular/core/rxjs-interop';
+import { NzTabsModule } from 'ng-zorro-antd/tabs';
 
 @Component({
   selector: 'fitmonitor-home',
@@ -17,7 +18,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
     NzTabsModule,
     FormComponent,
     MetricComponent,
-    JsonPipe,
+    CalendarComponent,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.less',
@@ -25,6 +26,8 @@ import { toSignal } from '@angular/core/rxjs-interop';
 })
 export class HomeComponent {
   private readonly metricsService = inject(MetricsService);
+  private readonly calendarsService = inject(CalendarService);
 
   readonly metrics = toSignal(this.metricsService.getAllMetrics());
+  readonly calendars = toSignal(this.calendarsService.getAllCalendars());
 }

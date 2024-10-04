@@ -19,6 +19,13 @@
       </nz-form-item>
     }
     <ng-content select="[tip]"></ng-content>
+    <nz-alert
+      class="mb"
+      nzShowIcon
+      nzType="info"
+      nzMessage="Info"
+      nzDescription="Currently space is not valid character inside input, avoid using."
+    ></nz-alert>
     <div class="controls flex-center">
       <button [disabled]="form().invalid" nz-button nzType="primary">
         <ng-content select="[button-text]">Create</ng-content>
@@ -27,9 +34,9 @@
   </form>
 } @else {
   <nz-alert
+    nzShowIcon
     nzType="error"
     nzMessage="Error"
     nzDescription="Provide form with correcrt inputs"
-    nzShowIcon
   ></nz-alert>
 }

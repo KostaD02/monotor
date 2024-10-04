@@ -1,9 +1,16 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 
+import { of } from 'rxjs';
+
 import { API_URL } from '@fitmonitor/consts';
 import { AuthService } from '@fitmonitor/data-access';
-import { Calendar, CalendarData } from '@fitmonitor/interfaces';
+import {
+  Calendar,
+  CalendarData,
+  DeleteResponse,
+  DeleteResposneSingleItem,
+} from '@fitmonitor/interfaces';
 
 @Injectable()
 export class CalendarService {
@@ -15,7 +22,7 @@ export class CalendarService {
 
   getAllCalendars() {
     if (!this.authService.user()) {
-      return [];
+      return of([]);
     }
     return this.http.get<Calendar[]>(`${this.baseUrl}/all`);
   }
@@ -39,10 +46,13 @@ export class CalendarService {
   }
 
   deleteAllCalendars() {
-    return this.http.delete(`${this.baseUrl}/all`);
+    return this.http.delete<DeleteResponse>(`${this.baseUrl}/all`);
   }
 
   deleteCalendarByName(name: string) {
-    return this.http.delete(`${this.baseUrl}/delete`, { body: { name } });
+    return this.http.delete<DeleteResposneSingleItem>(
+      `${this.baseUrl}/delete`,
+      { body: { name } },
+    );
   }
 }
