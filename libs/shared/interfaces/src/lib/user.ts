@@ -22,3 +22,7 @@ export type UserRegistrationData = Pick<
   'firstName' | 'lastName' | 'email' | 'password'
 >;
 export type UserLoginData = Pick<User, 'email' | 'password'>;
+export type UserUpdateFromAdminData = Pick<
+  User,
+  'firstName' | 'lastName' | 'email' | 'password' | 'role'
+>;

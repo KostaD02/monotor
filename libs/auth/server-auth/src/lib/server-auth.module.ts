@@ -7,7 +7,16 @@ import {
   MongooseValidatorService,
 } from '@fitmonitor/server-services';
 import { MongooseModule } from '@nestjs/mongoose';
-import { User, UserSchema } from '@fitmonitor/schemas';
+import {
+  Calendar,
+  CalendarSchema,
+  Metrics,
+  MetricsSchema,
+  Schedule,
+  ScheduleSchema,
+  User,
+  UserSchema,
+} from '@fitmonitor/schemas';
 
 import { JwtStrategy, LocalStrategy, RefreshJwtStrategy } from './strategies';
 import { AuthController } from './server-auth.controller';
@@ -17,7 +26,12 @@ import { RefreshJwtGuard } from './guards';
 @Module({
   imports: [
     ConfigModule.forRoot(),
-    MongooseModule.forFeature([{ name: User.name, schema: UserSchema }]),
+    MongooseModule.forFeature([
+      { name: User.name, schema: UserSchema },
+      { name: Schedule.name, schema: ScheduleSchema },
+      { name: Calendar.name, schema: CalendarSchema },
+      { name: Metrics.name, schema: MetricsSchema },
+    ]),
     JwtModule.register({
       secret: `${process.env['JWT_SECRET']}`,
       signOptions: { expiresIn: `${process.env['JWT_EXPIRES_IN'] || '1'}h` },

@@ -1,0 +1,78 @@
+<nz-layout class="inner">
+  @if (users(); as users) {
+    <nz-table #usersTable nzBordered [nzData]="users">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Firstname</th>
+          <th>Lastname</th>
+          <th>Email</th>
+          <th>Type</th>
+          <th>Created / Updated</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (user of usersTable.data; track user._id) {
+          <tr>
+            <td>{{ $index + 1 }}</td>
+            <td>{{ user.firstName }}</td>
+            <td>{{ user.lastName }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.role }}</td>
+            <td>
+              {{ user.createdAt | date }}
+              <nz-divider nzType="horizontal"></nz-divider>
+              {{ user.updatedAt | date }}
+            </td>
+            <td>
+              <div class="flex-center start gap-3">
+                <button
+                  nz-button
+                  nzType="primary"
+                  (click)="showEditUser.set(user._id)"
+                >
+                  Edit
+                </button>
+                <button
+                  nz-button
+                  nzDanger
+                  nzType="primary"
+                  (click)="deleteUser(user._id)"
+                >
+                  Delete
+                </button>
+              </div>
+            </td>
+          </tr>
+        }
+      </tbody>
+      <tfoot nzSummary>
+        <tr>
+          <td colspan="2">Total users</td>
+          <td colspan="5">
+            <span nz-typography>{{ usersCount() }}</span>
+          </td>
+        </tr>
+      </tfoot>
+    </nz-table>
+  }
+</nz-layout>
+
+@if (showEditUser()) {
+  <nz-modal
+    nzTitle="Create metric"
+    [nzFooter]="null"
+    [nzVisible]="showEditUser()"
+    (nzOnCancel)="showEditUser.set('')"
+  >
+    <ng-container *nzModalContent>
+      <fitmonitor-form
+        [formItems]="editUserFormItems"
+        (formSubmit)="handleEditUser($event); showEditUser.set('')"
+      >
+        <span button-text>Update</span>
+      </fitmonitor-form>
+    </ng-container>
+  </nz-modal>
+}

@@ -9,7 +9,6 @@ import {
   Patch,
   UseInterceptors,
   Delete,
-  Req,
 } from '@nestjs/common';
 import { AuthService } from './server-auth.service';
 import {
@@ -20,7 +19,7 @@ import {
   UpdateUserPasswordDto,
 } from './dtos';
 import { LocalAuthGuard, RefreshJwtGuard } from './guards';
-import { Response, Request } from 'express';
+import { Response } from 'express';
 
 import { JwtGuard } from '@fitmonitor/server-guards';
 import { CurrentUserInterceptor } from '@fitmonitor/server-interceptors';
@@ -35,7 +34,7 @@ import { MongooseValidatorService } from '@fitmonitor/server-services';
 export class AuthController {
   constructor(
     private readonly authService: AuthService,
-    private readonly mongooseValidator: MongooseValidatorService
+    private readonly mongooseValidator: MongooseValidatorService,
   ) {}
 
   @Get()
@@ -43,11 +42,6 @@ export class AuthController {
   @UseInterceptors(CurrentUserInterceptor)
   getCurrentUser(@CurrentUser() user: UserPayload) {
     return this.authService.getCurrentUser(user);
-  }
-
-  @Get('is_admin_registered')
-  isAdminRegistered() {
-    return this.authService.isAdminRegistered();
   }
 
   @Get('id/:id')
@@ -77,7 +71,7 @@ export class AuthController {
     @CurrentUser() user: UserPayload,
     @Res({ passthrough: true }) response: Response,
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    @Body() dto: SignInDto
+    @Body() dto: SignInDto,
   ) {
     return this.authService.signIn(user, response);
   }
@@ -88,11 +82,6 @@ export class AuthController {
     return {
       message: "it's not implemented yet. will be added soon",
     };
-  }
-
-  @Post('sign_up_admin')
-  signUpAsAdmin(@Body() body: SignUpDto, @Req() req: Request) {
-    return this.authService.signUpAsAdmin(body, req);
   }
 
   @Post('refresh')
@@ -123,7 +112,7 @@ export class AuthController {
   updateUserPassword(
     @CurrentUser() user: UserPayload,
     @Body() body: UpdateUserPasswordDto,
-    @Res({ passthrough: true }) response: Response
+    @Res({ passthrough: true }) response: Response,
   ) {
     return this.authService.updateUserPassword(user, body, response);
   }

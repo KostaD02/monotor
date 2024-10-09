@@ -42,6 +42,7 @@ export class FormComponent implements OnChanges {
 
   @Input({ required: true }) formItems: FormItem[] = [];
   @Input() canBeEmpty = false;
+  @Input() showSpaceAlert = true;
 
   // ? TODO: Can emit T instead of unknown?
   @Output() formSubmit = new EventEmitter<unknown>();

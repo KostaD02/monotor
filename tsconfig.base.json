@@ -15,6 +15,13 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@fitmonitor/admin/data-access": ["libs/admin/data-access/src/index.ts"],
+      "@fitmonitor/admin/feature/base": [
+        "libs/admin/features/admin/src/index.ts"
+      ],
+      "@fitmonitor/admin/feature/shell": [
+        "libs/admin/features/shell/src/index.ts"
+      ],
       "@fitmonitor/auth/client-auth/features/auth": [
         "libs/auth/client-auth/features/auth/src/index.ts"
       ],

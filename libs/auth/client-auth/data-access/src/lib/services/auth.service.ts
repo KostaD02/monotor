@@ -25,6 +25,8 @@ export class AuthService {
   private readonly jwtService = inject(JwtHelperService);
   private readonly localStorageService = inject(LocalStorageService);
 
+  readonly baseUrl = `${API_URL}/auth`;
+
   readonly user: WritableSignal<UserPayload | null> = signal(null);
 
   readonly checkAuthorizedUser = timer(0, RETRY_AUTH_CHECK).pipe(
@@ -58,8 +60,6 @@ export class AuthService {
       return NEVER;
     }),
   );
-
-  readonly baseUrl = `${API_URL}/auth`;
 
   get accessToken() {
     return this.localStorageService.getItem(StorageKeys.AccessToken);
@@ -173,7 +173,7 @@ export class AuthService {
 
     const user = this.jwtService.decodeToken(token);
 
-    if (!user || user.roles !== UserRole.Admin) {
+    if (!user || user.role !== UserRole.Admin) {
       this.router.navigate(['/']);
       return false;
     }

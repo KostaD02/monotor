@@ -7,12 +7,14 @@
       <nz-tab nzTitle="Sign in">
         <fitmonitor-form
           [formItems]="signInFormItems"
+          [showSpaceAlert]="false"
           (formSubmit)="onAuth($event)"
         ></fitmonitor-form>
       </nz-tab>
       <nz-tab nzTitle="Sign up">
         <fitmonitor-form
           [formItems]="signUpFormItems"
+          [showSpaceAlert]="false"
           (formSubmit)="onRegistration($event)"
         ></fitmonitor-form>
       </nz-tab>

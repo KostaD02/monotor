@@ -5,7 +5,13 @@ import {
   UserRole,
   User as UserInterface,
 } from '@fitmonitor/interfaces';
-import { User, UserDocument } from '@fitmonitor/schemas';
+import {
+  Calendar,
+  Metrics,
+  Schedule,
+  User,
+  UserDocument,
+} from '@fitmonitor/schemas';
 import {
   ExceptionService,
   EncryptionService,
@@ -14,7 +20,7 @@ import {
 import { Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { InjectModel } from '@nestjs/mongoose';
-import { Response, Request } from 'express';
+import { Response } from 'express';
 import { Model } from 'mongoose';
 
 import {
@@ -23,12 +29,14 @@ import {
   UpdateUserDto,
   UpdateUserPasswordDto,
 } from './dtos';
-import { Logger, LoggerSide } from '@fitmonitor/util';
 
 @Injectable()
 export class AuthService {
   constructor(
     @InjectModel(User.name) private readonly userModel: Model<UserDocument>,
+    @InjectModel(Metrics.name) private readonly metricsModel: Model<Metrics>,
+    @InjectModel(Calendar.name) private readonly calendarModel: Model<Calendar>,
+    @InjectModel(Schedule.name) private readonly scheduleModel: Model<Schedule>,
     private readonly exceptionService: ExceptionService,
     private readonly encryptionService: EncryptionService,
     private readonly jwtService: JwtService,
@@ -60,39 +68,12 @@ export class AuthService {
     }
 
     const hashedPassword = await this.encryptionService.hash(body.password);
-
-    const user = await this.userModel.create({
-      ...body,
-      password: hashedPassword,
-      role: UserRole.Default,
-    });
-
-    return this.createPayload(user as unknown as UserInterface);
-  }
-
-  async signUpAsAdmin(body: SignUpDto, req: Request) {
     const isAdminRegistered = await this.isAdminRegistered();
 
-    if (isAdminRegistered) {
-      const isCleanIP = req.ip?.startsWith('::ffff:');
-      Logger.info(
-        `Someone tried to register as admin, when admin already exists, here is few detail:\n${
-          isCleanIP ? `IP:${req.ip?.slice(7)}\n` : `IP:${req.ip}\n`
-        }User-Agent:${req.headers['user-agent']}`,
-        LoggerSide.Server,
-      );
-      this.exceptionService.throwError(
-        ExceptionStatusKeys.Conflict,
-        'Admin already exists',
-        AuthExpectionKeys.AdminAlreadyExists,
-      );
-    }
-
-    const hashedPassword = await this.encryptionService.hash(body.password);
     const user = await this.userModel.create({
       ...body,
       password: hashedPassword,
-      role: UserRole.Admin,
+      role: isAdminRegistered ? UserRole.Admin : UserRole.Default,
     });
 
     return this.createPayload(user as unknown as UserInterface);
@@ -314,6 +295,8 @@ export class AuthService {
       );
     }
 
+    await this.deleteAllConnection(user as unknown as UserPayload);
+
     return {
       acknowledged: true,
     };
@@ -367,6 +350,8 @@ export class AuthService {
       );
     }
 
+    await this.deleteAllConnection(user as unknown as UserPayload);
+
     return {
       acknowledged: true,
     };
@@ -382,5 +367,11 @@ export class AuthService {
       createdAt: user.createdAt,
       updatedAt: user.updatedAt,
     };
+  }
+
+  private async deleteAllConnection(user: UserPayload) {
+    await this.metricsModel.deleteMany({ user: user._id });
+    await this.calendarModel.deleteMany({ user: user._id });
+    await this.scheduleModel.deleteMany({ user: user._id });
   }
 }

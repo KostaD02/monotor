@@ -19,7 +19,7 @@ import { filter, fromEvent, map, startWith } from 'rxjs';
 
 import { ThemeService } from '@fitmonitor/client-services';
 import { AuthService } from '@fitmonitor/data-access';
-import { Navigation, ThemeOptions } from '@fitmonitor/interfaces';
+import { Navigation, ThemeOptions, UserRole } from '@fitmonitor/interfaces';
 import { NAVIGATION } from '@fitmonitor/providers';
 import {
   BURGER_MENU_BREAKPOINT,
@@ -88,12 +88,13 @@ export class ShellComponent {
   readonly currentRoute = toSignal(this.currentRoute$);
   readonly navigation: Signal<Navigation[]> = computed(() => {
     const isUserAuthorized = this.isUserAuthorized();
+    const userRole = this.authService.user()?.role;
+    // prettier-ignore
     return this.navigationData.filter(
       (nav) =>
-        (nav.showAfterAuth === isUserAuthorized &&
-          nav.showBeforeAuth === !isUserAuthorized) ||
+        (nav.showAfterAuth === isUserAuthorized && nav.showBeforeAuth === !isUserAuthorized) ||
         (nav.showBeforeAuth && nav.showAfterAuth),
-    );
+    ).filter((nav) => nav.adminOnly ? userRole === UserRole.Admin : true);
   });
 
   constructor() {
