@@ -1,0 +1,177 @@
+@if (renderSchedule() && scheduleData()) {
+  @let scheduleItem = scheduleData();
+  <nz-card
+    [nzActions]="
+      isPreview ? [] : [editAllRef, editSignleRef, updateRef, deleteRef]
+    "
+    [nzTitle]="title"
+  >
+    <section class="content">
+      <nz-table
+        #scheduleTable
+        nzBordered
+        [nzFrontPagination]="false"
+        [nzData]="dataSchedule()"
+      >
+        <thead>
+          <tr>
+            <th>Time</th>
+            @for (week of weeks; track week) {
+              <th>{{ week }}</th>
+            }
+            @if (!isPreview) {
+              <th>Action</th>
+            }
+          </tr>
+        </thead>
+        <tbody>
+          @for (data of scheduleTable.data; track $index) {
+            <tr>
+              @for (item of data; track $index) {
+                <td>{{ item }}</td>
+              }
+              @if (!isPreview) {
+                <td>
+                  <div class="flex-center start gap-3">
+                    <button
+                      nz-button
+                      nzDanger
+                      nzType="primary"
+                      (click)="deleteScheduleItem(data[0])"
+                    >
+                      Delete
+                    </button>
+                  </div>
+                </td>
+              }
+            </tr>
+          }
+        </tbody>
+      </nz-table>
+    </section>
+    <ng-template #title>
+      <div class="title">
+        <p><span>Name</span>: {{ scheduleItem?.name }}</p>
+        <p><span>Last update</span>: {{ scheduleItem?.updatedAt | date }}</p>
+      </div>
+    </ng-template>
+    <ng-template #editAllRef>
+      <button
+        class="w-100"
+        nz-button
+        nzType="text"
+        nz-tooltip="Add & edit data simultaneously"
+        (click)="showAddItemModal.set(true)"
+      >
+        <span nz-icon nzType="file-add" nzTheme="outline"></span>
+      </button>
+    </ng-template>
+    <ng-template #editSignleRef>
+      <button
+        class="w-100"
+        nz-button
+        nzType="text"
+        nz-tooltip="Edit single data"
+        (click)="showEditItemModal.set(true)"
+      >
+        <span nz-icon nzType="edit" nzTheme="outline"></span>
+      </button>
+    </ng-template>
+    <ng-template #updateRef>
+      <button
+        class="w-100"
+        nz-button
+        nzType="text"
+        nz-tooltip="Update schedule"
+        (click)="showUpdateScheduleModal.set(true)"
+      >
+        <span nz-icon nzType="form" nzTheme="outline"></span>
+      </button>
+    </ng-template>
+    <ng-template #deleteRef>
+      <button
+        class="w-100"
+        nz-button
+        nzType="text"
+        nz-tooltip="Delete schedule"
+        (click)="deleteSchedule(scheduleItem?.name || '')"
+      >
+        <span nz-icon nzType="delete" nzTheme="outline"></span>
+      </button>
+    </ng-template>
+  </nz-card>
+} @else {
+  <nz-alert
+    nzType="error"
+    nzMessage="Error"
+    nzDescription="Provide metric data"
+    nzShowIcon
+  ></nz-alert>
+}
+
+@if (showAddItemModal()) {
+  <nz-modal
+    nzTitle="Add item to schedule"
+    [nzFooter]="null"
+    [nzVisible]="showAddItemModal()"
+    (nzOnCancel)="showAddItemModal.set(false)"
+  >
+    <ng-container *nzModalContent>
+      <fitmonitor-form
+        [showSpaceAlert]="false"
+        [formItems]="addItemScheduleFormData"
+        (formSubmit)="addScheduleItem($event); showAddItemModal.set(false)"
+      >
+        <nz-alert
+          tip
+          class="mb-3"
+          nzShowIcon
+          nzType="info"
+          nzMessage="Info"
+          nzDescription="Time should be unique from other metric data, if you want override use same time"
+        >
+        </nz-alert>
+        <span button-text>Create</span>
+      </fitmonitor-form>
+    </ng-container>
+  </nz-modal>
+}
+
+@if (showEditItemModal()) {
+  <nz-modal
+    nzTitle="Edit schedule item"
+    [nzFooter]="null"
+    [nzVisible]="showEditItemModal()"
+    (nzOnCancel)="showEditItemModal.set(false)"
+  >
+    <ng-container *nzModalContent>
+      <fitmonitor-form
+        [showSpaceAlert]="false"
+        [formItems]="editItemScheduleFormData"
+        (formSubmit)="handleEditItem($event); showEditItemModal.set(false)"
+      >
+        <span button-text>Edit</span>
+      </fitmonitor-form>
+    </ng-container>
+  </nz-modal>
+}
+
+@if (showUpdateScheduleModal()) {
+  <nz-modal
+    nzTitle="Update schedule"
+    [nzFooter]="null"
+    [nzVisible]="showUpdateScheduleModal()"
+    (nzOnCancel)="showUpdateScheduleModal.set(false)"
+  >
+    <ng-container *nzModalContent>
+      <fitmonitor-form
+        [formItems]="updateItemScheduleFormData"
+        (formSubmit)="
+          updateSchedule($event); showUpdateScheduleModal.set(false)
+        "
+      >
+        <span button-text>Update</span>
+      </fitmonitor-form>
+    </ng-container>
+  </nz-modal>
+}

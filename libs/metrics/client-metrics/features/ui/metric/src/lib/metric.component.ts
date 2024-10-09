@@ -13,7 +13,7 @@ import {
   EventEmitter,
   HostListener,
 } from '@angular/core';
-import { DatePipe, JsonPipe } from '@angular/common';
+import { DatePipe } from '@angular/common';
 
 import { tap } from 'rxjs';
 
@@ -71,7 +71,6 @@ import { NzNotificationService } from 'ng-zorro-antd/notification';
     NgxChartsModule,
     FormComponent,
     DatePipe,
-    JsonPipe,
   ],
   templateUrl: './metric.component.html',
   styleUrl: './metric.component.less',

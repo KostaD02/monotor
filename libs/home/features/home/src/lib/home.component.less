@@ -1,3 +1,16 @@
 nz-layout.inner {
-  padding-bottom: 100px;
+  padding-bottom: 25px;
+
+  section {
+    overflow: auto;
+    &.wrap {
+      display: grid;
+      grid-template-columns: 1fr minmax(0, 500px);
+      gap: 10px;
+
+      @media screen and (max-width: 1065px) {
+        grid-template-columns: 1fr;
+      }
+    }
+  }
 }

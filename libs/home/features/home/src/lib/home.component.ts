@@ -9,6 +9,8 @@ import { FormComponent } from '@fitmonitor/shared/ui/form';
 
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
+import { ScheduleService } from '@fitmonitor/schedule/data-access';
+import { ScheduleComponent } from '@fitmonitor/schedule/client-schedule/features/ui/schedule';
 
 @Component({
   selector: 'fitmonitor-home',
@@ -19,6 +21,7 @@ import { NzTabsModule } from 'ng-zorro-antd/tabs';
     FormComponent,
     MetricComponent,
     CalendarComponent,
+    ScheduleComponent,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.less',
@@ -26,8 +29,10 @@ import { NzTabsModule } from 'ng-zorro-antd/tabs';
 })
 export class HomeComponent {
   private readonly metricsService = inject(MetricsService);
+  private readonly scheduleService = inject(ScheduleService);
   private readonly calendarsService = inject(CalendarService);
 
   readonly metrics = toSignal(this.metricsService.getAllMetrics());
   readonly calendars = toSignal(this.calendarsService.getAllCalendars());
+  readonly schedules = toSignal(this.scheduleService.getAllSchedules());
 }

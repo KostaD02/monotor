@@ -76,6 +76,18 @@
         "libs/notfound/features/shell/src/index.ts"
       ],
       "@fitmonitor/providers": ["libs/shared/providers/src/index.ts"],
+      "@fitmonitor/schedule/client-schedule/features/ui/schedule": [
+        "libs/schedule/client-schedule/features/ui/schedule/src/index.ts"
+      ],
+      "@fitmonitor/schedule/data-access": [
+        "libs/schedule/client-schedule/data-access/src/index.ts"
+      ],
+      "@fitmonitor/schedule/feature/base": [
+        "libs/schedule/client-schedule/features/schedule/src/index.ts"
+      ],
+      "@fitmonitor/schedule/feature/shell": [
+        "libs/schedule/client-schedule/features/shell/src/index.ts"
+      ],
       "@fitmonitor/schemas": ["libs/shared/schemas/src/index.ts"],
       "@fitmonitor/server-auth": ["libs/auth/server-auth/src/index.ts"],
       "@fitmonitor/server-calendar": [
