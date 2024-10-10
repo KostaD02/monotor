@@ -1,52 +1,58 @@
 <nz-layout class="inner">
-  <section class="wrap">
-    @if (schedules(); as schedules) {
-      <section class="schedules">
-        @if (schedules?.length !== 0) {
-          <nz-tabset>
-            @for (schedule of schedules; track schedule._id) {
-              <nz-tab [nzTitle]="schedule.name">
-                <fitmonitor-schedule
-                  [schedule]="schedule"
-                  [isPreview]="true"
-                ></fitmonitor-schedule>
-              </nz-tab>
-            }
-          </nz-tabset>
-        }
-      </section>
-    }
-    @if (calendars(); as calendars) {
-      <section class="calendars">
-        @if (calendars?.length !== 0) {
-          <nz-tabset>
-            @for (calendar of calendars; track calendar._id) {
-              <nz-tab [nzTitle]="calendar.name">
-                <fitmonitor-calendar
-                  [calendar]="calendar"
-                  [isPreview]="true"
-                ></fitmonitor-calendar>
-              </nz-tab>
-            }
-          </nz-tabset>
-        }
-      </section>
-    }
-  </section>
-  @if (metrics(); as metrics) {
-    <section class="metrics">
-      @if (metrics?.length !== 0) {
-        <nz-tabset>
-          @for (metric of metrics; track metric._id) {
-            <nz-tab [nzTitle]="metric.name">
-              <fitmonitor-metric
-                [metric]="metric"
-                [isPreview]="true"
-              ></fitmonitor-metric>
-            </nz-tab>
+  @if (this.usersData()) {
+    <section class="wrap">
+      @if (this.usersData()?.schedules; as schedules) {
+        <section class="schedules">
+          @if (schedules?.length !== 0) {
+            <nz-tabset>
+              @for (schedule of schedules; track schedule._id) {
+                <nz-tab [nzTitle]="schedule.name">
+                  <fitmonitor-schedule
+                    [schedule]="schedule"
+                    [isPreview]="true"
+                  ></fitmonitor-schedule>
+                </nz-tab>
+              }
+            </nz-tabset>
           }
-        </nz-tabset>
+        </section>
       }
+      @if (this.usersData()?.calendars; as calendars) {
+        <section class="calendars">
+          @if (calendars?.length !== 0) {
+            <nz-tabset>
+              @for (calendar of calendars; track calendar._id) {
+                <nz-tab [nzTitle]="calendar.name">
+                  <fitmonitor-calendar
+                    [calendar]="calendar"
+                    [isPreview]="true"
+                  ></fitmonitor-calendar>
+                </nz-tab>
+              }
+            </nz-tabset>
+          }
+        </section>
+      }
+    </section>
+    @if (this.usersData()?.metrics; as metrics) {
+      <section class="metrics">
+        @if (metrics?.length !== 0) {
+          <nz-tabset>
+            @for (metric of metrics; track metric._id) {
+              <nz-tab [nzTitle]="metric.name">
+                <fitmonitor-metric
+                  [metric]="metric"
+                  [isPreview]="true"
+                ></fitmonitor-metric>
+              </nz-tab>
+            }
+          </nz-tabset>
+        }
+      </section>
+    }
+  } @else {
+    <section class="authorize flex-center">
+      <nz-empty nzNotFoundContent="Authorize to see your data"></nz-empty>
     </section>
   }
 </nz-layout>
