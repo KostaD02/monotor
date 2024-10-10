@@ -9,14 +9,17 @@
           [formItems]="signInFormItems"
           [showSpaceAlert]="false"
           (formSubmit)="onAuth($event)"
-        ></fitmonitor-form>
+        >
+          <span button-text>Sign in</span>
+        </fitmonitor-form>
       </nz-tab>
       <nz-tab nzTitle="Sign up">
         <fitmonitor-form
           [formItems]="signUpFormItems"
           [showSpaceAlert]="false"
           (formSubmit)="onRegistration($event)"
-        ></fitmonitor-form>
+        >
+        </fitmonitor-form>
       </nz-tab>
     </nz-tabset>
   </section>

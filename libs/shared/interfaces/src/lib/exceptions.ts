@@ -54,6 +54,8 @@ export enum AuthExpectionKeys {
   UserNotFound = 'errors.user_not_found',
   MakeAdminShouldBeBoolean = 'errors.make_admin_should_be_boolean',
   AdminAlreadyExists = 'errors.admin_already_exists',
+  SecretCodeShouldBeString = 'errors.secret_code_should_be_string',
+  UserIsAlreadyAdmin = 'errors.user_is_already_admin',
 }
 
 export enum MetricsExceptionKeys {

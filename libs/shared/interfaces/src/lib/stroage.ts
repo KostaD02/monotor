@@ -4,4 +4,5 @@ export enum StorageKeys {
   Language = 'language',
   Theme = 'theme',
   MetricView = 'metric_view',
+  Secret = 'IDDQD',
 }

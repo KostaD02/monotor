@@ -6,12 +6,17 @@ import {
   inject,
   signal,
 } from '@angular/core';
+import { Router } from '@angular/router';
 import { toSignal } from '@angular/core/rxjs-interop';
 
 import { BehaviorSubject, switchMap, tap } from 'rxjs';
 import { AdminService } from '@fitmonitor/admin/data-access';
 import { FormComponent } from '@fitmonitor/shared/ui/form';
-import { EDIT_USER_FORM_DATA } from '@fitmonitor/consts';
+import { API_URL, EDIT_USER_FORM_DATA } from '@fitmonitor/consts';
+import { UserRole, UserUpdateFromAdminData } from '@fitmonitor/interfaces';
+import { isAllValueEmpty } from '@fitmonitor/util';
+import { DomSanitizer } from '@angular/platform-browser';
+import { AuthService } from '@fitmonitor/data-access';
 
 import { NzAlertModule } from 'ng-zorro-antd/alert';
 import { NzButtonModule } from 'ng-zorro-antd/button';
@@ -20,8 +25,6 @@ import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { NzModalModule, NzModalService } from 'ng-zorro-antd/modal';
-import { UserRole, UserUpdateFromAdminData } from '@fitmonitor/interfaces';
-import { isAllValueEmpty } from '@fitmonitor/util';
 
 @Component({
   selector: 'fitmonitor-admin',
@@ -41,6 +44,9 @@ import { isAllValueEmpty } from '@fitmonitor/util';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AdminComponent {
+  private readonly router = inject(Router);
+  private readonly sanitizer = inject(DomSanitizer);
+  private readonly authService = inject(AuthService);
   private readonly adminService = inject(AdminService);
   private readonly modalService = inject(NzModalService);
   private readonly notificationService = inject(NzNotificationService);
@@ -51,14 +57,34 @@ export class AdminComponent {
   );
   readonly usersCount = computed(() => this.users()?.length || 0);
   readonly showEditUser = signal('');
+  readonly swaggerUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
+    `${API_URL}/swagger`,
+  );
 
   readonly editUserFormItems = EDIT_USER_FORM_DATA;
 
   deleteUser(id: string) {
     this.modalService.confirm({
       nzTitle: 'Are you sure you want to delete this user?',
-      nzContent: 'This action cannot be undone.',
+      nzContent:
+        'This action cannot be undone. All data connected to this user will be lost.',
       nzOnOk: () => {
+        if (id === this.authService.user()?._id) {
+          this.modalService.confirm({
+            nzTitle: 'Wait you want to delete yourself?',
+            nzContent: 'Really?',
+            nzOnOk: () => {
+              this.handleDeleteUser(id, false);
+              this.notificationService.success(
+                'Success',
+                'You  deleted yourself successfully',
+              );
+              this.router.navigate(['/auth']);
+              this.authService.signOut();
+            },
+          });
+          return;
+        }
         this.handleDeleteUser(id);
       },
     });
@@ -111,7 +137,7 @@ export class AdminComponent {
       .subscribe();
   }
 
-  private handleDeleteUser(id: string) {
+  private handleDeleteUser(id: string, refresh = true) {
     this.adminService
       .deleteUser(id)
       .pipe(
@@ -120,7 +146,9 @@ export class AdminComponent {
             'Success',
             'User deleted successfully',
           );
-          this.refershGetAll$.next();
+          if (refresh) {
+            this.refershGetAll$.next();
+          }
         }),
       )
       .subscribe();

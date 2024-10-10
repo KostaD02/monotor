@@ -24,6 +24,7 @@ export class CalendarService {
     if (!this.authService.user()) {
       return of([]);
     }
+
     return this.http.get<Calendar[]>(`${this.baseUrl}/all`);
   }
 

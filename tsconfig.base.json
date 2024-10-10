@@ -111,6 +111,15 @@
       "@fitmonitor/server-services": [
         "libs/shared/services/server-services/src/index.ts"
       ],
+      "@fitmonitor/settings/data-access": [
+        "libs/settings/data-access/src/index.ts"
+      ],
+      "@fitmonitor/settings/feature/base": [
+        "libs/settings/features/settings/src/index.ts"
+      ],
+      "@fitmonitor/settings/feature/shell": [
+        "libs/settings/features/shell/src/index.ts"
+      ],
       "@fitmonitor/shared/ui/form": ["libs/shared/ui/form/src/index.ts"],
       "@fitmonitor/shell/data-access": ["libs/shell/data-access/src/index.ts"],
       "@fitmonitor/shell/feature/shell": [

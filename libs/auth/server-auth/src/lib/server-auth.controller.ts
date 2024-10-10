@@ -12,6 +12,7 @@ import {
 } from '@nestjs/common';
 import { AuthService } from './server-auth.service';
 import {
+  ForceAdminDto,
   SignInDto,
   SignUpDto,
   UpdateUserByIdDto,
@@ -82,6 +83,13 @@ export class AuthController {
     return {
       message: "it's not implemented yet. will be added soon",
     };
+  }
+
+  @Post('force_admin')
+  @UseGuards(JwtGuard)
+  @UseInterceptors(CurrentUserInterceptor)
+  forceAdmin(@CurrentUser() user: UserPayload, @Body() body: ForceAdminDto) {
+    return this.authService.forceAdmin(user, body);
   }
 
   @Post('refresh')

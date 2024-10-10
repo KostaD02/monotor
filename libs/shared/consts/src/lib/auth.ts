@@ -2,6 +2,20 @@ import { FormItem } from '@fitmonitor/interfaces';
 
 import { API_CONFIG } from './api';
 
+export const PASSWORD_FORM_ITEM: FormItem = {
+  name: 'password',
+  label: 'Password',
+  placeholder: 'Enter your password',
+  invalid: `Please enter valid password (min ${API_CONFIG.MIN_PASSWORD_LENGTH}, max ${API_CONFIG.MAX_PASSWORD_LENGTH} characters)`,
+  type: 'password',
+  icon: 'lock',
+  validators: {
+    required: true,
+    minLength: API_CONFIG.MIN_PASSWORD_LENGTH,
+    maxLength: API_CONFIG.MAX_PASSWORD_LENGTH,
+  },
+};
+
 export const LOGIN_FORM_DATA: FormItem[] = [
   {
     name: 'email',
@@ -15,22 +29,10 @@ export const LOGIN_FORM_DATA: FormItem[] = [
       required: true,
     },
   },
-  {
-    name: 'password',
-    label: 'Password',
-    placeholder: 'Enter your password',
-    invalid: `Please enter valid password (min ${API_CONFIG.MIN_PASSWORD_LENGTH}, max ${API_CONFIG.MAX_PASSWORD_LENGTH} characters)`,
-    type: 'password',
-    icon: 'lock',
-    validators: {
-      required: true,
-      minLength: API_CONFIG.MIN_PASSWORD_LENGTH,
-      maxLength: API_CONFIG.MAX_PASSWORD_LENGTH,
-    },
-  },
+  PASSWORD_FORM_ITEM,
 ];
 
-export const REGISTER_FORM_DATA: FormItem[] = [
+export const NAMES_FORM_DATA: FormItem[] = [
   {
     name: 'firstName',
     label: 'First Name',
@@ -57,6 +59,27 @@ export const REGISTER_FORM_DATA: FormItem[] = [
       maxLength: API_CONFIG.MAX_LASTNAME_LENGTH,
     },
   },
+];
+
+export const UPDATE_PASSWORD_FORM_DATA: FormItem[] = [
+  PASSWORD_FORM_ITEM,
+  {
+    name: 'newPassword',
+    label: 'New password',
+    placeholder: 'Enter your new password',
+    invalid: `Please enter valid password (min ${API_CONFIG.MIN_PASSWORD_LENGTH}, max ${API_CONFIG.MAX_PASSWORD_LENGTH} characters)`,
+    type: 'password',
+    icon: 'block',
+    validators: {
+      required: true,
+      minLength: API_CONFIG.MIN_PASSWORD_LENGTH,
+      maxLength: API_CONFIG.MAX_PASSWORD_LENGTH,
+    },
+  },
+];
+
+export const REGISTER_FORM_DATA: FormItem[] = [
+  ...NAMES_FORM_DATA,
   ...LOGIN_FORM_DATA,
 ];
 

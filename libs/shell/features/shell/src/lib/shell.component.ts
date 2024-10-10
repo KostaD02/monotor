@@ -33,6 +33,7 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzMenuModeType, NzMenuModule } from 'ng-zorro-antd/menu';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
+import { NzNotificationService } from 'ng-zorro-antd/notification';
 
 @Component({
   selector: 'fitmonitor-shell',
@@ -52,11 +53,12 @@ import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 })
 export class ShellComponent {
   private readonly router = inject(Router);
+  private readonly document = inject(DOCUMENT);
+  private readonly navigationData = inject(NAVIGATION);
   private readonly authService = inject(AuthService);
   private readonly themeService = inject(ThemeService);
   private readonly viewport = inject(ViewportScroller);
-  private readonly navigationData = inject(NAVIGATION);
-  private readonly document = inject(DOCUMENT);
+  private readonly notifcationService = inject(NzNotificationService);
 
   readonly languages = LANGUAGES;
   readonly themeOptions = THEME_ITEMS;
@@ -123,5 +125,6 @@ export class ShellComponent {
 
   logOut() {
     this.authService.signOut();
+    this.notifcationService.success('Success', 'Logged out');
   }
 }

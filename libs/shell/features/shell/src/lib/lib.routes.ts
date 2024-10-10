@@ -6,6 +6,7 @@ import { MetricsService } from '@fitmonitor/client-metrics/data-access';
 import { CalendarService } from '@fitmonitor/client-calendar/data-access';
 import { AdminService } from '@fitmonitor/admin/data-access';
 import { ScheduleService } from '@fitmonitor/schedule/data-access';
+import { SettingsService } from '@fitmonitor/settings/data-access';
 
 export const SHELL_ROUTES: Route[] = [
   {
@@ -17,6 +18,7 @@ export const SHELL_ROUTES: Route[] = [
       CalendarService,
       ScheduleService,
       AdminService,
+      SettingsService,
     ],
     loadChildren: () => [
       {
@@ -50,6 +52,13 @@ export const SHELL_ROUTES: Route[] = [
         loadChildren: () =>
           import('@fitmonitor/schedule/feature/shell').then(
             (m) => m.SCHEDULE_ROUTES,
+          ),
+      },
+      {
+        path: 'settings',
+        loadChildren: () =>
+          import('@fitmonitor/settings/feature/shell').then(
+            (m) => m.SETTINGS_ROUTES,
           ),
       },
       {

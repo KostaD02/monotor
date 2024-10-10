@@ -4,6 +4,7 @@ import {
   UserPayload,
   UserRole,
   User as UserInterface,
+  StorageKeys,
 } from '@fitmonitor/interfaces';
 import {
   Calendar,
@@ -24,11 +25,13 @@ import { Response } from 'express';
 import { Model } from 'mongoose';
 
 import {
+  ForceAdminDto,
   SignUpDto,
   UpdateUserByIdDto,
   UpdateUserDto,
   UpdateUserPasswordDto,
 } from './dtos';
+import { Logger, LoggerSide } from '@fitmonitor/util';
 
 @Injectable()
 export class AuthService {
@@ -73,7 +76,7 @@ export class AuthService {
     const user = await this.userModel.create({
       ...body,
       password: hashedPassword,
-      role: isAdminRegistered ? UserRole.Admin : UserRole.Default,
+      role: isAdminRegistered ? UserRole.Default : UserRole.Admin,
     });
 
     return this.createPayload(user as unknown as UserInterface);
@@ -119,6 +122,56 @@ export class AuthService {
       access_token: accessToken,
       refresh_token: refreshToken,
     };
+  }
+
+  async forceAdmin(user: UserPayload, body: ForceAdminDto) {
+    const userModel = await this.userModel.findOne({ email: user.email });
+
+    if (!userModel) {
+      this.exceptionService.throwError(
+        ExceptionStatusKeys.BadRequest,
+        `User with this '${user.email}' does not exist`,
+        AuthExpectionKeys.UserNotFound,
+      );
+      return;
+    }
+
+    if (userModel.role === UserRole.Admin) {
+      this.exceptionService.throwError(
+        ExceptionStatusKeys.BadRequest,
+        `User with this '${user.email}' is already an admin`,
+        AuthExpectionKeys.UserIsAlreadyAdmin,
+      );
+      return;
+    }
+
+    const force = process.env['FORCE_ADMIN_MODE_ENABLED'] || false;
+
+    if (!force) {
+      this.exceptionService.throwError(
+        ExceptionStatusKeys.BadRequest,
+        `Force admin is not enabled 😢`,
+        AuthExpectionKeys.UserPermissionNotGranted,
+      );
+      Logger.warn(
+        `${user.email} tried to force admin without permission`,
+        LoggerSide.Server,
+      );
+      return;
+    }
+
+    if (body.secretCode !== StorageKeys.Secret) {
+      this.exceptionService.throwError(
+        ExceptionStatusKeys.BadRequest,
+        `Secret code is incorrect`,
+        AuthExpectionKeys.SecretCodeShouldBeString,
+      );
+      return;
+    }
+
+    userModel.role = UserRole.Admin;
+    await userModel.save();
+    return this.createPayload(userModel as unknown as UserInterface);
   }
 
   async refreshToken(response: Response) {

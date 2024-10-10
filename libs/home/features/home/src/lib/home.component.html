@@ -14,6 +14,8 @@
                 </nz-tab>
               }
             </nz-tabset>
+          } @else {
+            <nz-empty nzNotFoundContent="No schedules found"></nz-empty>
           }
         </section>
       }
@@ -30,6 +32,8 @@
                 </nz-tab>
               }
             </nz-tabset>
+          } @else {
+            <nz-empty nzNotFoundContent="No calendars found"></nz-empty>
           }
         </section>
       }
@@ -47,6 +51,8 @@
               </nz-tab>
             }
           </nz-tabset>
+        } @else {
+          <nz-empty nzNotFoundContent="No metrics found"></nz-empty>
         }
       </section>
     }

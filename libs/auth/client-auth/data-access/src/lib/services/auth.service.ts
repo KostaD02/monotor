@@ -130,6 +130,12 @@ export class AuthService {
     return this.http.post<UserPayload>(`${this.baseUrl}/sign_up`, payload);
   }
 
+  forceAdmin(secretCode: string) {
+    return this.http.post<UserPayload>(`${this.baseUrl}/force_admin`, {
+      secretCode,
+    });
+  }
+
   isValidToken(token: string) {
     return !this.jwtService.isTokenExpired(token);
   }

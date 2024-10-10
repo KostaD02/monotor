@@ -1,0 +1,32 @@
+<nz-layout class="inner flex-center">
+  <section class="wrapper">
+    <nz-tabset
+      [nzSelectedIndex]="currentTabIndex()"
+      (nzSelectedIndexChange)="currentTabIndex.set($event)"
+    >
+      <nz-tab nzTitle="Firstname & Lastname">
+        <fitmonitor-form
+          [formItems]="namesFormItems"
+          [showSpaceAlert]="false"
+          (formSubmit)="handleNamesUpdate($event)"
+        >
+        </fitmonitor-form>
+      </nz-tab>
+      <nz-tab nzTitle="Password">
+        <fitmonitor-form
+          [formItems]="updateFormItems"
+          [showSpaceAlert]="false"
+          (formSubmit)="handlePasswordUpdate($event)"
+        ></fitmonitor-form>
+      </nz-tab>
+      <nz-tab nzTitle="General">
+        <div class="flex-center start gap-3">
+          <button (click)="showInfo()" nz-button>Show your data</button>
+          <button (click)="deleteUser()" nz-button nzDanger>
+            Delete your account
+          </button>
+        </div>
+      </nz-tab>
+    </nz-tabset>
+  </section>
+</nz-layout>

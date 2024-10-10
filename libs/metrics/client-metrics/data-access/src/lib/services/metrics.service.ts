@@ -23,6 +23,7 @@ export class MetricsService {
     if (!this.authService.user()) {
       return of([]);
     }
+
     return this.http.get<Metrics[]>(`${this.baseUrl}/all`);
   }
 
