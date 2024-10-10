@@ -1,15 +1,15 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { API_URL } from '@fitmonitor/consts';
+import { API_URL } from '@monotor/consts';
 import {
   DeleteResponse,
   DeleteResposneSingleItem,
   Metrics,
   MetricsFormData,
   MetricsSingleData,
-} from '@fitmonitor/interfaces';
-import { AuthService } from '@fitmonitor/data-access';
+} from '@monotor/interfaces';
+import { AuthService } from '@monotor/data-access';
 import { of } from 'rxjs';
 
 @Injectable()

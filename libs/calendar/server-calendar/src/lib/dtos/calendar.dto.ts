@@ -1,7 +1,7 @@
 import { IsString, MaxLength, MinLength } from 'class-validator';
-import { CalendarExceptionKeys } from '@fitmonitor/interfaces';
+import { CalendarExceptionKeys } from '@monotor/interfaces';
 import { ApiProperty } from '@nestjs/swagger';
-import { API_CONFIG } from '@fitmonitor/consts';
+import { API_CONFIG } from '@monotor/consts';
 
 export class CalendarDto {
   @ApiProperty({

@@ -2,7 +2,7 @@
   "name": "metrics-client-metrics-features-ui-metric",
   "$schema": "../../../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/metrics/client-metrics/features/ui/metric/src",
-  "prefix": "fitmonitor",
+  "prefix": "monotor",
   "projectType": "library",
   "tags": [],
   "targets": {

@@ -9,10 +9,10 @@ import { inject, Injectable } from '@angular/core';
 
 import { Observable, catchError, throwError } from 'rxjs';
 
-import { API_URL } from '@fitmonitor/consts';
-import { ErrorResponse } from '@fitmonitor/interfaces';
-import { ApiService } from '@fitmonitor/client-services';
-import { Logger, LoggerSide } from '@fitmonitor/util';
+import { API_URL } from '@monotor/consts';
+import { ErrorResponse } from '@monotor/interfaces';
+import { ApiService } from '@monotor/client-services';
+import { Logger, LoggerSide } from '@monotor/util';
 
 @Injectable()
 export class HttpErrorInterceptor implements HttpInterceptor {
@@ -24,9 +24,9 @@ export class HttpErrorInterceptor implements HttpInterceptor {
   ): Observable<HttpEvent<unknown>> {
     return next.handle(req).pipe(
       catchError((response: HttpErrorResponse) => {
-        const isFitMonitorServerRequest = req.url.includes(API_URL);
+        const isMonoTorServerRequest = req.url.includes(API_URL);
         if (
-          !isFitMonitorServerRequest ||
+          !isMonoTorServerRequest ||
           response.error.message === 'Failed to fetch'
         ) {
           return throwError(() => response);

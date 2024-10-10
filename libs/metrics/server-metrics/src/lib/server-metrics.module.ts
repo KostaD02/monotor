@@ -5,7 +5,7 @@ import {
   EncryptionService,
   ExceptionService,
   MongooseValidatorService,
-} from '@fitmonitor/server-services';
+} from '@monotor/server-services';
 import { MongooseModule } from '@nestjs/mongoose';
 import {
   Metrics,
@@ -14,7 +14,7 @@ import {
   MetricsSchema,
   User,
   UserSchema,
-} from '@fitmonitor/schemas';
+} from '@monotor/schemas';
 import { MetricsController } from './server-metrics.controller';
 import { MetricsService } from './server-metrics.service';
 

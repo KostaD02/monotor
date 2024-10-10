@@ -5,15 +5,15 @@ import {
   UserPayload,
   ExceptionStatusKeys,
   AuthExpectionKeys,
-} from '@fitmonitor/interfaces';
-import { ExceptionService } from '@fitmonitor/server-services';
+} from '@monotor/interfaces';
+import { ExceptionService } from '@monotor/server-services';
 
 @Injectable()
 export class RolesGuard implements CanActivate {
   constructor(
     private readonly reflector: Reflector,
     private jwtService: JwtService,
-    private exceptionService: ExceptionService
+    private exceptionService: ExceptionService,
   ) {}
 
   canActivate(context: ExecutionContext): boolean {
@@ -43,7 +43,7 @@ export class RolesGuard implements CanActivate {
       this.exceptionService.throwError(
         ExceptionStatusKeys.Conflict,
         "Current user role doesn't have enough permission to use this endpoint",
-        AuthExpectionKeys.UserPermissionNotGranted
+        AuthExpectionKeys.UserPermissionNotGranted,
       );
     }
 

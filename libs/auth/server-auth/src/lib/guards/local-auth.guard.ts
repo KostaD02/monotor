@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
-import { AuthExpectionKeys, ExceptionStatusKeys } from '@fitmonitor/interfaces';
-import { ExceptionService } from '@fitmonitor/server-services';
+import { AuthExpectionKeys, ExceptionStatusKeys } from '@monotor/interfaces';
+import { ExceptionService } from '@monotor/server-services';
 
 @Injectable()
 export class LocalAuthGuard extends AuthGuard('local') {
@@ -23,25 +23,25 @@ export class LocalAuthGuard extends AuthGuard('local') {
           [
             AuthExpectionKeys.ShouldProvideEmail,
             AuthExpectionKeys.ShouldProvidePassword,
-          ]
+          ],
         );
       } else if (!email) {
         this.exceptionService.throwError(
           ExceptionStatusKeys.BadRequest,
           'Email should be provided',
-          AuthExpectionKeys.ShouldProvideEmail
+          AuthExpectionKeys.ShouldProvideEmail,
         );
       } else if (!password) {
         this.exceptionService.throwError(
           ExceptionStatusKeys.BadRequest,
           'Password should be provided',
-          AuthExpectionKeys.ShouldProvidePassword
+          AuthExpectionKeys.ShouldProvidePassword,
         );
       } else {
         this.exceptionService.throwError(
           ExceptionStatusKeys.BadRequest,
           err.response.error,
-          err.response.message
+          err.response.message,
         );
       }
     }

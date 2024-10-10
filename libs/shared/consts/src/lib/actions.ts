@@ -1,4 +1,4 @@
-import { Action, ActionTypes } from '@fitmonitor/interfaces';
+import { Action, ActionTypes } from '@monotor/interfaces';
 
 export const CREATE_ACTION_BUTTON: Action = {
   label: 'Create',

@@ -10,10 +10,10 @@ import {
   UseInterceptors,
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
-import { JwtGuard } from '@fitmonitor/server-guards';
-import { CurrentUserInterceptor } from '@fitmonitor/server-interceptors';
-import { CurrentUser } from '@fitmonitor/server-decorators';
-import { UserPayload } from '@fitmonitor/interfaces';
+import { JwtGuard } from '@monotor/server-guards';
+import { CurrentUserInterceptor } from '@monotor/server-interceptors';
+import { CurrentUser } from '@monotor/server-decorators';
+import { UserPayload } from '@monotor/interfaces';
 import { ScheduleService } from './server-schedule.service';
 import { ScheduleDataDto, ScheduleDto } from './dtos';
 
@@ -34,7 +34,7 @@ export class ScheduleController {
   @UseInterceptors(CurrentUserInterceptor)
   getScheduleByName(
     @CurrentUser() user: UserPayload,
-    @Param('name') name: string
+    @Param('name') name: string,
   ) {
     return this.scheduleService.getScheduleByName(user, name);
   }
@@ -52,7 +52,7 @@ export class ScheduleController {
   updateSchedule(
     @CurrentUser() user: UserPayload,
     @Body() body: ScheduleDto,
-    @Param('name') name: string
+    @Param('name') name: string,
   ) {
     return this.scheduleService.updateScheduleByName(user, name, body);
   }
@@ -63,7 +63,7 @@ export class ScheduleController {
   modifySchedule(
     @CurrentUser() user: UserPayload,
     @Body() body: ScheduleDataDto,
-    @Param('name') name: string
+    @Param('name') name: string,
   ) {
     return this.scheduleService.modifyScheduleByName(user, name, body);
   }
@@ -80,7 +80,7 @@ export class ScheduleController {
   @UseInterceptors(CurrentUserInterceptor)
   deleteSchedule(
     @CurrentUser() user: UserPayload,
-    @Param('name') name: string
+    @Param('name') name: string,
   ) {
     return this.scheduleService.deleteScheduleByName(user, name);
   }

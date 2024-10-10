@@ -1,5 +1,5 @@
 {
-  "name": "@fitmonitor/server-decorators",
+  "name": "@monotor/server-decorators",
   "version": "0.0.1",
   "dependencies": {},
   "type": "commonjs",

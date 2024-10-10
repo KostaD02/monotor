@@ -13,10 +13,10 @@
   </section>
   <section class="metrics">
     @for (metric of allMetrics(); track metric._id) {
-      <fitmonitor-metric
+      <monotor-metric
         [metric]="metric"
         (deleted)="refershGetAll$.next()"
-      ></fitmonitor-metric>
+      ></monotor-metric>
     } @empty {
       <nz-empty></nz-empty>
     }
@@ -31,10 +31,10 @@
     (nzOnCancel)="showCreateModal.set(false)"
   >
     <ng-container *nzModalContent>
-      <fitmonitor-form
+      <monotor-form
         [formItems]="createMetricsFormData"
         (formSubmit)="handleCreateModal($event); showCreateModal.set(false)"
-      ></fitmonitor-form>
+      ></monotor-form>
     </ng-container>
   </nz-modal>
 }

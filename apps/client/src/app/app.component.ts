@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 @Component({
   standalone: true,
   imports: [RouterModule],
-  selector: 'fitmonitor-root',
+  selector: 'monotor-root',
   template: `<router-outlet></router-outlet>`,
 })
 export class AppComponent {}

@@ -21,10 +21,10 @@ import {
 
 import { JwtModule } from '@auth0/angular-jwt';
 
-import { HttpErrorInterceptor } from '@fitmonitor/client-interceptors';
-import { ApiService, LocalStorageService } from '@fitmonitor/client-services';
-import { StorageKeys } from '@fitmonitor/interfaces';
-import { API_DOMAIN } from '@fitmonitor/consts';
+import { HttpErrorInterceptor } from '@monotor/client-interceptors';
+import { ApiService, LocalStorageService } from '@monotor/client-services';
+import { StorageKeys } from '@monotor/interfaces';
+import { API_DOMAIN } from '@monotor/consts';
 
 import { en_US, ka_GE, NZ_I18N } from 'ng-zorro-antd/i18n';
 

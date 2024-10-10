@@ -1,6 +1,6 @@
 import { HttpException } from '@nestjs/common';
 import { registerDecorator } from 'class-validator';
-import { GlobalExceptionKeys } from '@fitmonitor/interfaces';
+import { GlobalExceptionKeys } from '@monotor/interfaces';
 import mongoose from 'mongoose';
 
 export function MongooseId() {

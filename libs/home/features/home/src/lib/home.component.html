@@ -7,10 +7,10 @@
             <nz-tabset>
               @for (schedule of schedules; track schedule._id) {
                 <nz-tab [nzTitle]="schedule.name">
-                  <fitmonitor-schedule
+                  <monotor-schedule
                     [schedule]="schedule"
                     [isPreview]="true"
-                  ></fitmonitor-schedule>
+                  ></monotor-schedule>
                 </nz-tab>
               }
             </nz-tabset>
@@ -25,10 +25,10 @@
             <nz-tabset>
               @for (calendar of calendars; track calendar._id) {
                 <nz-tab [nzTitle]="calendar.name">
-                  <fitmonitor-calendar
+                  <monotor-calendar
                     [calendar]="calendar"
                     [isPreview]="true"
-                  ></fitmonitor-calendar>
+                  ></monotor-calendar>
                 </nz-tab>
               }
             </nz-tabset>
@@ -44,10 +44,10 @@
           <nz-tabset>
             @for (metric of metrics; track metric._id) {
               <nz-tab [nzTitle]="metric.name">
-                <fitmonitor-metric
+                <monotor-metric
                   [metric]="metric"
                   [isPreview]="true"
-                ></fitmonitor-metric>
+                ></monotor-metric>
               </nz-tab>
             }
           </nz-tabset>

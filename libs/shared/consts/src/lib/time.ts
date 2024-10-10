@@ -1,4 +1,4 @@
-import { Week } from '@fitmonitor/interfaces';
+import { Week } from '@monotor/interfaces';
 
 export const WEEK_DAYS: Week[] = [
   'mon',

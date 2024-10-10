@@ -143,13 +143,13 @@
     (nzOnCancel)="showCreateMetricModal.set(false)"
   >
     <ng-container *nzModalContent>
-      <fitmonitor-form
+      <monotor-form
         [formItems]="addItemsForm"
         (formSubmit)="onMetricDataAdd($event); showCreateMetricModal.set(false)"
       >
         <p tip>Date & Time should be unique from other metric data</p>
         <span button-text>Add</span>
-      </fitmonitor-form>
+      </monotor-form>
     </ng-container>
   </nz-modal>
 }
@@ -162,7 +162,7 @@
     (nzOnCancel)="showUpdateMetricModal.set('')"
   >
     <ng-container *nzModalContent>
-      <fitmonitor-form
+      <monotor-form
         [formItems]="updateItemForm"
         (formSubmit)="
           onMetricDataUpdate($event, id); showUpdateMetricModal.set('')
@@ -170,7 +170,7 @@
       >
         <p tip>Date & Time should be unique from other metric data</p>
         <span button-text>Add</span>
-      </fitmonitor-form>
+      </monotor-form>
     </ng-container>
   </nz-modal>
 }
@@ -185,7 +185,7 @@
     (nzOnCancel)="showChartMetricModal.set(null)"
   >
     <ng-container *nzModalContent>
-      <fitmonitor-form
+      <monotor-form
         [formItems]="updateItemForm"
         (formSubmit)="
           onMetricDataUpdate($event, data._id); showChartMetricModal.set(null)
@@ -193,7 +193,7 @@
       >
         <p tip>Date & Time should be unique from other metric data</p>
         <span button-text>Update</span>
-      </fitmonitor-form>
+      </monotor-form>
     </ng-container>
   </nz-modal>
 }
@@ -206,12 +206,12 @@
     (nzOnCancel)="showEditMetricModal.set(false)"
   >
     <ng-container *nzModalContent>
-      <fitmonitor-form
+      <monotor-form
         [formItems]="editItemForm"
         (formSubmit)="editMetric($event); showEditMetricModal.set(false)"
       >
         <span button-text>Edit</span>
-      </fitmonitor-form>
+      </monotor-form>
     </ng-container>
   </nz-modal>
 }

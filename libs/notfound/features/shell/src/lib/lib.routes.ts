@@ -5,8 +5,6 @@ export const NOTFOUND_ROUTES: Route[] = [
     path: '',
     pathMatch: 'full',
     loadComponent: () =>
-      import('@fitmonitor/notfound/feature/base').then(
-        (m) => m.NotfoundComponent,
-      ),
+      import('@monotor/notfound/feature/base').then((m) => m.NotfoundComponent),
   },
 ];

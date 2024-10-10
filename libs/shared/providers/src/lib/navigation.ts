@@ -1,6 +1,6 @@
-import { Navigation } from '@fitmonitor/interfaces';
+import { Navigation } from '@monotor/interfaces';
 import { InjectionToken } from '@angular/core';
-import { NAVIGATION as NAVIGATION_DATA } from '@fitmonitor/consts';
+import { NAVIGATION as NAVIGATION_DATA } from '@monotor/consts';
 
 export const NAVIGATION = new InjectionToken<Navigation[]>('NAVIGATION', {
   providedIn: 'root',

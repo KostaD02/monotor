@@ -8,22 +8,22 @@ import { toSignal } from '@angular/core/rxjs-interop';
 
 import { BehaviorSubject, catchError, NEVER, switchMap, tap } from 'rxjs';
 
-import { MetricComponent } from '@fitmonitor/metrics/client-metrics/features/ui/metric';
+import { MetricComponent } from '@monotor/metrics/client-metrics/features/ui/metric';
 import {
   CREATE_ACTION_BUTTON,
   DELETE_ALL_ACTION_BUTTON,
   METRICS_FORM_DATA,
-} from '@fitmonitor/consts';
+} from '@monotor/consts';
 import {
   Action,
   ActionTypes,
   ErrorResponse,
   MetricsFormData,
   StorageKeys,
-} from '@fitmonitor/interfaces';
-import { FormComponent } from '@fitmonitor/shared/ui/form';
-import { Logger, LoggerSide } from '@fitmonitor/util';
-import { MetricsService } from '@fitmonitor/client-metrics/data-access';
+} from '@monotor/interfaces';
+import { FormComponent } from '@monotor/shared/ui/form';
+import { Logger, LoggerSide } from '@monotor/util';
+import { MetricsService } from '@monotor/client-metrics/data-access';
 
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzButtonComponent } from 'ng-zorro-antd/button';
@@ -31,10 +31,10 @@ import { NzLayoutComponent } from 'ng-zorro-antd/layout';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { NzEmptyModule } from 'ng-zorro-antd/empty';
-import { LocalStorageService } from '@fitmonitor/client-services';
+import { LocalStorageService } from '@monotor/client-services';
 
 @Component({
-  selector: 'fitmonitor-client-metrics',
+  selector: 'monotor-client-metrics',
   standalone: true,
   imports: [
     NzLayoutComponent,

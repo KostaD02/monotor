@@ -3,7 +3,7 @@ import {
   ExceptionStatusKeys,
   ScheduleExpceptionKeys,
   UserPayload,
-} from '@fitmonitor/interfaces';
+} from '@monotor/interfaces';
 import {
   User,
   UserDocument,
@@ -11,13 +11,13 @@ import {
   ScheduleData,
   ScheduleDataDocument,
   Schedule,
-} from '@fitmonitor/schemas';
-import { ExceptionService } from '@fitmonitor/server-services';
+} from '@monotor/schemas';
+import { ExceptionService } from '@monotor/server-services';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { ScheduleDataDto, ScheduleDto } from './dtos';
-import { isObjectEmpty, isValidTime } from '@fitmonitor/util';
+import { isObjectEmpty, isValidTime } from '@monotor/util';
 
 @Injectable()
 export class ScheduleService {
@@ -26,7 +26,7 @@ export class ScheduleService {
     @InjectModel(Schedule.name) private scheduleModel: Model<ScheduleDocument>,
     @InjectModel(ScheduleData.name)
     private scheduleDataModel: Model<ScheduleDataDocument>,
-    private exceptionService: ExceptionService
+    private exceptionService: ExceptionService,
   ) {}
 
   async getAllSchedule(user: UserPayload) {
@@ -44,7 +44,7 @@ export class ScheduleService {
       this.exceptionService.throwError(
         ExceptionStatusKeys.NotFound,
         'Schedule with given name not found',
-        ScheduleExpceptionKeys.NotFound
+        ScheduleExpceptionKeys.NotFound,
       );
       return;
     }
@@ -63,7 +63,7 @@ export class ScheduleService {
       this.exceptionService.throwError(
         ExceptionStatusKeys.Conflict,
         'Schedule with given name already exists',
-        ScheduleExpceptionKeys.NameAlreadyExists
+        ScheduleExpceptionKeys.NameAlreadyExists,
       );
       return;
     }
@@ -88,7 +88,7 @@ export class ScheduleService {
   async updateScheduleByName(
     user: UserPayload,
     name: string,
-    body: ScheduleDto
+    body: ScheduleDto,
   ) {
     this.userExists(user);
     const schedule = await this.scheduleModel.findOne({
@@ -100,14 +100,14 @@ export class ScheduleService {
       this.exceptionService.throwError(
         ExceptionStatusKeys.NotFound,
         'Schedule with given name not found',
-        ScheduleExpceptionKeys.NotFound
+        ScheduleExpceptionKeys.NotFound,
       );
       return;
     }
 
     await this.scheduleModel.updateOne(
       { name, ownerID: user._id },
-      { name: body.name }
+      { name: body.name },
     );
 
     return this.scheduleModel.findOne({ name: body.name, ownerID: user._id });
@@ -116,13 +116,13 @@ export class ScheduleService {
   async modifyScheduleByName(
     user: UserPayload,
     name: string,
-    body: ScheduleDataDto
+    body: ScheduleDataDto,
   ) {
     if (isObjectEmpty(body)) {
       this.exceptionService.throwError(
         ExceptionStatusKeys.BadRequest,
         'No data provided to modify',
-        ScheduleExpceptionKeys.NoDataProvided
+        ScheduleExpceptionKeys.NoDataProvided,
       );
       return;
     }
@@ -137,7 +137,7 @@ export class ScheduleService {
       this.exceptionService.throwError(
         ExceptionStatusKeys.NotFound,
         'Schedule with given name not found',
-        ScheduleExpceptionKeys.NotFound
+        ScheduleExpceptionKeys.NotFound,
       );
       return;
     }
@@ -186,7 +186,7 @@ export class ScheduleService {
             this.exceptionService.throwError(
               ExceptionStatusKeys.BadRequest,
               'Invalid time provided (HH:MM)',
-              ScheduleExpceptionKeys.ProvidedDateIsIncorrecrtFormat
+              ScheduleExpceptionKeys.ProvidedDateIsIncorrecrtFormat,
             );
             return;
           }
@@ -198,7 +198,7 @@ export class ScheduleService {
       this.exceptionService.throwError(
         ExceptionStatusKeys.BadRequest,
         'No data provided to modify',
-        ScheduleExpceptionKeys.NoDataProvided
+        ScheduleExpceptionKeys.NoDataProvided,
       );
       return;
     }
@@ -238,7 +238,7 @@ export class ScheduleService {
       this.exceptionService.throwError(
         ExceptionStatusKeys.NotFound,
         'Schedule with given name not found',
-        ScheduleExpceptionKeys.NotFound
+        ScheduleExpceptionKeys.NotFound,
       );
       return;
     }
@@ -269,7 +269,7 @@ export class ScheduleService {
       this.exceptionService.throwError(
         ExceptionStatusKeys.NotFound,
         'Schedule with given name not found',
-        ScheduleExpceptionKeys.NotFound
+        ScheduleExpceptionKeys.NotFound,
       );
       return;
     }
@@ -290,7 +290,7 @@ export class ScheduleService {
       this.exceptionService.throwError(
         ExceptionStatusKeys.NotFound,
         'User with given ID not found',
-        AuthExpectionKeys.UserNotFound
+        AuthExpectionKeys.UserNotFound,
       );
       return;
     }

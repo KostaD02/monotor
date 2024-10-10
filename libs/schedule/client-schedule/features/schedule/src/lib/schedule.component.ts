@@ -6,11 +6,11 @@ import {
 } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 
-import { FormComponent } from '@fitmonitor/shared/ui/form';
-import { ScheduleService } from '@fitmonitor/schedule/data-access';
-import { Logger, LoggerSide } from '@fitmonitor/util';
-import { ScheduleComponent } from '@fitmonitor/schedule/client-schedule/features/ui/schedule';
-import { SCHEDULE_FORM_INPUT } from '@fitmonitor/consts';
+import { FormComponent } from '@monotor/shared/ui/form';
+import { ScheduleService } from '@monotor/schedule/data-access';
+import { Logger, LoggerSide } from '@monotor/util';
+import { ScheduleComponent } from '@monotor/schedule/client-schedule/features/ui/schedule';
+import { SCHEDULE_FORM_INPUT } from '@monotor/consts';
 
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzButtonComponent } from 'ng-zorro-antd/button';
@@ -18,15 +18,15 @@ import { NzLayoutComponent } from 'ng-zorro-antd/layout';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { NzEmptyModule } from 'ng-zorro-antd/empty';
-import { Action, ActionTypes } from '@fitmonitor/interfaces';
+import { Action, ActionTypes } from '@monotor/interfaces';
 import { BehaviorSubject, switchMap, tap } from 'rxjs';
 import {
   CREATE_ACTION_BUTTON,
   DELETE_ALL_ACTION_BUTTON,
-} from '@fitmonitor/consts';
+} from '@monotor/consts';
 
 @Component({
-  selector: 'fitmonitor-schedule-base',
+  selector: 'monotor-schedule-base',
   standalone: true,
   imports: [
     NzLayoutComponent,

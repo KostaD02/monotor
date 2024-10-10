@@ -3,14 +3,14 @@ import { inject, Injectable } from '@angular/core';
 
 import { of } from 'rxjs';
 
-import { API_URL } from '@fitmonitor/consts';
-import { AuthService } from '@fitmonitor/data-access';
+import { API_URL } from '@monotor/consts';
+import { AuthService } from '@monotor/data-access';
 import {
   Calendar,
   CalendarData,
   DeleteResponse,
   DeleteResposneSingleItem,
-} from '@fitmonitor/interfaces';
+} from '@monotor/interfaces';
 
 @Injectable()
 export class CalendarService {

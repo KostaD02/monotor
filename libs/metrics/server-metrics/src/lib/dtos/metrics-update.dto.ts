@@ -7,8 +7,8 @@ import {
   IsOptional,
 } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
-import { API_CONFIG } from '@fitmonitor/consts';
-import { MetricsExceptionKeys } from '@fitmonitor/interfaces';
+import { API_CONFIG } from '@monotor/consts';
+import { MetricsExceptionKeys } from '@monotor/interfaces';
 
 export class MetricsUpdateDto {
   @ApiProperty({

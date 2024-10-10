@@ -6,16 +6,16 @@ import {
   CalendarDocument,
   User,
   UserDocument,
-} from '@fitmonitor/schemas';
+} from '@monotor/schemas';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
-import { ExceptionService } from '@fitmonitor/server-services';
+import { ExceptionService } from '@monotor/server-services';
 import {
   AuthExpectionKeys,
   CalendarExceptionKeys,
   ExceptionStatusKeys,
   UserPayload,
-} from '@fitmonitor/interfaces';
+} from '@monotor/interfaces';
 import { CalendarDto } from './dtos';
 
 @Injectable()

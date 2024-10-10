@@ -10,10 +10,10 @@ import {
   SimpleChanges,
 } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
-import { FormService } from '@fitmonitor/client-services';
+import { FormService } from '@monotor/client-services';
 
-import { FormItem } from '@fitmonitor/interfaces';
-import { isAllValueEmpty } from '@fitmonitor/util';
+import { FormItem } from '@monotor/interfaces';
+import { isAllValueEmpty } from '@monotor/util';
 
 import { NzAlertModule } from 'ng-zorro-antd/alert';
 import { NzButtonModule } from 'ng-zorro-antd/button';
@@ -22,7 +22,7 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
 
 @Component({
-  selector: 'fitmonitor-form',
+  selector: 'monotor-form',
   standalone: true,
   imports: [
     ReactiveFormsModule,

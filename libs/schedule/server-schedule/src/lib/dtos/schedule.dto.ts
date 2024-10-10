@@ -1,5 +1,5 @@
-import { API_CONFIG } from '@fitmonitor/consts';
-import { ScheduleExpceptionKeys } from '@fitmonitor/interfaces';
+import { API_CONFIG } from '@monotor/consts';
+import { ScheduleExpceptionKeys } from '@monotor/interfaces';
 import { ApiProperty } from '@nestjs/swagger';
 import { IsString, MinLength, MaxLength } from 'class-validator';
 

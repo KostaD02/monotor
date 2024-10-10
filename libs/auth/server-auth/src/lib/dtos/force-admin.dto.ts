@@ -1,4 +1,4 @@
-import { AuthExpectionKeys } from '@fitmonitor/interfaces';
+import { AuthExpectionKeys } from '@monotor/interfaces';
 import { ApiProperty } from '@nestjs/swagger';
 import { IsString } from 'class-validator';
 

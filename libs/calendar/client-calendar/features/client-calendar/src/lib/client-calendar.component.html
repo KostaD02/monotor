@@ -13,10 +13,10 @@
   </section>
   <section class="calendars">
     @for (calendar of allCalendar(); track calendar._id) {
-      <fitmonitor-calendar
+      <monotor-calendar
         [calendar]="calendar"
         (deleted)="refershGetAll$.next()"
-      ></fitmonitor-calendar>
+      ></monotor-calendar>
     } @empty {
       <nz-empty></nz-empty>
     }
@@ -31,10 +31,10 @@
     (nzOnCancel)="showCreateModal.set(false)"
   >
     <ng-container *nzModalContent>
-      <fitmonitor-form
+      <monotor-form
         [formItems]="calendarFormItems"
         (formSubmit)="handleCreateModel($event); showCreateModal.set(false)"
-      ></fitmonitor-form>
+      ></monotor-form>
     </ng-container>
   </nz-modal>
 }

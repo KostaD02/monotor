@@ -5,12 +5,12 @@ import {
   ScheduleSchema,
   ScheduleData,
   ScheduleDataSchema,
-} from '@fitmonitor/schemas';
+} from '@monotor/schemas';
 import {
   ExceptionService,
   EncryptionService,
   MongooseValidatorService,
-} from '@fitmonitor/server-services';
+} from '@monotor/server-services';
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { JwtModule } from '@nestjs/jwt';

@@ -2,7 +2,7 @@
   "name": "shared-ui-form",
   "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/shared/ui/form/src",
-  "prefix": "fitmonitor",
+  "prefix": "monotor",
   "projectType": "library",
   "tags": [],
   "targets": {

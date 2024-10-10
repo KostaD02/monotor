@@ -5,11 +5,11 @@ import {
   signal,
 } from '@angular/core';
 import { Router } from '@angular/router';
-import { NAMES_FORM_DATA, UPDATE_PASSWORD_FORM_DATA } from '@fitmonitor/consts';
-import { AuthService } from '@fitmonitor/data-access';
-import { User } from '@fitmonitor/interfaces';
-import { SettingsService } from '@fitmonitor/settings/data-access';
-import { FormComponent } from '@fitmonitor/shared/ui/form';
+import { NAMES_FORM_DATA, UPDATE_PASSWORD_FORM_DATA } from '@monotor/consts';
+import { AuthService } from '@monotor/data-access';
+import { User } from '@monotor/interfaces';
+import { SettingsService } from '@monotor/settings/data-access';
+import { FormComponent } from '@monotor/shared/ui/form';
 
 import { tap } from 'rxjs';
 
@@ -20,7 +20,7 @@ import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
 
 @Component({
-  selector: 'fitmonitor-settings',
+  selector: 'monotor-settings',
   standalone: true,
   imports: [NzTabsModule, NzLayoutModule, NzButtonModule, FormComponent],
   templateUrl: './settings.component.html',

@@ -57,7 +57,7 @@
       </tfoot>
     </nz-table>
   }
-  <section>
+  <section class="swagger">
     <iframe [src]="swaggerUrl" frameborder="0"></iframe>
   </section>
 </nz-layout>
@@ -70,12 +70,12 @@
     (nzOnCancel)="showEditUser.set('')"
   >
     <ng-container *nzModalContent>
-      <fitmonitor-form
+      <monotor-form
         [formItems]="editUserFormItems"
         (formSubmit)="handleEditUser($event); showEditUser.set('')"
       >
         <span button-text>Update</span>
-      </fitmonitor-form>
+      </monotor-form>
     </ng-container>
   </nz-modal>
 }

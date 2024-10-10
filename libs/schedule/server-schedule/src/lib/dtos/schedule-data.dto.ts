@@ -1,4 +1,4 @@
-import { ScheduleExpceptionKeys } from '@fitmonitor/interfaces';
+import { ScheduleExpceptionKeys } from '@monotor/interfaces';
 import { ApiProperty } from '@nestjs/swagger';
 import { IsBoolean, IsObject, IsOptional } from 'class-validator';
 

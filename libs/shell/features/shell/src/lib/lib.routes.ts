@@ -1,12 +1,12 @@
 import { Route } from '@angular/router';
-import { AuthService } from '@fitmonitor/data-access';
+import { AuthService } from '@monotor/data-access';
 
 import { ShellComponent } from './shell.component';
-import { MetricsService } from '@fitmonitor/client-metrics/data-access';
-import { CalendarService } from '@fitmonitor/client-calendar/data-access';
-import { AdminService } from '@fitmonitor/admin/data-access';
-import { ScheduleService } from '@fitmonitor/schedule/data-access';
-import { SettingsService } from '@fitmonitor/settings/data-access';
+import { MetricsService } from '@monotor/client-metrics/data-access';
+import { CalendarService } from '@monotor/client-calendar/data-access';
+import { AdminService } from '@monotor/admin/data-access';
+import { ScheduleService } from '@monotor/schedule/data-access';
+import { SettingsService } from '@monotor/settings/data-access';
 
 export const SHELL_ROUTES: Route[] = [
   {
@@ -24,52 +24,52 @@ export const SHELL_ROUTES: Route[] = [
       {
         path: '',
         loadChildren: () =>
-          import('@fitmonitor/home/feature/shell').then((m) => m.HOME_ROUTES),
+          import('@monotor/home/feature/shell').then((m) => m.HOME_ROUTES),
       },
       {
         path: 'auth',
         loadChildren: () =>
-          import('@fitmonitor/client-auth/feature/shell').then(
+          import('@monotor/client-auth/feature/shell').then(
             (m) => m.AUTH_ROUTES,
           ),
       },
       {
         path: 'metrics',
         loadChildren: () =>
-          import('@fitmonitor/client-metrics/feature/shell').then(
+          import('@monotor/client-metrics/feature/shell').then(
             (m) => m.METRICS_ROUTES,
           ),
       },
       {
         path: 'calendar',
         loadChildren: () =>
-          import('@fitmonitor/client-calendar/feature/shell').then(
+          import('@monotor/client-calendar/feature/shell').then(
             (m) => m.CALENDAR_ROUTES,
           ),
       },
       {
         path: 'schedule',
         loadChildren: () =>
-          import('@fitmonitor/schedule/feature/shell').then(
+          import('@monotor/schedule/feature/shell').then(
             (m) => m.SCHEDULE_ROUTES,
           ),
       },
       {
         path: 'settings',
         loadChildren: () =>
-          import('@fitmonitor/settings/feature/shell').then(
+          import('@monotor/settings/feature/shell').then(
             (m) => m.SETTINGS_ROUTES,
           ),
       },
       {
         path: 'admin',
         loadChildren: () =>
-          import('@fitmonitor/admin/feature/shell').then((m) => m.ADMIN_ROUTES),
+          import('@monotor/admin/feature/shell').then((m) => m.ADMIN_ROUTES),
       },
       {
         path: '**',
         loadChildren: () =>
-          import('@fitmonitor/notfound/feature/shell').then(
+          import('@monotor/notfound/feature/shell').then(
             (m) => m.NOTFOUND_ROUTES,
           ),
       },

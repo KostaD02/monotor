@@ -5,21 +5,21 @@
       (nzSelectedIndexChange)="currentTabIndex.set($event)"
     >
       <nz-tab nzTitle="Sign in">
-        <fitmonitor-form
+        <monotor-form
           [formItems]="signInFormItems"
           [showSpaceAlert]="false"
           (formSubmit)="onAuth($event)"
         >
           <span button-text>Sign in</span>
-        </fitmonitor-form>
+        </monotor-form>
       </nz-tab>
       <nz-tab nzTitle="Sign up">
-        <fitmonitor-form
+        <monotor-form
           [formItems]="signUpFormItems"
           [showSpaceAlert]="false"
           (formSubmit)="onRegistration($event)"
         >
-        </fitmonitor-form>
+        </monotor-form>
       </nz-tab>
     </nz-tabset>
   </section>

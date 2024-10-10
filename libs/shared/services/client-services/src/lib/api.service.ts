@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 
-import { ErrorResponse } from '@fitmonitor/interfaces';
+import { ErrorResponse } from '@monotor/interfaces';
 
 import { NzModalService } from 'ng-zorro-antd/modal';
 

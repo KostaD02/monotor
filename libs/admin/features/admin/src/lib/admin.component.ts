@@ -10,13 +10,13 @@ import { Router } from '@angular/router';
 import { toSignal } from '@angular/core/rxjs-interop';
 
 import { BehaviorSubject, switchMap, tap } from 'rxjs';
-import { AdminService } from '@fitmonitor/admin/data-access';
-import { FormComponent } from '@fitmonitor/shared/ui/form';
-import { API_URL, EDIT_USER_FORM_DATA } from '@fitmonitor/consts';
-import { UserRole, UserUpdateFromAdminData } from '@fitmonitor/interfaces';
-import { isAllValueEmpty } from '@fitmonitor/util';
+import { AdminService } from '@monotor/admin/data-access';
+import { FormComponent } from '@monotor/shared/ui/form';
+import { API_URL, EDIT_USER_FORM_DATA } from '@monotor/consts';
+import { UserRole, UserUpdateFromAdminData } from '@monotor/interfaces';
+import { isAllValueEmpty } from '@monotor/util';
 import { DomSanitizer } from '@angular/platform-browser';
-import { AuthService } from '@fitmonitor/data-access';
+import { AuthService } from '@monotor/data-access';
 
 import { NzAlertModule } from 'ng-zorro-antd/alert';
 import { NzButtonModule } from 'ng-zorro-antd/button';
@@ -27,7 +27,7 @@ import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { NzModalModule, NzModalService } from 'ng-zorro-antd/modal';
 
 @Component({
-  selector: 'fitmonitor-admin',
+  selector: 'monotor-admin',
   standalone: true,
   imports: [
     NzLayoutModule,

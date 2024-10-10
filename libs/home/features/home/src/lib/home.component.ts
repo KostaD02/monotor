@@ -8,17 +8,17 @@ import { toObservable, toSignal } from '@angular/core/rxjs-interop';
 
 import { forkJoin, map, of, switchMap, tap } from 'rxjs';
 
-import { MetricsService } from '@fitmonitor/client-metrics/data-access';
-import { MetricComponent } from '@fitmonitor/metrics/client-metrics/features/ui/metric';
-import { CalendarService } from '@fitmonitor/client-calendar/data-access';
-import { CalendarComponent } from '@fitmonitor/calendar/client-calendar/features/ui/calendar';
-import { FormComponent } from '@fitmonitor/shared/ui/form';
-import { ScheduleService } from '@fitmonitor/schedule/data-access';
-import { ScheduleComponent } from '@fitmonitor/schedule/client-schedule/features/ui/schedule';
-import { AuthService } from '@fitmonitor/data-access';
-import { SessionStorageService } from '@fitmonitor/client-services';
-import { StorageKeys } from '@fitmonitor/interfaces';
-import { Logger, LoggerSide } from '@fitmonitor/util';
+import { MetricsService } from '@monotor/client-metrics/data-access';
+import { MetricComponent } from '@monotor/metrics/client-metrics/features/ui/metric';
+import { CalendarService } from '@monotor/client-calendar/data-access';
+import { CalendarComponent } from '@monotor/calendar/client-calendar/features/ui/calendar';
+import { FormComponent } from '@monotor/shared/ui/form';
+import { ScheduleService } from '@monotor/schedule/data-access';
+import { ScheduleComponent } from '@monotor/schedule/client-schedule/features/ui/schedule';
+import { AuthService } from '@monotor/data-access';
+import { SessionStorageService } from '@monotor/client-services';
+import { StorageKeys } from '@monotor/interfaces';
+import { Logger, LoggerSide } from '@monotor/util';
 
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
@@ -27,7 +27,7 @@ import { NzModalService } from 'ng-zorro-antd/modal';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'fitmonitor-home',
+  selector: 'monotor-home',
   standalone: true,
   imports: [
     NzLayoutModule,

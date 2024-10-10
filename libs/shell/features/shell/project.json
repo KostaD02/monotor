@@ -2,7 +2,7 @@
   "name": "shell-features-shell",
   "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/shell/features/shell/src",
-  "prefix": "fitmonitor",
+  "prefix": "monotor",
   "projectType": "library",
   "tags": [],
   "targets": {

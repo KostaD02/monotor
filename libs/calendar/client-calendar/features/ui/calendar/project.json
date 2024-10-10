@@ -2,7 +2,7 @@
   "name": "calendar-client-calendar-features-ui-calendar",
   "$schema": "../../../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/calendar/client-calendar/features/ui/calendar/src",
-  "prefix": "fitmonitor",
+  "prefix": "monotor",
   "projectType": "library",
   "tags": [],
   "targets": {

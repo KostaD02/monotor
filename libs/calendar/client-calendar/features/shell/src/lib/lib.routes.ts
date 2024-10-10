@@ -1,6 +1,6 @@
 import { Route } from '@angular/router';
 
-import { AuthGuards } from '@fitmonitor/data-access';
+import { AuthGuards } from '@monotor/data-access';
 
 export const CALENDAR_ROUTES: Route[] = [
   {
@@ -10,7 +10,7 @@ export const CALENDAR_ROUTES: Route[] = [
         path: '',
         canActivate: [AuthGuards.canActivateAuthenticated],
         loadComponent: () =>
-          import('@fitmonitor/client-calendar/feature/base').then(
+          import('@monotor/client-calendar/feature/base').then(
             (m) => m.ClientCalendarComponent,
           ),
       },

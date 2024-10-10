@@ -7,9 +7,9 @@ resources:
     parentId: wrk_65c114e79df14c359f2b29534410ea7c
     modified: 1727024173368
     created: 1727018932068
-    url: "{{ _.baseUrl }}"
+    url: '{{ _.baseUrl }}'
     name: base
-    description: ""
+    description: ''
     method: GET
     body: {}
     parameters: []
@@ -30,17 +30,17 @@ resources:
     parentId: null
     modified: 1727018930014
     created: 1727018930014
-    name: FitMonitor
-    description: ""
+    name: MonoTor
+    description: ''
     scope: collection
     _type: workspace
   - _id: req_77131e52f498474cb72442f602aab45d
     parentId: wrk_65c114e79df14c359f2b29534410ea7c
     modified: 1727020441823
     created: 1727020368294
-    url: "{{ _.baseUrl }}/lang/errors"
+    url: '{{ _.baseUrl }}/lang/errors'
     name: errors
-    description: ""
+    description: ''
     method: GET
     body: {}
     parameters: []
@@ -61,9 +61,9 @@ resources:
     parentId: fld_9c1ac385e06b420f91394bf04ed687fa
     modified: 1727023742094
     created: 1727023424611
-    url: "{{ _.baseUrl }}/auth"
+    url: '{{ _.baseUrl }}/auth'
     name: current user
-    description: ""
+    description: ''
     method: GET
     body: {}
     parameters: []
@@ -85,7 +85,7 @@ resources:
     modified: 1727122132980
     created: 1727020447914
     name: auth
-    description: ""
+    description: ''
     environment: {}
     environmentPropertyOrder: null
     metaSortKey: -1727018931943
@@ -94,9 +94,9 @@ resources:
     parentId: fld_9c1ac385e06b420f91394bf04ed687fa
     modified: 1727023767163
     created: 1727023750017
-    url: "{{ _.baseUrl }}/auth/is_admin_registered"
+    url: '{{ _.baseUrl }}/auth/is_admin_registered'
     name: is admin registered
-    description: ""
+    description: ''
     method: GET
     body: {}
     parameters: []
@@ -117,9 +117,9 @@ resources:
     parentId: fld_9c1ac385e06b420f91394bf04ed687fa
     modified: 1727023746567
     created: 1727023541952
-    url: "{{ _.baseUrl }}/auth/all"
+    url: '{{ _.baseUrl }}/auth/all'
     name: all user
-    description: ""
+    description: ''
     method: GET
     body: {}
     parameters: []
@@ -140,9 +140,9 @@ resources:
     parentId: fld_9c1ac385e06b420f91394bf04ed687fa
     modified: 1727207010737
     created: 1727023772092
-    url: "{{ _.baseUrl }}/auth/id/66f0493eee6f555068f39d3b"
+    url: '{{ _.baseUrl }}/auth/id/66f0493eee6f555068f39d3b'
     name: user by id
-    description: ""
+    description: ''
     method: GET
     body: {}
     parameters: []
@@ -163,9 +163,9 @@ resources:
     parentId: fld_9c1ac385e06b420f91394bf04ed687fa
     modified: 1727451864796
     created: 1727020451407
-    url: "{{ _.baseUrl }}/auth/sign_up"
+    url: '{{ _.baseUrl }}/auth/sign_up'
     name: sign up
-    description: ""
+    description: ''
     method: POST
     body:
       mimeType: application/json
@@ -196,9 +196,9 @@ resources:
     parentId: fld_9c1ac385e06b420f91394bf04ed687fa
     modified: 1727451854124
     created: 1727023397115
-    url: "{{ _.baseUrl }}/auth/sign_in"
+    url: '{{ _.baseUrl }}/auth/sign_in'
     name: sign in
-    description: ""
+    description: ''
     method: POST
     body:
       mimeType: application/json
@@ -227,9 +227,9 @@ resources:
     parentId: fld_9c1ac385e06b420f91394bf04ed687fa
     modified: 1727023885804
     created: 1727023865403
-    url: "{{ _.baseUrl }}/auth/sign_out"
+    url: '{{ _.baseUrl }}/auth/sign_out'
     name: sign out
-    description: ""
+    description: ''
     method: POST
     body: {}
     parameters: []
@@ -250,9 +250,9 @@ resources:
     parentId: fld_9c1ac385e06b420f91394bf04ed687fa
     modified: 1727023929683
     created: 1727023902561
-    url: "{{ _.baseUrl }}/auth/refresh"
+    url: '{{ _.baseUrl }}/auth/refresh'
     name: refresh token
-    description: ""
+    description: ''
     method: POST
     body: {}
     parameters: []
@@ -273,9 +273,9 @@ resources:
     parentId: fld_9c1ac385e06b420f91394bf04ed687fa
     modified: 1727023966746
     created: 1727023916906
-    url: "{{ _.baseUrl }}/auth/update"
+    url: '{{ _.baseUrl }}/auth/update'
     name: update
-    description: ""
+    description: ''
     method: PATCH
     body:
       mimeType: application/json
@@ -303,9 +303,9 @@ resources:
     parentId: fld_9c1ac385e06b420f91394bf04ed687fa
     modified: 1727024161661
     created: 1727023969294
-    url: "{{ _.baseUrl }}/auth/update/66f0493eee6f555068f39d3b"
+    url: '{{ _.baseUrl }}/auth/update/66f0493eee6f555068f39d3b'
     name: update by id
-    description: ""
+    description: ''
     method: PATCH
     body:
       mimeType: application/json
@@ -333,9 +333,9 @@ resources:
     parentId: fld_9c1ac385e06b420f91394bf04ed687fa
     modified: 1727024189119
     created: 1727024172565
-    url: "{{ _.baseUrl }}/auth/change_password"
+    url: '{{ _.baseUrl }}/auth/change_password'
     name: change password
-    description: ""
+    description: ''
     method: PATCH
     body: {}
     parameters: []
@@ -356,9 +356,9 @@ resources:
     parentId: fld_9c1ac385e06b420f91394bf04ed687fa
     modified: 1727024228692
     created: 1727024203981
-    url: "{{ _.baseUrl }}/auth/delete"
+    url: '{{ _.baseUrl }}/auth/delete'
     name: delete current user
-    description: ""
+    description: ''
     method: DELETE
     body: {}
     parameters: []
@@ -379,9 +379,9 @@ resources:
     parentId: fld_9c1ac385e06b420f91394bf04ed687fa
     modified: 1727024612948
     created: 1727024231236
-    url: "{{ _.baseUrl }}/auth/delete/66f04c80cea8c15b19d352aa"
+    url: '{{ _.baseUrl }}/auth/delete/66f04c80cea8c15b19d352aa'
     name: delete user by id
-    description: ""
+    description: ''
     method: DELETE
     body: {}
     parameters: []
@@ -402,9 +402,9 @@ resources:
     parentId: fld_819172ef9c3a471cb97d6b3c2e4c4efb
     modified: 1727123326418
     created: 1727122135480
-    url: "{{ _.baseUrl }}/metrics/all"
+    url: '{{ _.baseUrl }}/metrics/all'
     name: all metric
-    description: ""
+    description: ''
     method: GET
     body: {}
     parameters: []
@@ -426,7 +426,7 @@ resources:
     modified: 1727205723042
     created: 1727122126315
     name: metrics
-    description: ""
+    description: ''
     environment: {}
     environmentPropertyOrder: null
     metaSortKey: -1727018931936.75
@@ -435,9 +435,9 @@ resources:
     parentId: fld_819172ef9c3a471cb97d6b3c2e4c4efb
     modified: 1727122476653
     created: 1727122220105
-    url: "{{ _.baseUrl }}/metrics/name/wyali"
+    url: '{{ _.baseUrl }}/metrics/name/wyali'
     name: metric by name
-    description: ""
+    description: ''
     method: GET
     body: {}
     parameters: []
@@ -458,9 +458,9 @@ resources:
     parentId: fld_819172ef9c3a471cb97d6b3c2e4c4efb
     modified: 1727451821567
     created: 1727122525963
-    url: "{{ _.baseUrl }}/metrics/add"
+    url: '{{ _.baseUrl }}/metrics/add'
     name: metric add
-    description: ""
+    description: ''
     method: POST
     body:
       mimeType: application/json
@@ -489,9 +489,9 @@ resources:
     parentId: fld_819172ef9c3a471cb97d6b3c2e4c4efb
     modified: 1727122959002
     created: 1727122780735
-    url: "{{ _.baseUrl }}/metrics/add-data/buqni"
+    url: '{{ _.baseUrl }}/metrics/add-data/buqni'
     name: metric data add
-    description: ""
+    description: ''
     method: POST
     body:
       mimeType: application/json
@@ -520,9 +520,9 @@ resources:
     parentId: fld_819172ef9c3a471cb97d6b3c2e4c4efb
     modified: 1727123387946
     created: 1727123278716
-    url: "{{ _.baseUrl }}/metrics/update/buqni"
+    url: '{{ _.baseUrl }}/metrics/update/buqni'
     name: metric update
-    description: ""
+    description: ''
     method: PATCH
     body:
       mimeType: application/json
@@ -550,9 +550,9 @@ resources:
     parentId: fld_819172ef9c3a471cb97d6b3c2e4c4efb
     modified: 1727123384016
     created: 1727123341021
-    url: "{{ _.baseUrl }}/metrics/update-data/buqni/66f1cf2c3dc0d0110ba705a0"
+    url: '{{ _.baseUrl }}/metrics/update-data/buqni/66f1cf2c3dc0d0110ba705a0'
     name: metric data update
-    description: ""
+    description: ''
     method: PATCH
     body:
       mimeType: application/json
@@ -580,9 +580,9 @@ resources:
     parentId: fld_819172ef9c3a471cb97d6b3c2e4c4efb
     modified: 1727123456114
     created: 1727123432989
-    url: "{{ _.baseUrl }}/metrics/delete/buqni"
+    url: '{{ _.baseUrl }}/metrics/delete/buqni'
     name: metric delete
-    description: ""
+    description: ''
     method: DELETE
     body: {}
     parameters: []
@@ -603,9 +603,9 @@ resources:
     parentId: fld_819172ef9c3a471cb97d6b3c2e4c4efb
     modified: 1727123429296
     created: 1727123392826
-    url: "{{ _.baseUrl }}/metrics/delete-data/buqni/66f1cf2c3dc0d0110ba705a0"
+    url: '{{ _.baseUrl }}/metrics/delete-data/buqni/66f1cf2c3dc0d0110ba705a0'
     name: metric data delete
-    description: ""
+    description: ''
     method: DELETE
     body: {}
     parameters: []
@@ -626,9 +626,9 @@ resources:
     parentId: fld_819172ef9c3a471cb97d6b3c2e4c4efb
     modified: 1727123462985
     created: 1727122203220
-    url: "{{ _.baseUrl }}/metrics/all"
+    url: '{{ _.baseUrl }}/metrics/all'
     name: delete all metric
-    description: ""
+    description: ''
     method: DELETE
     body: {}
     parameters: []
@@ -649,9 +649,9 @@ resources:
     parentId: fld_254159e14e5e4316bed589c1349c306d
     modified: 1727205741329
     created: 1727205726826
-    url: "{{ _.baseUrl }}/calendar/all"
+    url: '{{ _.baseUrl }}/calendar/all'
     name: all calendar
-    description: ""
+    description: ''
     method: GET
     body: {}
     parameters: []
@@ -673,7 +673,7 @@ resources:
     modified: 1727450148875
     created: 1727205709187
     name: calendar
-    description: ""
+    description: ''
     environment: {}
     environmentPropertyOrder: null
     metaSortKey: -1727018931935.1875
@@ -682,9 +682,9 @@ resources:
     parentId: fld_254159e14e5e4316bed589c1349c306d
     modified: 1727207006079
     created: 1727206975586
-    url: "{{ _.baseUrl }}/calendar/name/training"
+    url: '{{ _.baseUrl }}/calendar/name/training'
     name: calendar by name
-    description: ""
+    description: ''
     method: GET
     body: {}
     parameters: []
@@ -705,9 +705,9 @@ resources:
     parentId: fld_254159e14e5e4316bed589c1349c306d
     modified: 1727206177237
     created: 1727206032095
-    url: "{{ _.baseUrl }}/calendar/create"
+    url: '{{ _.baseUrl }}/calendar/create'
     name: create calendar
-    description: ""
+    description: ''
     method: POST
     body:
       mimeType: application/json
@@ -735,9 +735,9 @@ resources:
     parentId: fld_254159e14e5e4316bed589c1349c306d
     modified: 1727207098447
     created: 1727207022596
-    url: "{{ _.baseUrl }}/calendar/name/training"
+    url: '{{ _.baseUrl }}/calendar/name/training'
     name: update calendar
-    description: ""
+    description: ''
     method: PATCH
     body:
       mimeType: application/json
@@ -765,9 +765,9 @@ resources:
     parentId: fld_254159e14e5e4316bed589c1349c306d
     modified: 1727451802140
     created: 1727207215149
-    url: "{{ _.baseUrl }}/calendar/data/training"
+    url: '{{ _.baseUrl }}/calendar/data/training'
     name: update calendar data
-    description: ""
+    description: ''
     method: PATCH
     body:
       mimeType: application/json
@@ -795,9 +795,9 @@ resources:
     parentId: fld_254159e14e5e4316bed589c1349c306d
     modified: 1727207242748
     created: 1727207156067
-    url: "{{ _.baseUrl }}/calendar/name/something"
+    url: '{{ _.baseUrl }}/calendar/name/something'
     name: delete calendar
-    description: ""
+    description: ''
     method: DELETE
     body: {}
     parameters: []
@@ -818,9 +818,9 @@ resources:
     parentId: fld_254159e14e5e4316bed589c1349c306d
     modified: 1727205771286
     created: 1727205750072
-    url: "{{ _.baseUrl }}/calendar/all"
+    url: '{{ _.baseUrl }}/calendar/all'
     name: delete all calendar
-    description: ""
+    description: ''
     method: DELETE
     body: {}
     parameters: []
@@ -841,9 +841,9 @@ resources:
     parentId: fld_dc07e99b2ba34b7d85c6e2bf87f6c5a0
     modified: 1727450204925
     created: 1727450174823
-    url: "{{ _.baseUrl }}/schedule/all"
+    url: '{{ _.baseUrl }}/schedule/all'
     name: all schedule
-    description: ""
+    description: ''
     method: GET
     body: {}
     parameters: []
@@ -865,7 +865,7 @@ resources:
     modified: 1727450147435
     created: 1727450142800
     name: schedule
-    description: ""
+    description: ''
     environment: {}
     environmentPropertyOrder: null
     metaSortKey: -1727018931933.625
@@ -874,9 +874,9 @@ resources:
     parentId: fld_dc07e99b2ba34b7d85c6e2bf87f6c5a0
     modified: 1727450257192
     created: 1727450169975
-    url: "{{ _.baseUrl }}/schedule/name/diet"
+    url: '{{ _.baseUrl }}/schedule/name/diet'
     name: schedule by name
-    description: ""
+    description: ''
     method: GET
     body: {}
     parameters: []
@@ -897,9 +897,9 @@ resources:
     parentId: fld_dc07e99b2ba34b7d85c6e2bf87f6c5a0
     modified: 1727450285909
     created: 1727450168623
-    url: "{{ _.baseUrl }}/schedule/create"
+    url: '{{ _.baseUrl }}/schedule/create'
     name: create
-    description: ""
+    description: ''
     method: POST
     body:
       mimeType: application/json
@@ -927,9 +927,9 @@ resources:
     parentId: fld_dc07e99b2ba34b7d85c6e2bf87f6c5a0
     modified: 1727450323071
     created: 1727450167100
-    url: "{{ _.baseUrl }}/schedule/update/something"
+    url: '{{ _.baseUrl }}/schedule/update/something'
     name: update name
-    description: ""
+    description: ''
     method: PATCH
     body:
       mimeType: application/json
@@ -957,9 +957,9 @@ resources:
     parentId: fld_dc07e99b2ba34b7d85c6e2bf87f6c5a0
     modified: 1727451774890
     created: 1727450165479
-    url: "{{ _.baseUrl }}/schedule/modify/diet"
+    url: '{{ _.baseUrl }}/schedule/modify/diet'
     name: modify data
-    description: ""
+    description: ''
     method: PATCH
     body:
       mimeType: application/json
@@ -987,9 +987,9 @@ resources:
     parentId: fld_dc07e99b2ba34b7d85c6e2bf87f6c5a0
     modified: 1727451725525
     created: 1727450151523
-    url: "{{ _.baseUrl }}/schedule/clear/diet"
+    url: '{{ _.baseUrl }}/schedule/clear/diet'
     name: clear by name
-    description: ""
+    description: ''
     method: PATCH
     body: {}
     parameters: []
@@ -1010,9 +1010,9 @@ resources:
     parentId: fld_dc07e99b2ba34b7d85c6e2bf87f6c5a0
     modified: 1727451646858
     created: 1727450163499
-    url: "{{ _.baseUrl }}/schedule/delete/something1"
+    url: '{{ _.baseUrl }}/schedule/delete/something1'
     name: delete by name
-    description: ""
+    description: ''
     method: DELETE
     body: {}
     parameters: []
@@ -1033,9 +1033,9 @@ resources:
     parentId: fld_dc07e99b2ba34b7d85c6e2bf87f6c5a0
     modified: 1727451744052
     created: 1727451729197
-    url: "{{ _.baseUrl }}/schedule/all"
+    url: '{{ _.baseUrl }}/schedule/all'
     name: delete all
-    description: ""
+    description: ''
     method: DELETE
     body: {}
     parameters: []
@@ -1060,7 +1060,7 @@ resources:
     data:
       baseUrl: http://localhost:2222/api
     dataPropertyOrder:
-      "&":
+      '&':
         - baseUrl
     color: null
     isPrivate: false
@@ -1083,7 +1083,7 @@ resources:
         creation: 2024-09-22T16:44:23.346Z
         lastAccessed: 2024-09-27T15:04:34.546Z
         sameSite: lax
-        id: "18207361191043847"
+        id: '18207361191043847'
       - key: refresh_token
         value: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmYxYWY5NjJiMjUxNzg2MzlhZTE2OTciLCJmaXJzdE5hbWUiOiJ0ZXN0IiwibGFzdE5hbWUiOiJ0ZXN0YWR6ZSIsImVtYWlsIjoidGVzdGRldjIyQGdtYWlsLmNvbSIsInJvbGUiOiJkZWZhdWx0IiwiY3JlYXRlZEF0IjoiMjAyNC0wOS0yM1QxODoxMjozOC40MzRaIiwidXBkYXRlZEF0IjoiMjAyNC0wOS0yM1QxODoxMjozOC40MzRaIiwiaWF0IjoxNzI3NDQ5NDc0LCJleHAiOjE3MjgwNTQyNzR9.WdF_U_iASqFnUxg2okkYar6blS-8tWHG5fZZuIRXero
         expires: 2024-10-04T15:04:34.000Z
@@ -1095,5 +1095,5 @@ resources:
         creation: 2024-09-22T16:44:23.347Z
         lastAccessed: 2024-09-27T15:04:34.547Z
         sameSite: lax
-        id: "919163423136536"
+        id: '919163423136536'
     _type: cookie_jar

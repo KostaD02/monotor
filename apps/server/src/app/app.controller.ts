@@ -7,7 +7,7 @@ import {
   GlobalExceptionKeys,
   MetricsExceptionKeys,
   ScheduleExpceptionKeys,
-} from '@fitmonitor/interfaces';
+} from '@monotor/interfaces';
 import { ApiTags } from '@nestjs/swagger';
 
 @ApiTags('Base')
@@ -16,8 +16,8 @@ export class AppController {
   @Get()
   base() {
     return {
-      message: 'Welcome to FitMonitor API',
-      github: 'https://github.com/KostaD02/fitmonitor',
+      message: 'Welcome to MonoTor API',
+      github: 'https://github.com/KostaD02/monotor',
       swagger: `http://localhost:2222/api/swagger`,
     };
   }

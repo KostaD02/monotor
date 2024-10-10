@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { PassportStrategy } from '@nestjs/passport';
-import { ExceptionService } from '@fitmonitor/server-services';
-import { AuthExpectionKeys, ExceptionStatusKeys } from '@fitmonitor/interfaces';
+import { ExceptionService } from '@monotor/server-services';
+import { AuthExpectionKeys, ExceptionStatusKeys } from '@monotor/interfaces';
 
 import { Strategy } from 'passport-local';
 

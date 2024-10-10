@@ -7,18 +7,18 @@ import {
 
 import { catchError, NEVER, tap } from 'rxjs';
 
-import { UserLoginData, UserRegistrationData } from '@fitmonitor/interfaces';
-import { AuthService } from '@fitmonitor/data-access';
+import { UserLoginData, UserRegistrationData } from '@monotor/interfaces';
+import { AuthService } from '@monotor/data-access';
 
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { Router } from '@angular/router';
-import { FormComponent } from '@fitmonitor/shared/ui/form';
-import { LOGIN_FORM_DATA, REGISTER_FORM_DATA } from '@fitmonitor/consts';
+import { FormComponent } from '@monotor/shared/ui/form';
+import { LOGIN_FORM_DATA, REGISTER_FORM_DATA } from '@monotor/consts';
 
 @Component({
-  selector: 'fitmonitor-auth',
+  selector: 'monotor-auth',
   standalone: true,
   imports: [NzLayoutModule, NzTabsModule, FormComponent],
   templateUrl: './auth.component.html',

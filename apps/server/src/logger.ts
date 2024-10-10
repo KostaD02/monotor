@@ -1,5 +1,5 @@
 import { LoggerService, Injectable } from '@nestjs/common';
-import { Logger, LoggerSide } from '@fitmonitor/util';
+import { Logger, LoggerSide } from '@monotor/util';
 
 @Injectable()
 export class CustomLogger implements LoggerService {

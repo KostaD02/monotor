@@ -85,7 +85,7 @@
       "style": "less",
       "changeDetection": "OnPush",
       "standalone": true,
-      "prefix": "fitmonitor",
+      "prefix": "monotor",
       "simpleName": true,
       "strict": true,
       "flat": true

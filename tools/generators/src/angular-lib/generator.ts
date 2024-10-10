@@ -13,11 +13,11 @@ export async function angularLibGenerator(
     simpleName: true,
     standalone: true,
     commonModule: false,
-    prefix: 'fitmonitor',
+    prefix: 'monotor',
     style: 'less',
     changeDetection: 'OnPush',
     directory: `${projectRoot}/features`,
-    importPath: `@fitmonitor/${options.name}`,
+    importPath: `@monotor/${options.name}`,
     linter: 'eslint',
     unitTestRunner: UnitTestRunner.Jest,
     strict: true,
@@ -26,14 +26,14 @@ export async function angularLibGenerator(
   if (options.createBaseComponent) {
     await libraryGenerator(tree, {
       ...config,
-      importPath: `@fitmonitor/${options.name}/feature/base`,
+      importPath: `@monotor/${options.name}/feature/base`,
     });
   }
   if (options.createDataAccess) {
     await libraryGenerator(tree, {
       name: `data-access`,
       directory: projectRoot,
-      importPath: `@fitmonitor/${options.name}/data-access`,
+      importPath: `@monotor/${options.name}/data-access`,
     });
 
     const srcDataAccessPath = joinPathFragments(
@@ -65,9 +65,9 @@ export async function angularLibGenerator(
     skipTests: true,
     linter: 'eslint',
     strict: true,
-    prefix: 'fitmonitor',
+    prefix: 'monotor',
     directory: `${projectRoot}/features`,
-    importPath: `@fitmonitor/${options.name}/feature/shell`,
+    importPath: `@monotor/${options.name}/feature/shell`,
     unitTestRunner: UnitTestRunner.Jest,
     routing: true,
   });

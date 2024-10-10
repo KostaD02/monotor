@@ -12,11 +12,11 @@ import {
   UserPayload,
   UserRegistrationData,
   UserRole,
-} from '@fitmonitor/interfaces';
-import { API_URL, RETRY_AUTH_CHECK } from '@fitmonitor/consts';
-import { LocalStorageService } from '@fitmonitor/client-services';
+} from '@monotor/interfaces';
+import { API_URL, RETRY_AUTH_CHECK } from '@monotor/consts';
+import { LocalStorageService } from '@monotor/client-services';
 import { catchError, filter, NEVER, switchMap, tap, timer } from 'rxjs';
-import { Logger, LoggerSide } from '@fitmonitor/util';
+import { Logger, LoggerSide } from '@monotor/util';
 
 @Injectable()
 export class AuthService {

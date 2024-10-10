@@ -1,12 +1,12 @@
 import { Route } from '@angular/router';
-import { AuthGuards } from '@fitmonitor/data-access';
+import { AuthGuards } from '@monotor/data-access';
 
 export const SCHEDULE_ROUTES: Route[] = [
   {
     path: '',
     canActivate: [AuthGuards.canActivateAuthenticated],
     loadComponent: () =>
-      import('@fitmonitor/schedule/feature/base').then(
+      import('@monotor/schedule/feature/base').then(
         (m) => m.ScheduleBaseComponent,
       ),
   },

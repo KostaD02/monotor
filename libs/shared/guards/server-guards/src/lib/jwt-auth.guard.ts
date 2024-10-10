@@ -7,16 +7,16 @@ import {
   UserPayload,
   AuthExpectionKeys,
   ExceptionStatusKeys,
-} from '@fitmonitor/interfaces';
-import { User, UserDocument } from '@fitmonitor/schemas';
-import { ExceptionService } from '@fitmonitor/server-services';
+} from '@monotor/interfaces';
+import { User, UserDocument } from '@monotor/schemas';
+import { ExceptionService } from '@monotor/server-services';
 
 @Injectable()
 export class JwtGuard implements CanActivate {
   constructor(
     @InjectModel(User.name) private userModel: Model<UserDocument>,
     private jwtService: JwtService,
-    private exceptionService: ExceptionService
+    private exceptionService: ExceptionService,
   ) {}
 
   async canActivate(context: ExecutionContext): Promise<boolean> {
@@ -26,7 +26,7 @@ export class JwtGuard implements CanActivate {
       this.exceptionService.throwError(
         ExceptionStatusKeys.Unauthorized,
         'Token not found',
-        AuthExpectionKeys.TokenNotFound
+        AuthExpectionKeys.TokenNotFound,
       );
     }
     let decoded: UserPayload | null = null;
@@ -41,13 +41,13 @@ export class JwtGuard implements CanActivate {
         this.exceptionService.throwError(
           ExceptionStatusKeys.BadRequest,
           `Token expired, expired at: ${error.expiredAt}`,
-          AuthExpectionKeys.TokenExpired
+          AuthExpectionKeys.TokenExpired,
         );
       } else {
         this.exceptionService.throwError(
           ExceptionStatusKeys.BadRequest,
           'Invalid token',
-          AuthExpectionKeys.TokenInvalid
+          AuthExpectionKeys.TokenInvalid,
         );
       }
     }
@@ -56,7 +56,7 @@ export class JwtGuard implements CanActivate {
       this.exceptionService.throwError(
         ExceptionStatusKeys.NotFound,
         `Token contains incorrect user`,
-        AuthExpectionKeys.TokenContainsIncorrectUser
+        AuthExpectionKeys.TokenContainsIncorrectUser,
       );
       return false;
     }

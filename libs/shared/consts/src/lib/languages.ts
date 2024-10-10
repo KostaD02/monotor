@@ -1,4 +1,4 @@
-import { Langauge, LanguageLocals } from '@fitmonitor/interfaces';
+import { Langauge, LanguageLocals } from '@monotor/interfaces';
 
 export const LANGUAGES: Langauge[] = [
   {

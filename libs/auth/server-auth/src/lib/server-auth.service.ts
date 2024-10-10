@@ -5,19 +5,19 @@ import {
   UserRole,
   User as UserInterface,
   StorageKeys,
-} from '@fitmonitor/interfaces';
+} from '@monotor/interfaces';
 import {
   Calendar,
   Metrics,
   Schedule,
   User,
   UserDocument,
-} from '@fitmonitor/schemas';
+} from '@monotor/schemas';
 import {
   ExceptionService,
   EncryptionService,
   MongooseValidatorService,
-} from '@fitmonitor/server-services';
+} from '@monotor/server-services';
 import { Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { InjectModel } from '@nestjs/mongoose';
@@ -31,7 +31,7 @@ import {
   UpdateUserDto,
   UpdateUserPasswordDto,
 } from './dtos';
-import { Logger, LoggerSide } from '@fitmonitor/util';
+import { Logger, LoggerSide } from '@monotor/util';
 
 @Injectable()
 export class AuthService {

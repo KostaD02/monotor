@@ -1,6 +1,6 @@
 import { NestFactory } from '@nestjs/core';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
-import { Logger, LoggerSide } from '@fitmonitor/util';
+import { Logger, LoggerSide } from '@monotor/util';
 import { ValidationPipe } from '@nestjs/common';
 import cookieParser from 'cookie-parser';
 
@@ -30,7 +30,7 @@ async function bootstrap() {
     new ValidationPipe({
       transform: true,
       transformOptions: { enableImplicitConversion: true },
-    })
+    }),
   );
 
   app.use(cookieParser());
@@ -48,8 +48,8 @@ async function bootstrap() {
   const port = process.env.PORT || 2222;
 
   const config = new DocumentBuilder()
-    .setTitle('FitMonitor API')
-    .setDescription('The FitMonitor API description')
+    .setTitle('MonoTor API')
+    .setDescription('The MonoTor API description')
     .setVersion('1.0')
     .build();
 
@@ -58,7 +58,7 @@ async function bootstrap() {
   await app.listen(port);
   Logger.log(
     `🚀 Application is running on: http://localhost:${port}/api`,
-    LoggerSide.Server
+    LoggerSide.Server,
   );
 }
 

@@ -2,7 +2,7 @@
   "name": "settings-features-settings",
   "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/settings/features/settings/src",
-  "prefix": "fitmonitor",
+  "prefix": "monotor",
   "projectType": "library",
   "tags": [],
   "targets": {

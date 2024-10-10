@@ -1,5 +1,5 @@
 import { IsOptional, IsString } from 'class-validator';
-import { CalendarExceptionKeys } from '@fitmonitor/interfaces';
+import { CalendarExceptionKeys } from '@monotor/interfaces';
 import { ApiProperty } from '@nestjs/swagger';
 
 export class CalendarDataDto {

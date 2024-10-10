@@ -1,6 +1,6 @@
 import { IsString, MaxLength, MinLength } from 'class-validator';
-import { API_CONFIG } from '@fitmonitor/consts';
-import { AuthExpectionKeys } from '@fitmonitor/interfaces';
+import { API_CONFIG } from '@monotor/consts';
+import { AuthExpectionKeys } from '@monotor/interfaces';
 import { ApiProperty } from '@nestjs/swagger';
 
 export class UpdateUserPasswordDto {

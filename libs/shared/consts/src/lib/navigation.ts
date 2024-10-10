@@ -1,4 +1,4 @@
-import { Navigation } from '@fitmonitor/interfaces';
+import { Navigation } from '@monotor/interfaces';
 
 export const NAVIGATION: Navigation[] = [
   {

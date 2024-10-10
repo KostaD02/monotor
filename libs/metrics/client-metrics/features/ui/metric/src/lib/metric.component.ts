@@ -29,22 +29,22 @@ import {
   MetricsSingleData,
   MetricsSingleFormData,
   StorageKeys,
-} from '@fitmonitor/interfaces';
+} from '@monotor/interfaces';
 import {
   avarage,
   concatDateAndTime,
   convertToTime,
   findMode,
   isAllValueEmpty,
-} from '@fitmonitor/util';
-import { LocalStorageService } from '@fitmonitor/client-services';
-import { FormComponent } from '@fitmonitor/shared/ui/form';
+} from '@monotor/util';
+import { LocalStorageService } from '@monotor/client-services';
+import { FormComponent } from '@monotor/shared/ui/form';
 import {
   METRIC_EDIT_FORM_DATA,
   METRIC_ITEM_UPDATE_FORM_DATA,
   METRICS_ITEM_FORM_DATA,
-} from '@fitmonitor/consts';
-import { MetricsService } from '@fitmonitor/client-metrics/data-access';
+} from '@monotor/consts';
+import { MetricsService } from '@monotor/client-metrics/data-access';
 
 import { NzCardModule } from 'ng-zorro-antd/card';
 import { NzAlertComponent } from 'ng-zorro-antd/alert';
@@ -57,7 +57,7 @@ import { NzModalModule, NzModalService } from 'ng-zorro-antd/modal';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
 
 @Component({
-  selector: 'fitmonitor-metric',
+  selector: 'monotor-metric',
   standalone: true,
   imports: [
     NzAlertComponent,

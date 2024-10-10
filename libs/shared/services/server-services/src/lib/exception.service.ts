@@ -1,12 +1,12 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
-import { ExceptionStatusKeys } from '@fitmonitor/interfaces';
+import { ExceptionStatusKeys } from '@monotor/interfaces';
 
 @Injectable()
 export class ExceptionService {
   public throwError(
     exception: ExceptionStatusKeys,
     message: string,
-    errorKey?: string | string[]
+    errorKey?: string | string[],
   ) {
     const status = this.getStatusCode(exception);
     const httpExceptionObject: {

@@ -12,12 +12,12 @@ import {
   CALENDAR_FORM_INPUT,
   CREATE_ACTION_BUTTON,
   DELETE_ALL_ACTION_BUTTON,
-} from '@fitmonitor/consts';
-import { CalendarComponent } from '@fitmonitor/calendar/client-calendar/features/ui/calendar';
-import { CalendarService } from '@fitmonitor/client-calendar/data-access';
-import { FormComponent } from '@fitmonitor/shared/ui/form';
-import { ActionTypes, Action, CalendarForm } from '@fitmonitor/interfaces';
-import { Logger, LoggerSide } from '@fitmonitor/util';
+} from '@monotor/consts';
+import { CalendarComponent } from '@monotor/calendar/client-calendar/features/ui/calendar';
+import { CalendarService } from '@monotor/client-calendar/data-access';
+import { FormComponent } from '@monotor/shared/ui/form';
+import { ActionTypes, Action, CalendarForm } from '@monotor/interfaces';
+import { Logger, LoggerSide } from '@monotor/util';
 
 import { NzModalModule, NzModalService } from 'ng-zorro-antd/modal';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
@@ -26,7 +26,7 @@ import { NzEmptyModule } from 'ng-zorro-antd/empty';
 import { NzLayoutComponent } from 'ng-zorro-antd/layout';
 
 @Component({
-  selector: 'fitmonitor-client-calendar',
+  selector: 'monotor-client-calendar',
   standalone: true,
   imports: [
     NzLayoutComponent,

@@ -11,11 +11,11 @@ import {
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { MetricsService } from './server-metrics.service';
-import { UserPayload } from '@fitmonitor/interfaces';
-import { JwtGuard } from '@fitmonitor/server-guards';
-import { CurrentUserInterceptor } from '@fitmonitor/server-interceptors';
-import { CurrentUser } from '@fitmonitor/server-decorators';
-import { MongooseValidatorService } from '@fitmonitor/server-services';
+import { UserPayload } from '@monotor/interfaces';
+import { JwtGuard } from '@monotor/server-guards';
+import { CurrentUserInterceptor } from '@monotor/server-interceptors';
+import { CurrentUser } from '@monotor/server-decorators';
+import { MongooseValidatorService } from '@monotor/server-services';
 import {
   MetricsDataDto,
   MetricsDeleteDto,

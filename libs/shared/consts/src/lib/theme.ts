@@ -1,4 +1,4 @@
-import { ThemeItem, ThemeOptions } from '@fitmonitor/interfaces';
+import { ThemeItem, ThemeOptions } from '@monotor/interfaces';
 
 export const THEME_ITEMS: ThemeItem[] = [
   {

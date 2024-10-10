@@ -1,7 +1,7 @@
 import { IsString, MinLength, MaxLength, IsOptional } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
-import { API_CONFIG } from '@fitmonitor/consts';
-import { AuthExpectionKeys } from '@fitmonitor/interfaces';
+import { API_CONFIG } from '@monotor/consts';
+import { AuthExpectionKeys } from '@monotor/interfaces';
 
 export class UpdateUserDto {
   @IsOptional()

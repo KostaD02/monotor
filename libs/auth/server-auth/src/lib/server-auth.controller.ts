@@ -22,13 +22,13 @@ import {
 import { LocalAuthGuard, RefreshJwtGuard } from './guards';
 import { Response } from 'express';
 
-import { JwtGuard } from '@fitmonitor/server-guards';
-import { CurrentUserInterceptor } from '@fitmonitor/server-interceptors';
-import { CurrentUser, Roles } from '@fitmonitor/server-decorators';
+import { JwtGuard } from '@monotor/server-guards';
+import { CurrentUserInterceptor } from '@monotor/server-interceptors';
+import { CurrentUser, Roles } from '@monotor/server-decorators';
 
-import { UserPayload, UserRole } from '@fitmonitor/interfaces';
+import { UserPayload, UserRole } from '@monotor/interfaces';
 import { ApiTags } from '@nestjs/swagger';
-import { MongooseValidatorService } from '@fitmonitor/server-services';
+import { MongooseValidatorService } from '@monotor/server-services';
 
 @ApiTags('Auth')
 @Controller('auth')

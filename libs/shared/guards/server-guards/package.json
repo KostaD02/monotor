@@ -1,5 +1,5 @@
 {
-  "name": "@fitmonitor/server-guards",
+  "name": "@monotor/server-guards",
   "version": "0.0.1",
   "dependencies": {},
   "type": "commonjs",

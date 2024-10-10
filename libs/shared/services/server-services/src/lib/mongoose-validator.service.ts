@@ -1,9 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { ExceptionService } from './exception.service';
-import {
-  ExceptionStatusKeys,
-  GlobalExceptionKeys,
-} from '@fitmonitor/interfaces';
+import { ExceptionStatusKeys, GlobalExceptionKeys } from '@monotor/interfaces';
 import mongoose from 'mongoose';
 
 @Injectable()
@@ -22,7 +19,7 @@ export class MongooseValidatorService {
     this.exceptionService.throwError(
       ExceptionStatusKeys.BadRequest,
       'Ivalid mongoose object id',
-      GlobalExceptionKeys.IncorrectMongooseID
+      GlobalExceptionKeys.IncorrectMongooseID,
     );
   }
 }

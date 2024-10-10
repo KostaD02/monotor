@@ -5,7 +5,7 @@ import {
   EncryptionService,
   ExceptionService,
   MongooseValidatorService,
-} from '@fitmonitor/server-services';
+} from '@monotor/server-services';
 import { MongooseModule } from '@nestjs/mongoose';
 import {
   Calendar,
@@ -14,7 +14,7 @@ import {
   CalendarSchema,
   User,
   UserSchema,
-} from '@fitmonitor/schemas';
+} from '@monotor/schemas';
 import { CalendarService } from './server-calendar.service';
 import { CalendarController } from './server-calendar.controller';
 

@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import mongoose, { Model } from 'mongoose';
-import { ExceptionService } from '@fitmonitor/server-services';
+import { ExceptionService } from '@monotor/server-services';
 import {
   Metrics,
   MetricsData,
@@ -8,7 +8,7 @@ import {
   MetricsDocument,
   User,
   UserDocument,
-} from '@fitmonitor/schemas';
+} from '@monotor/schemas';
 import { InjectModel } from '@nestjs/mongoose';
 import {
   MetricsDataDto,
@@ -23,7 +23,7 @@ import {
   GlobalExceptionKeys,
   MetricsExceptionKeys,
   UserPayload,
-} from '@fitmonitor/interfaces';
+} from '@monotor/interfaces';
 
 @Injectable()
 export class MetricsService {

@@ -1,4 +1,4 @@
-import { FormItem } from '@fitmonitor/interfaces';
+import { FormItem } from '@monotor/interfaces';
 
 export const DATE_FORM_INPUT: FormItem = {
   name: 'date',

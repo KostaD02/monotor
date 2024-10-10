@@ -1,7 +1,7 @@
-import { Time } from '@fitmonitor/interfaces';
-import { TIME_REGEX } from '@fitmonitor/consts';
+import { Time } from '@monotor/interfaces';
+import { TIME_REGEX } from '@monotor/consts';
 
-export function isValidTime(time: string) {
+export function isValidTime(time: string): boolean {
   // ? Format should be HH:MM
   return TIME_REGEX.test(time);
 }
@@ -25,7 +25,7 @@ export function convertToTime(time: string): Time {
   return `${hours}:${minutes}`;
 }
 
-export function concatDateAndTime(date: string, time: string) {
+export function concatDateAndTime(date: string, time: string): string {
   let concatedDate = new Date().toISOString();
 
   if (date && time) {
@@ -39,4 +39,8 @@ export function concatDateAndTime(date: string, time: string) {
   }
 
   return concatedDate;
+}
+
+export function resetTime(date: Date): Date {
+  return new Date(date.getFullYear(), date.getMonth(), date.getDate());
 }

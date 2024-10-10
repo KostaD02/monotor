@@ -2,7 +2,7 @@
   "name": "auth-client-auth-features-auth",
   "$schema": "../../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/auth/client-auth/features/auth/src",
-  "prefix": "fitmonitor",
+  "prefix": "monotor",
   "projectType": "library",
   "tags": [],
   "targets": {

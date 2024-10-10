@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { FormBuilder, ValidatorFn, Validators } from '@angular/forms';
-import { FormItem } from '@fitmonitor/interfaces';
+import { FormItem } from '@monotor/interfaces';
 
 @Injectable({
   providedIn: 'root',

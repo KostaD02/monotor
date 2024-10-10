@@ -1,4 +1,4 @@
-import { FormItem } from '@fitmonitor/interfaces';
+import { FormItem } from '@monotor/interfaces';
 
 import { API_CONFIG } from './api';
 import { DATE_FORM_INPUT, TIME_FORM_INPUT } from './form';

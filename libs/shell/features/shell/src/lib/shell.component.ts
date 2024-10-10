@@ -17,16 +17,16 @@ import { DOCUMENT, ViewportScroller } from '@angular/common';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { filter, fromEvent, map, startWith } from 'rxjs';
 
-import { ThemeService } from '@fitmonitor/client-services';
-import { AuthService } from '@fitmonitor/data-access';
-import { Navigation, ThemeOptions, UserRole } from '@fitmonitor/interfaces';
-import { NAVIGATION } from '@fitmonitor/providers';
+import { ThemeService } from '@monotor/client-services';
+import { AuthService } from '@monotor/data-access';
+import { Navigation, ThemeOptions, UserRole } from '@monotor/interfaces';
+import { NAVIGATION } from '@monotor/providers';
 import {
   BURGER_MENU_BREAKPOINT,
   HIDE_ICONS_BREAKPOINT,
   LANGUAGES,
   THEME_ITEMS,
-} from '@fitmonitor/consts';
+} from '@monotor/consts';
 
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzIconModule } from 'ng-zorro-antd/icon';
@@ -36,7 +36,7 @@ import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
 
 @Component({
-  selector: 'fitmonitor-shell',
+  selector: 'monotor-shell',
   standalone: true,
   imports: [
     RouterOutlet,

@@ -1,6 +1,6 @@
 import { IsString, IsNumber, IsPositive } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
-import { MetricsExceptionKeys } from '@fitmonitor/interfaces';
+import { MetricsExceptionKeys } from '@monotor/interfaces';
 
 export class MetricsDataDto {
   @ApiProperty({

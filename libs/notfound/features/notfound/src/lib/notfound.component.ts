@@ -6,7 +6,7 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzResultModule } from 'ng-zorro-antd/result';
 
 @Component({
-  selector: 'fitmonitor-notfound',
+  selector: 'monotor-notfound',
   standalone: true,
   imports: [RouterLink, NzResultModule, NzButtonModule, NzLayoutModule],
   templateUrl: './notfound.component.html',

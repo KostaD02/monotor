@@ -15,117 +15,111 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@fitmonitor/admin/data-access": ["libs/admin/data-access/src/index.ts"],
-      "@fitmonitor/admin/feature/base": [
-        "libs/admin/features/admin/src/index.ts"
-      ],
-      "@fitmonitor/admin/feature/shell": [
+      "@monotor/admin/data-access": ["libs/admin/data-access/src/index.ts"],
+      "@monotor/admin/feature/base": ["libs/admin/features/admin/src/index.ts"],
+      "@monotor/admin/feature/shell": [
         "libs/admin/features/shell/src/index.ts"
       ],
-      "@fitmonitor/auth/client-auth/features/auth": [
+      "@monotor/auth/client-auth/features/auth": [
         "libs/auth/client-auth/features/auth/src/index.ts"
       ],
-      "@fitmonitor/calendar/client-calendar/features/ui/calendar": [
+      "@monotor/calendar/client-calendar/features/ui/calendar": [
         "libs/calendar/client-calendar/features/ui/calendar/src/index.ts"
       ],
-      "@fitmonitor/client-auth/feature/shell": [
+      "@monotor/client-auth/feature/shell": [
         "libs/auth/client-auth/features/shell/src/index.ts"
       ],
-      "@fitmonitor/client-calendar/data-access": [
+      "@monotor/client-calendar/data-access": [
         "libs/calendar/client-calendar/data-access/src/index.ts"
       ],
-      "@fitmonitor/client-calendar/feature/base": [
+      "@monotor/client-calendar/feature/base": [
         "libs/calendar/client-calendar/features/client-calendar/src/index.ts"
       ],
-      "@fitmonitor/client-calendar/feature/shell": [
+      "@monotor/client-calendar/feature/shell": [
         "libs/calendar/client-calendar/features/shell/src/index.ts"
       ],
-      "@fitmonitor/client-interceptors": [
+      "@monotor/client-interceptors": [
         "libs/shared/interceptors/client-interceptors/src/index.ts"
       ],
-      "@fitmonitor/client-metrics/data-access": [
+      "@monotor/client-metrics/data-access": [
         "libs/metrics/client-metrics/data-access/src/index.ts"
       ],
-      "@fitmonitor/client-metrics/feature/base": [
+      "@monotor/client-metrics/feature/base": [
         "libs/metrics/client-metrics/features/client-metrics/src/index.ts"
       ],
-      "@fitmonitor/client-metrics/feature/shell": [
+      "@monotor/client-metrics/feature/shell": [
         "libs/metrics/client-metrics/features/shell/src/index.ts"
       ],
-      "@fitmonitor/client-services": [
+      "@monotor/client-services": [
         "libs/shared/services/client-services/src/index.ts"
       ],
-      "@fitmonitor/consts": ["libs/shared/consts/src/index.ts"],
-      "@fitmonitor/data-access": [
+      "@monotor/consts": ["libs/shared/consts/src/index.ts"],
+      "@monotor/data-access": [
         "libs/auth/client-auth/data-access/src/index.ts"
       ],
-      "@fitmonitor/generators": ["tools/generators/src/index.ts"],
-      "@fitmonitor/home/data-access": ["libs/home/data-access/src/index.ts"],
-      "@fitmonitor/home/feature/base": ["libs/home/features/home/src/index.ts"],
-      "@fitmonitor/home/feature/shell": [
-        "libs/home/features/shell/src/index.ts"
-      ],
-      "@fitmonitor/interfaces": ["libs/shared/interfaces/src/index.ts"],
-      "@fitmonitor/metrics/client-metrics/features/ui/metric": [
+      "@monotor/generators": ["tools/generators/src/index.ts"],
+      "@monotor/home/data-access": ["libs/home/data-access/src/index.ts"],
+      "@monotor/home/feature/base": ["libs/home/features/home/src/index.ts"],
+      "@monotor/home/feature/shell": ["libs/home/features/shell/src/index.ts"],
+      "@monotor/interfaces": ["libs/shared/interfaces/src/index.ts"],
+      "@monotor/metrics/client-metrics/features/ui/metric": [
         "libs/metrics/client-metrics/features/ui/metric/src/index.ts"
       ],
-      "@fitmonitor/notfound/feature/base": [
+      "@monotor/notfound/feature/base": [
         "libs/notfound/features/notfound/src/index.ts"
       ],
-      "@fitmonitor/notfound/feature/shell": [
+      "@monotor/notfound/feature/shell": [
         "libs/notfound/features/shell/src/index.ts"
       ],
-      "@fitmonitor/providers": ["libs/shared/providers/src/index.ts"],
-      "@fitmonitor/schedule/client-schedule/features/ui/schedule": [
+      "@monotor/providers": ["libs/shared/providers/src/index.ts"],
+      "@monotor/schedule/client-schedule/features/ui/schedule": [
         "libs/schedule/client-schedule/features/ui/schedule/src/index.ts"
       ],
-      "@fitmonitor/schedule/data-access": [
+      "@monotor/schedule/data-access": [
         "libs/schedule/client-schedule/data-access/src/index.ts"
       ],
-      "@fitmonitor/schedule/feature/base": [
+      "@monotor/schedule/feature/base": [
         "libs/schedule/client-schedule/features/schedule/src/index.ts"
       ],
-      "@fitmonitor/schedule/feature/shell": [
+      "@monotor/schedule/feature/shell": [
         "libs/schedule/client-schedule/features/shell/src/index.ts"
       ],
-      "@fitmonitor/schemas": ["libs/shared/schemas/src/index.ts"],
-      "@fitmonitor/server-auth": ["libs/auth/server-auth/src/index.ts"],
-      "@fitmonitor/server-calendar": [
+      "@monotor/schemas": ["libs/shared/schemas/src/index.ts"],
+      "@monotor/server-auth": ["libs/auth/server-auth/src/index.ts"],
+      "@monotor/server-calendar": [
         "libs/calendar/server-calendar/src/index.ts"
       ],
-      "@fitmonitor/server-decorators": [
+      "@monotor/server-decorators": [
         "libs/shared/decorators/server-decorators/src/index.ts"
       ],
-      "@fitmonitor/server-guards": [
+      "@monotor/server-guards": [
         "libs/shared/guards/server-guards/src/index.ts"
       ],
-      "@fitmonitor/server-interceptors": [
+      "@monotor/server-interceptors": [
         "libs/shared/interceptors/server-interceptors/src/index.ts"
       ],
-      "@fitmonitor/server-metrics": [
-        "libs/metrics/server-metrics/src/index.ts"
-      ],
-      "@fitmonitor/server-schedule": [
+      "@monotor/server-metrics": ["libs/metrics/server-metrics/src/index.ts"],
+      "@monotor/server-schedule": [
         "libs/schedule/server-schedule/src/index.ts"
       ],
-      "@fitmonitor/server-services": [
+      "@monotor/server-services": [
         "libs/shared/services/server-services/src/index.ts"
       ],
-      "@fitmonitor/settings/data-access": [
+      "@monotor/settings/data-access": [
         "libs/settings/data-access/src/index.ts"
       ],
-      "@fitmonitor/settings/feature/base": [
+      "@monotor/settings/feature/base": [
         "libs/settings/features/settings/src/index.ts"
       ],
-      "@fitmonitor/settings/feature/shell": [
+      "@monotor/settings/feature/shell": [
         "libs/settings/features/shell/src/index.ts"
       ],
-      "@fitmonitor/shared/ui/form": ["libs/shared/ui/form/src/index.ts"],
-      "@fitmonitor/shell/data-access": ["libs/shell/data-access/src/index.ts"],
-      "@fitmonitor/shell/feature/shell": [
+      "@monotor/shared/ui/form": ["libs/shared/ui/form/src/index.ts"],
+      "@monotor/shell/data-access": ["libs/shell/data-access/src/index.ts"],
+      "@monotor/shell/feature/shell": [
         "libs/shell/features/shell/src/index.ts"
       ],
-      "@fitmonitor/util": ["libs/shared/util/src/index.ts"]
+      "@monotor/util": ["libs/shared/util/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

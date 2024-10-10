@@ -12,15 +12,15 @@ import {
 } from '@angular/core';
 import { DatePipe } from '@angular/common';
 
-import { LocalStorageService } from '@fitmonitor/client-services';
+import { LocalStorageService } from '@monotor/client-services';
 import {
   Schedule,
   ScheduleCreatePayload,
   ScheduleDuplicatePayload,
   ScheduleUpdatePayload,
   Week,
-} from '@fitmonitor/interfaces';
-import { ScheduleService } from '@fitmonitor/schedule/data-access';
+} from '@monotor/interfaces';
+import { ScheduleService } from '@monotor/schedule/data-access';
 
 import { NzAlertModule } from 'ng-zorro-antd/alert';
 import { NzButtonModule } from 'ng-zorro-antd/button';
@@ -35,13 +35,13 @@ import {
   EDIT_SCHEDULE_DAWTA_FORM_INPUT,
   SCHEDULE_FORM_INPUT,
   WEEK_DAYS,
-} from '@fitmonitor/consts';
-import { toCapitalisedCase } from '@fitmonitor/util';
-import { FormComponent } from '@fitmonitor/shared/ui/form';
+} from '@monotor/consts';
+import { toCapitalisedCase } from '@monotor/util';
+import { FormComponent } from '@monotor/shared/ui/form';
 import { tap } from 'rxjs';
 
 @Component({
-  selector: 'fitmonitor-schedule',
+  selector: 'monotor-schedule',
   standalone: true,
   imports: [
     NzAlertModule,

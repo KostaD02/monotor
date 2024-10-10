@@ -2,7 +2,7 @@
   "name": "metrics-client-metrics-features-shell",
   "$schema": "../../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/metrics/client-metrics/features/shell/src",
-  "prefix": "fitmonitor",
+  "prefix": "monotor",
   "projectType": "library",
   "tags": [],
   "targets": {

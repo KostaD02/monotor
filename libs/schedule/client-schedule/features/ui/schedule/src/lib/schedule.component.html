@@ -117,7 +117,7 @@
     (nzOnCancel)="showAddItemModal.set(false)"
   >
     <ng-container *nzModalContent>
-      <fitmonitor-form
+      <monotor-form
         [showSpaceAlert]="false"
         [formItems]="addItemScheduleFormData"
         (formSubmit)="addScheduleItem($event); showAddItemModal.set(false)"
@@ -132,7 +132,7 @@
         >
         </nz-alert>
         <span button-text>Create</span>
-      </fitmonitor-form>
+      </monotor-form>
     </ng-container>
   </nz-modal>
 }
@@ -145,13 +145,13 @@
     (nzOnCancel)="showEditItemModal.set(false)"
   >
     <ng-container *nzModalContent>
-      <fitmonitor-form
+      <monotor-form
         [showSpaceAlert]="false"
         [formItems]="editItemScheduleFormData"
         (formSubmit)="handleEditItem($event); showEditItemModal.set(false)"
       >
         <span button-text>Edit</span>
-      </fitmonitor-form>
+      </monotor-form>
     </ng-container>
   </nz-modal>
 }
@@ -164,14 +164,14 @@
     (nzOnCancel)="showUpdateScheduleModal.set(false)"
   >
     <ng-container *nzModalContent>
-      <fitmonitor-form
+      <monotor-form
         [formItems]="updateItemScheduleFormData"
         (formSubmit)="
           updateSchedule($event); showUpdateScheduleModal.set(false)
         "
       >
         <span button-text>Update</span>
-      </fitmonitor-form>
+      </monotor-form>
     </ng-container>
   </nz-modal>
 }

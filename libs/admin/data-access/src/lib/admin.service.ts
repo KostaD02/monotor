@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { API_URL } from '@fitmonitor/consts';
-import { AuthService } from '@fitmonitor/data-access';
-import { DeleteResposneSingleItem, User } from '@fitmonitor/interfaces';
+import { API_URL } from '@monotor/consts';
+import { AuthService } from '@monotor/data-access';
+import { DeleteResposneSingleItem, User } from '@monotor/interfaces';
 
 @Injectable()
 export class AdminService {

@@ -1,3 +1,3 @@
-# Tools for FitMonitor
+# Tools for MonoTor
 
 ## TODO: FILL

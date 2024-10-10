@@ -16,14 +16,14 @@ import { FormsModule } from '@angular/forms';
 
 import { tap } from 'rxjs';
 
-import { CalendarService } from '@fitmonitor/client-calendar/data-access';
+import { CalendarService } from '@monotor/client-calendar/data-access';
 import {
   Calendar,
   CalendarData,
   CalendarDataForm,
   CalendarForm,
-} from '@fitmonitor/interfaces';
-import { isAllValueEmpty, toCapitalisedCase } from '@fitmonitor/util';
+} from '@monotor/interfaces';
+import { isAllValueEmpty, resetTime, toCapitalisedCase } from '@monotor/util';
 
 import { NzAlertModule } from 'ng-zorro-antd/alert';
 import { NzButtonModule } from 'ng-zorro-antd/button';
@@ -34,14 +34,11 @@ import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
 import { NzModalModule, NzModalService } from 'ng-zorro-antd/modal';
-import {
-  CALENDAR_DATA_FORM_INPUT,
-  CALENDAR_FORM_INPUT,
-} from '@fitmonitor/consts';
-import { FormComponent } from '@fitmonitor/shared/ui/form';
+import { CALENDAR_DATA_FORM_INPUT, CALENDAR_FORM_INPUT } from '@monotor/consts';
+import { FormComponent } from '@monotor/shared/ui/form';
 
 @Component({
-  selector: 'fitmonitor-calendar',
+  selector: 'monotor-calendar',
   standalone: true,
   imports: [
     NzCardModule,
@@ -116,7 +113,7 @@ export class CalendarComponent implements OnChanges {
     const data = this.calendar.data as unknown as Record<string, string>;
     const result = data[dayOfWeek];
 
-    const isOlderDate = date < new Date();
+    const isOlderDate = resetTime(date) < resetTime(new Date());
 
     this.selectedDateTitle.set(
       `On selected date (${date.toLocaleDateString()}), you ${isOlderDate ? 'had' : 'have'}: "<b>${result || 'Nothing'}</b>"`,

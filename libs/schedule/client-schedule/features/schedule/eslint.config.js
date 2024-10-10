@@ -12,7 +12,7 @@ module.exports = [
         'error',
         {
           type: 'attribute',
-          prefix: 'fitmonitor',
+          prefix: 'monotor',
           style: 'camelCase',
         },
       ],
@@ -20,7 +20,7 @@ module.exports = [
         'error',
         {
           type: 'element',
-          prefix: 'fitmonitor',
+          prefix: 'monotor',
           style: 'kebab-case',
         },
       ],

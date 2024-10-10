@@ -1,5 +1,5 @@
 import { inject, Injectable } from '@angular/core';
-import { StorageKeys, Theme, ThemeOptions } from '@fitmonitor/interfaces';
+import { StorageKeys, Theme, ThemeOptions } from '@monotor/interfaces';
 import { LocalStorageService } from './storage.service';
 import { DOCUMENT } from '@angular/common';
 import {
@@ -36,7 +36,7 @@ export class ThemeService {
 
         default: {
           const query = this.document.defaultView?.matchMedia(
-            '(prefers-color-scheme: dark)'
+            '(prefers-color-scheme: dark)',
           );
           if (!query) {
             return of(Theme.Light);
@@ -46,16 +46,16 @@ export class ThemeService {
             map((query) => {
               const matches = (query as MediaQueryList).matches;
               return matches ? Theme.Dark : Theme.Light;
-            })
+            }),
           );
         }
       }
-    })
+    }),
   );
 
   init() {
     const prevTheme = this.localStorageService.getItem(
-      StorageKeys.Theme
+      StorageKeys.Theme,
     ) as ThemeOptions | null;
     if (prevTheme) {
       this.#selectedMode$.next(prevTheme);
@@ -63,7 +63,7 @@ export class ThemeService {
     return this.theme$.pipe(
       tap((theme) => {
         this.applyThemeToDoc(theme);
-      })
+      }),
     );
   }
 

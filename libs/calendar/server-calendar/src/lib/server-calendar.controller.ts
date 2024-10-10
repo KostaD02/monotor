@@ -11,10 +11,10 @@ import {
   UseGuards,
   UseInterceptors,
 } from '@nestjs/common';
-import { UserPayload } from '@fitmonitor/interfaces';
-import { CurrentUser } from '@fitmonitor/server-decorators';
-import { JwtGuard } from '@fitmonitor/server-guards';
-import { CurrentUserInterceptor } from '@fitmonitor/server-interceptors';
+import { UserPayload } from '@monotor/interfaces';
+import { CurrentUser } from '@monotor/server-decorators';
+import { JwtGuard } from '@monotor/server-guards';
+import { CurrentUserInterceptor } from '@monotor/server-interceptors';
 import { CalendarDataDto, CalendarDto } from './dtos';
 
 @ApiTags('Calendar')

@@ -5,19 +5,19 @@
       (nzSelectedIndexChange)="currentTabIndex.set($event)"
     >
       <nz-tab nzTitle="Firstname & Lastname">
-        <fitmonitor-form
+        <monotor-form
           [formItems]="namesFormItems"
           [showSpaceAlert]="false"
           (formSubmit)="handleNamesUpdate($event)"
         >
-        </fitmonitor-form>
+        </monotor-form>
       </nz-tab>
       <nz-tab nzTitle="Password">
-        <fitmonitor-form
+        <monotor-form
           [formItems]="updateFormItems"
           [showSpaceAlert]="false"
           (formSubmit)="handlePasswordUpdate($event)"
-        ></fitmonitor-form>
+        ></monotor-form>
       </nz-tab>
       <nz-tab nzTitle="General">
         <div class="flex-center start gap-3">

@@ -132,12 +132,12 @@
     (nzOnCancel)="showEditCalendarName.set(false)"
   >
     <ng-container *nzModalContent>
-      <fitmonitor-form
+      <monotor-form
         [formItems]="calendarFormItems"
         (formSubmit)="
           handleEditCalendar($event); showEditCalendarName.set(false)
         "
-      ></fitmonitor-form>
+      ></monotor-form>
     </ng-container>
   </nz-modal>
 }
@@ -150,13 +150,13 @@
     (nzOnCancel)="showWeekEdit.set('')"
   >
     <ng-container *nzModalContent>
-      <fitmonitor-form
+      <monotor-form
         [canBeEmpty]="true"
         [formItems]="calendarFormDataItems"
         (formSubmit)="
           handleEditCalendarData($event, showWeekEdit()); showWeekEdit.set('')
         "
-      ></fitmonitor-form>
+      ></monotor-form>
     </ng-container>
   </nz-modal>
 }

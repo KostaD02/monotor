@@ -1,5 +1,5 @@
 import { IsEmail, IsString } from 'class-validator';
-import { AuthExpectionKeys } from '@fitmonitor/interfaces';
+import { AuthExpectionKeys } from '@monotor/interfaces';
 import { ApiProperty } from '@nestjs/swagger';
 
 export class SignInDto {

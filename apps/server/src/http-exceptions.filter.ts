@@ -1,5 +1,5 @@
-import { ExceptionStatusKeys } from '@fitmonitor/interfaces';
-import { Logger, LoggerSide } from '@fitmonitor/util';
+import { ExceptionStatusKeys } from '@monotor/interfaces';
+import { Logger, LoggerSide } from '@monotor/util';
 import {
   Catch,
   HttpException,
@@ -58,7 +58,7 @@ export class HttpExceptionsFilter implements ExceptionFilter {
       statusCode: status,
       timestamp: new Date().toISOString(),
       path: request.url,
-      help: 'if you think this error should not happen, please create new issue at: https://github.com/KostaD02/fitmonitor/issues',
+      help: 'if you think this error should not happen, please create new issue at: https://github.com/KostaD02/monotor/issues',
     });
   }
 }
