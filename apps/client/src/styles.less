@@ -1,4 +1,3 @@
-@import '../../../node_modules/ng-zorro-antd/ng-zorro-antd.less';
 @import './variables.less';
 
 * {
@@ -11,7 +10,7 @@ html {
   scroll-behavior: smooth;
 
   .ant-layout {
-    background-color: @body-background;
+    background-color: var(--body-background);
   }
 
   .ant-menu {
@@ -38,25 +37,24 @@ html {
 
   header {
     .is-open {
-      background-color: @body-background;
+      background-color: var(--body-background);
     }
   }
 
   &.dark {
-    // TODO: Something not right, fix it
-
+    /*
+      Ng-Zorro Dark Theme is bugged if you try to apply white and dark less files at the same time.
+      Because of that had to import here and white theme at: apps\client\project.json
+    */
+    @import '../../../node_modules/ng-zorro-antd/ng-zorro-antd.dark.less';
     @import './dark.less';
 
     .ant-layout {
       background-color: @body-background;
     }
 
-    .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item-selected::after {
-      border-bottom: none;
-    }
-
-    .ant-menu-horizontal > .ant-menu-item a {
-      color: #ffffffd9;
+    .ant-alert-description {
+      display: block;
     }
 
     header {
@@ -86,16 +84,26 @@ html {
       }
     }
 
+    .ant-select:not(.ant-select-customize-input) .ant-select-selector {
+      background-color: @primary-1;
+    }
+
     .ant-tree .ant-tree-node-content-wrapper.ant-tree-node-selected {
       background-color: @primary-2;
     }
   }
 }
 
+body {
+  color: var(--text-color);
+  fill: var(--text-color);
+  background-color: var(--body-background);
+}
+
 nz-layout.inner {
   width: 100%;
   max-width: 100%;
-  min-height: calc(100vh - 66px);
+  min-height: calc(100vh - 66px) !important;
 }
 
 nz-content.inner-content {

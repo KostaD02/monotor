@@ -29,7 +29,10 @@
             "output": "assets"
           }
         ],
-        "styles": ["apps/client/src/styles.less"],
+        "styles": [
+          "node_modules/ng-zorro-antd/ng-zorro-antd.min.css",
+          "apps/client/src/styles.less"
+        ],
         "scripts": []
       },
       "configurations": {
