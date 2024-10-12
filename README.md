@@ -62,6 +62,21 @@ TODO: add
 Just open the browser and type `ip:port` of the machine running MonoTor.
 First user who registers will be admin role.
 
+### Force admin
+
+If you forget password for admin user, you can force server to give you admin permission if it was enabled in `.env` configuration.
+
+Open webiste create new user (this time remember password 🤷‍♂️) and write following code:
+
+```js
+sessionStorage.IDDQD = true;
+```
+
+After writing this code refresh website and your new user will have admin permission. From new user you can set new password on old user.
+
+> [!NOTE]
+> If you understand what **IDDQD** means, give the repository a star 😁!
+
 ## Screenshots
 
 Check more images inside the [screenshots](https://github.com/KostaD02/monotor/tree/main/screenshots).
