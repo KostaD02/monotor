@@ -113,8 +113,8 @@ Check more details at [contributing page](https://github.com/KostaD02/monotor/bl
 
 Here are a few ideas that will be implemented in the future. You can also open an issue for any of these ideas.
 
-[ ] Backup support
-[ ] i18n - translations
-[ ] Notifications
-[ ] Write unit tests
-[ ] Extract folder structure
+- Backup support
+- i18n - translations
+- Notifications
+- Write unit tests
+- Extract folder structure
