@@ -2,7 +2,10 @@
   "name": "@monotor/providers",
   "version": "0.0.1",
   "dependencies": {
-    "tslib": "^2.3.0"
+    "tslib": "^2.3.0",
+    "@monotor/interfaces": "0.0.1",
+    "@angular/core": "~18.2.0",
+    "@monotor/consts": "0.0.1"
   },
   "type": "commonjs",
   "main": "./src/index.js",

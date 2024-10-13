@@ -1,8 +1,13 @@
 {
   "name": "@monotor/server-interceptors",
   "version": "0.0.1",
-  "dependencies": {},
+  "dependencies": {
+    "@nestjs/common": "^10.0.2",
+    "@nestjs/jwt": "^10.2.0",
+    "express": "4.21.0"
+  },
   "type": "commonjs",
-  "main": "./index.cjs",
+  "main": "./src/index.js",
+  "typings": "./src/index.d.ts",
   "private": true
 }

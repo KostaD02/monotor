@@ -1,8 +1,16 @@
 {
   "name": "@monotor/client-services",
   "version": "0.0.1",
-  "dependencies": {},
+  "dependencies": {
+    "@angular/core": "~18.2.0",
+    "@monotor/interfaces": "0.0.1",
+    "ng-zorro-antd": "^18.1.1",
+    "@angular/forms": "~18.2.0",
+    "@angular/common": "~18.2.0",
+    "rxjs": "^7.8.0"
+  },
   "type": "commonjs",
-  "main": "./index.cjs",
+  "main": "./src/index.js",
+  "typings": "./src/index.d.ts",
   "private": true
 }

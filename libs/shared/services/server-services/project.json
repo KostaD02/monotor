@@ -12,8 +12,7 @@
         "outputPath": "dist/libs/shared/services/server-services",
         "main": "libs/shared/services/server-services/src/index.ts",
         "tsConfig": "libs/shared/services/server-services/tsconfig.lib.json",
-        "assets": ["libs/shared/services/server-services/*.md"],
-        "format": ["cjs"]
+        "assets": ["libs/shared/services/server-services/*.md"]
       }
     }
   }

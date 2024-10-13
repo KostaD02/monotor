@@ -12,8 +12,7 @@
         "outputPath": "dist/libs/shared/consts",
         "main": "libs/shared/consts/src/index.ts",
         "tsConfig": "libs/shared/consts/tsconfig.lib.json",
-        "assets": ["libs/shared/consts/*.md"],
-        "format": ["cjs"]
+        "assets": ["libs/shared/consts/*.md"]
       }
     }
   }

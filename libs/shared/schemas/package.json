@@ -1,8 +1,13 @@
 {
   "name": "@monotor/schemas",
   "version": "0.0.1",
-  "dependencies": {},
+  "dependencies": {
+    "@nestjs/mongoose": "^10.0.10",
+    "mongoose": "^8.6.3",
+    "@monotor/interfaces": "0.0.1"
+  },
   "type": "commonjs",
-  "main": "./index.cjs",
+  "main": "./src/index.js",
+  "typings": "./src/index.d.ts",
   "private": true
 }

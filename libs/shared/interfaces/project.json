@@ -12,8 +12,7 @@
         "outputPath": "dist/libs/shared/interfaces",
         "main": "libs/shared/interfaces/src/index.ts",
         "tsConfig": "libs/shared/interfaces/tsconfig.lib.json",
-        "assets": ["libs/shared/interfaces/*.md"],
-        "format": ["cjs"]
+        "assets": ["libs/shared/interfaces/*.md"]
       }
     }
   }
