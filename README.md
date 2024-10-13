@@ -41,7 +41,7 @@ If you want to try MonoTor, a demo is available at [ADD_ME].
 
 ## Getting started
 
-See instructions to run Wallos below.
+See instructions to run MonoTor below.
 
 ### Prerequisites
 
