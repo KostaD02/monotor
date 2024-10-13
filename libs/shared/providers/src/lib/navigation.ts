@@ -5,7 +5,7 @@ import { NAVIGATION as NAVIGATION_DATA } from '@monotor/consts';
 export const NAVIGATION = new InjectionToken<Navigation[]>('NAVIGATION', {
   providedIn: 'root',
   factory: () =>
-    NAVIGATION_DATA.map((nav) => {
+    NAVIGATION_DATA.map((nav: Navigation) => {
       return {
         ...nav,
         showAfterAuth: nav.showAfterAuth ?? true,

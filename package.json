@@ -4,7 +4,8 @@
   "license": "MIT",
   "scripts": {
     "start:client": "nx serve client",
-    "start:server": "nx serve server"
+    "start:server": "nx serve server",
+    "build": "node scripts/clean-up.js && nx run-many --target=build --all"
   },
   "private": true,
   "devDependencies": {
