@@ -21,10 +21,9 @@ import {
 
 import { JwtModule } from '@auth0/angular-jwt';
 
-import { HttpErrorInterceptor } from '@monotor/client-interceptors';
+import { HttpCustomInterceptor } from '@monotor/client-interceptors';
 import { ApiService, LocalStorageService } from '@monotor/client-services';
 import { StorageKeys } from '@monotor/interfaces';
-import { API_DOMAIN } from '@monotor/consts';
 
 import { en_US, ka_GE, NZ_I18N } from 'ng-zorro-antd/i18n';
 
@@ -49,8 +48,6 @@ bootstrapApplication(AppComponent, {
           tokenGetter: () => {
             return inject(LocalStorageService).getItem(StorageKeys.AccessToken);
           },
-          // TODO: use environment variable
-          allowedDomains: [API_DOMAIN],
         },
       }),
     ),
@@ -72,7 +69,7 @@ bootstrapApplication(AppComponent, {
     ApiService,
     {
       provide: HTTP_INTERCEPTORS,
-      useClass: HttpErrorInterceptor,
+      useClass: HttpCustomInterceptor,
       multi: true,
     },
   ],

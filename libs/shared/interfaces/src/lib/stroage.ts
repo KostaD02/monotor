@@ -5,4 +5,5 @@ export enum StorageKeys {
   Theme = 'theme',
   MetricView = 'metric_view',
   Secret = 'IDDQD',
+  ServerAPIUrl = 'serverAPIUrl',
 }
