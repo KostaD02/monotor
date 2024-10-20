@@ -45,7 +45,8 @@ See instructions to run MonoTor below.
 
 ### Prerequisites
 
-- [Docker](https://www.docker.com/)
+- [Docker](https://www.docker.com/) - production (after docker support)
+- [npm](https://www.npmjs.com/) & [mongodb](https://www.mongodb.com/docs/manual/installation/) - development (local)
 
 ## How to set up
 
@@ -54,7 +55,43 @@ The application can be easily set up using Docker Compose.
 ### Docker compose
 
 ```
-TODO: add
+TODO: add after docker support
+```
+
+### Development
+
+First we need to clone repository.
+
+```
+git clone https://github.com/KostaD02/monotor
+```
+
+Then need to install packages:
+
+```
+cd monotor
+npm ci
+```
+
+Create `.env` file inside `/apps/server` similar to `.env.example`, for example:
+
+```
+PORT = 2222
+HIDE_NEST_LOGS = false
+DATABASE_URL = mongodb://127.0.0.1:27017/monotor
+JWT_SECRET = 6ad8ec0f2f99c267fd34c916da30286f315ee1af6cfcf400dfcd7d9305a73784
+JWT_EXPIRES_IN = 1
+FORCE_ADMIN_MODE_ENABLED = true
+```
+
+> [!NOTE]
+> If you use different `PORT` than `2222`, keep in mind to update same value in `libs/shared/consts/src/lib/api.ts`
+
+After that we have two script to run in different terminals:
+
+```
+npm run start:server
+npm run start:client
 ```
 
 ## Usage
