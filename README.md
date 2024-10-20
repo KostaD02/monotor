@@ -37,7 +37,7 @@ Monotor is a self-hosted application for data monitoring. Initially, the applica
 
 ## Demo
 
-If you want to try MonoTor, a demo is available at [ADD_ME].
+If you want to try MonoTor, a demo is available at [IT_WILL_BE_ADDED_LATER].
 
 ## Getting started
 
@@ -73,9 +73,6 @@ sessionStorage.IDDQD = true;
 ```
 
 After writing this code refresh website and your new user will have admin permission. From new user you can set new password on old user.
-
-> [!NOTE]
-> If you understand what **IDDQD** means, give the repository a star 😁!
 
 ## Screenshots
 
@@ -113,6 +110,7 @@ Check more details at [contributing page](https://github.com/KostaD02/monotor/bl
 
 Here are a few ideas that will be implemented in the future. You can also open an issue for any of these ideas.
 
+- Dockerize
 - Backup support
 - i18n - translations
 - Notifications

@@ -3,9 +3,13 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
+    "nx": "nx",
+    "reset": "nx reset",
     "start:client": "nx serve client",
     "start:server": "nx serve server",
-    "build": "node scripts/clean-up.js && nx run-many --target=build --all"
+    "build": "node scripts/clean-up.js && nx run-many --target=build --all",
+    "build:server": "nx build server",
+    "build:client": "nx build client"
   },
   "private": true,
   "devDependencies": {
