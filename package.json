@@ -9,7 +9,12 @@
     "start:server": "nx serve server",
     "build": "node scripts/clean-up.js && nx run-many --target=build --all",
     "build:server": "nx build server",
-    "build:client": "nx build client"
+    "build:client": "nx build client",
+    "docker:build:client": "npm run build:client && docker build -f Dockerfile.client -t kostad02/monotor-client:latest .",
+    "docker:build:server": "npm run build:server && docker build -f Dockerfile.server -t kostad02/monotor-server:latest .",
+    "docker:build": "npm run build && npm run docker:build:client && npm run docker:build:server",
+    "docker:push": "docker push kostad02/monotor-client:latest && docker push kostad02/monotor-server:latest",
+    "docker:release": "npm run docker:build && npm run docker:push"
   },
   "private": true,
   "devDependencies": {

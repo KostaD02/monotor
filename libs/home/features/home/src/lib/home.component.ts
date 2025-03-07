@@ -12,7 +12,6 @@ import { MetricsService } from '@monotor/client-metrics/data-access';
 import { MetricComponent } from '@monotor/metrics/client-metrics/features/ui/metric';
 import { CalendarService } from '@monotor/client-calendar/data-access';
 import { CalendarComponent } from '@monotor/calendar/client-calendar/features/ui/calendar';
-import { FormComponent } from '@monotor/shared/ui/form';
 import { ScheduleService } from '@monotor/schedule/data-access';
 import { ScheduleComponent } from '@monotor/schedule/client-schedule/features/ui/schedule';
 import { AuthService } from '@monotor/data-access';
@@ -33,7 +32,6 @@ import { Router } from '@angular/router';
     NzLayoutModule,
     NzTabsModule,
     NzEmptyModule,
-    FormComponent,
     MetricComponent,
     CalendarComponent,
     ScheduleComponent,

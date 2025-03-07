@@ -1,63 +1,79 @@
 <nz-layout class="inner">
-  @if (this.usersData()) {
-    <section class="wrap">
-      @if (this.usersData()?.schedules; as schedules) {
-        <section class="schedules">
-          @if (schedules?.length !== 0) {
-            <nz-tabset>
-              @for (schedule of schedules; track schedule._id) {
-                <nz-tab [nzTitle]="schedule.name">
-                  <monotor-schedule
-                    [schedule]="schedule"
-                    [isPreview]="true"
-                  ></monotor-schedule>
-                </nz-tab>
-              }
-            </nz-tabset>
-          } @else {
-            <nz-empty nzNotFoundContent="No schedules found"></nz-empty>
-          }
-        </section>
-      }
-      @if (this.usersData()?.calendars; as calendars) {
-        <section class="calendars">
-          @if (calendars?.length !== 0) {
-            <nz-tabset>
-              @for (calendar of calendars; track calendar._id) {
-                <nz-tab [nzTitle]="calendar.name">
-                  <monotor-calendar
-                    [calendar]="calendar"
-                    [isPreview]="true"
-                  ></monotor-calendar>
-                </nz-tab>
-              }
-            </nz-tabset>
-          } @else {
-            <nz-empty nzNotFoundContent="No calendars found"></nz-empty>
-          }
-        </section>
-      }
-    </section>
-    @if (this.usersData()?.metrics; as metrics) {
-      <section class="metrics">
-        @if (metrics?.length !== 0) {
-          <nz-tabset>
-            @for (metric of metrics; track metric._id) {
-              <nz-tab [nzTitle]="metric.name">
-                <monotor-metric
-                  [metric]="metric"
-                  [isPreview]="true"
-                ></monotor-metric>
-              </nz-tab>
+  @let userData = this.usersData();
+  @if (userData) {
+    @let schedules = userData?.schedules;
+    @let calendars = userData?.calendars;
+    @let metrics = userData?.metrics;
+    @if (
+      schedules?.length === 0 &&
+      calendars?.length === 0 &&
+      metrics?.length === 0
+    ) {
+      <section class="full-size flex-center">
+        <nz-empty
+          nzNotFoundContent="No schedules, calendars or metrics found"
+        ></nz-empty>
+      </section>
+    } @else {
+      <section class="wrap">
+        @if (schedules) {
+          <section class="schedules">
+            @if (schedules?.length !== 0) {
+              <nz-tabset>
+                @for (schedule of schedules; track schedule._id) {
+                  <nz-tab [nzTitle]="schedule.name">
+                    <monotor-schedule
+                      [schedule]="schedule"
+                      [isPreview]="true"
+                    ></monotor-schedule>
+                  </nz-tab>
+                }
+              </nz-tabset>
+            } @else {
+              <nz-empty nzNotFoundContent="No schedules found"></nz-empty>
             }
-          </nz-tabset>
-        } @else {
-          <nz-empty nzNotFoundContent="No metrics found"></nz-empty>
+          </section>
+        }
+        @if (calendars) {
+          <section class="calendars">
+            @if (calendars?.length !== 0) {
+              <nz-tabset>
+                @for (calendar of calendars; track calendar._id) {
+                  <nz-tab [nzTitle]="calendar.name">
+                    <monotor-calendar
+                      [calendar]="calendar"
+                      [isPreview]="true"
+                    ></monotor-calendar>
+                  </nz-tab>
+                }
+              </nz-tabset>
+            } @else {
+              <nz-empty nzNotFoundContent="No calendars found"></nz-empty>
+            }
+          </section>
         }
       </section>
+      @if (metrics) {
+        <section class="metrics">
+          @if (metrics?.length !== 0) {
+            <nz-tabset>
+              @for (metric of metrics; track metric._id) {
+                <nz-tab [nzTitle]="metric.name">
+                  <monotor-metric
+                    [metric]="metric"
+                    [isPreview]="true"
+                  ></monotor-metric>
+                </nz-tab>
+              }
+            </nz-tabset>
+          } @else {
+            <nz-empty nzNotFoundContent="No metrics found"></nz-empty>
+          }
+        </section>
+      }
     }
   } @else {
-    <section class="authorize flex-center">
+    <section class="full-size flex-center">
       <nz-empty nzNotFoundContent="Authorize to see your data"></nz-empty>
     </section>
   }

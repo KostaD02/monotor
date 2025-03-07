@@ -26,7 +26,7 @@ export class HttpCustomInterceptor implements HttpInterceptor {
 
     if (!apiURL) {
       const url = prompt(
-        'Please enter your IP with server port\nFor example: 192.168.1.6:2222',
+        'Please enter your IP with server port\nFor example: 192.168.1.6:2201',
       );
       this.localStorageService.setItem(StorageKeys.ServerAPIUrl, url);
       apiURL = url;
