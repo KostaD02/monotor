@@ -12,11 +12,16 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { BehaviorSubject, switchMap, tap } from 'rxjs';
 import { AdminService } from '@monotor/admin/data-access';
 import { FormComponent } from '@monotor/shared/ui/form';
-import { API_URL, EDIT_USER_FORM_DATA } from '@monotor/consts';
-import { UserRole, UserUpdateFromAdminData } from '@monotor/interfaces';
+import { EDIT_USER_FORM_DATA } from '@monotor/consts';
+import {
+  StorageKeys,
+  UserRole,
+  UserUpdateFromAdminData,
+} from '@monotor/interfaces';
 import { isAllValueEmpty } from '@monotor/util';
-import { DomSanitizer } from '@angular/platform-browser';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { AuthService } from '@monotor/data-access';
+import { LocalStorageService } from '@monotor/client-services';
 
 import { NzAlertModule } from 'ng-zorro-antd/alert';
 import { NzButtonModule } from 'ng-zorro-antd/button';
@@ -49,6 +54,7 @@ export class AdminComponent {
   private readonly authService = inject(AuthService);
   private readonly adminService = inject(AdminService);
   private readonly modalService = inject(NzModalService);
+  private readonly localStorageService = inject(LocalStorageService);
   private readonly notificationService = inject(NzNotificationService);
 
   readonly refershGetAll$ = new BehaviorSubject<void>(undefined);
@@ -57,11 +63,13 @@ export class AdminComponent {
   );
   readonly usersCount = computed(() => this.users()?.length || 0);
   readonly showEditUser = signal('');
-  readonly swaggerUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
-    `${API_URL}/swagger`,
-  );
 
   readonly editUserFormItems = EDIT_USER_FORM_DATA;
+
+  get swaggerUrl(): SafeResourceUrl {
+    const apiUrl = `http://${this.localStorageService.getItem(StorageKeys.ServerAPIUrl)}/api/swagger`;
+    return this.sanitizer.bypassSecurityTrustResourceUrl(apiUrl);
+  }
 
   deleteUser(id: string) {
     this.modalService.confirm({
@@ -77,7 +85,7 @@ export class AdminComponent {
               this.handleDeleteUser(id, false);
               this.notificationService.success(
                 'Success',
-                'You  deleted yourself successfully',
+                'You deleted your account successfully',
               );
               this.router.navigate(['/auth']);
               this.authService.signOut();

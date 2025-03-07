@@ -1,0 +1,51 @@
+services:
+  mongo:
+    container_name: monotor-db
+    image: mongo:latest
+    restart: always
+    volumes:
+      - mongo_db:/data/db
+    networks:
+      - monotor-network
+
+  server:
+    container_name: monotor-server
+    image: kostad02/monotor-server:latest
+    restart: always
+    ports:
+      - "2201:2201"
+    depends_on:
+      - mongo
+    environment:
+      PORT: 2201
+      HIDE_NEST_LOGS: false
+      DATABASE_URL: mongodb://mongo:27017/monotor
+      JWT_SECRET: 6ad8ec0f2f99c267fd34c916da30286f315ee1af6cfcf400dfcd7d9305a73784 # Update this for security
+      JWT_EXPIRES_IN: 1
+      FORCE_ADMIN_MODE_ENABLED: false
+      NODE_ENV: production
+    networks:
+      - monotor-network
+    volumes:
+      - monotor-data:/app/data
+      - monotor-logs:/app/logs
+
+  client:
+    container_name: monotor-client
+    image: kostad02/monotor-client:latest
+    restart: always
+    ports:
+      - "2202:80"
+    depends_on:
+      - server
+    networks:
+      - monotor-network
+
+networks:
+  monotor-network:
+    driver: bridge
+
+volumes:
+  mongo_db: {}
+  monotor-data: {}
+  monotor-logs: {}

@@ -18,7 +18,7 @@ export class AppController {
     return {
       message: 'Welcome to MonoTor API',
       github: 'https://github.com/KostaD02/monotor',
-      swagger: `http://localhost:2222/api/swagger`,
+      swagger: `/api/swagger`,
     };
   }
 

@@ -1,0 +1,17 @@
+FROM node:18-alpine
+
+WORKDIR /app
+
+COPY package*.json ./
+
+# Install production dependencies
+RUN npm ci --only=production
+
+COPY dist/apps/server ./server-dist
+
+# Create needed directories
+RUN mkdir -p /app/data /app/logs
+
+EXPOSE 3000
+
+CMD ["node", "server-dist/main.js"]
