@@ -30,7 +30,7 @@ resources:
     parentId: null
     modified: 1727018930014
     created: 1727018930014
-    name: MonoTor
+    name: Monotor
     description: ''
     scope: collection
     _type: workspace
@@ -1058,7 +1058,7 @@ resources:
     created: 1727018930017
     name: Base Environment
     data:
-      baseUrl: http://localhost:2222/api
+      baseUrl: http://localhost:2201/api
     dataPropertyOrder:
       '&':
         - baseUrl

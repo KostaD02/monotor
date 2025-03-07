@@ -37,15 +37,15 @@ Monotor is a self-hosted application for data monitoring. Initially, the applica
 
 ## Demo
 
-If you want to try MonoTor, a demo is available at [IT_WILL_BE_ADDED_LATER].
+If you want to try Monotor, a demo is available at [IT_WILL_BE_ADDED_LATER].
 
 ## Getting started
 
-See instructions to run MonoTor below.
+See instructions to run Monotor below.
 
 ### Prerequisites
 
-- [Docker](https://www.docker.com/) - production (after docker support)
+- [Docker](https://www.docker.com/) - production
 - [npm](https://www.npmjs.com/) & [mongodb](https://www.mongodb.com/docs/manual/installation/) - development (local)
 
 ## How to set up
@@ -55,8 +55,14 @@ The application can be easily set up using Docker Compose.
 ### Docker compose
 
 ```
-TODO: add after docker support
+mkdir monotor
+cd monotor
+curl -o docker-compose.yml https://raw.githubusercontent.com/KostaD02/monotor/main/server/docker-compose.yml
+docker compose up -d
 ```
+
+> [!NOTE]
+> That was it, you are ready to use it!
 
 ### Development
 
@@ -76,7 +82,7 @@ npm ci
 Create `.env` file inside `/apps/server` similar to `.env.example`, for example:
 
 ```
-PORT = 2222
+PORT = 2201
 HIDE_NEST_LOGS = false
 DATABASE_URL = mongodb://127.0.0.1:27017/monotor
 JWT_SECRET = 6ad8ec0f2f99c267fd34c916da30286f315ee1af6cfcf400dfcd7d9305a73784
@@ -85,7 +91,7 @@ FORCE_ADMIN_MODE_ENABLED = true
 ```
 
 > [!NOTE]
-> If you use different `PORT` than `2222`, keep in mind to update same value in `libs/shared/consts/src/lib/api.ts`
+> If you use different `PORT` than `2201`, keep in mind to update same value in `libs/shared/consts/src/lib/api.ts`
 
 After that we have two script to run in different terminals:
 
@@ -96,7 +102,7 @@ npm run start:client
 
 ## Usage
 
-Just open the browser and type `ip:port` of the machine running MonoTor.
+Just open the browser and type `ip:port` of the machine running Monotor.
 First user who registers will be admin role.
 
 ### Force admin

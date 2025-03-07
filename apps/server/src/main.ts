@@ -45,11 +45,11 @@ async function bootstrap() {
 
   app.useGlobalFilters(new HttpExceptionsFilter());
 
-  const port = process.env.PORT || 2222;
+  const port = process.env.PORT || 2201;
 
   const config = new DocumentBuilder()
-    .setTitle('MonoTor API')
-    .setDescription('The MonoTor API description')
+    .setTitle('Monotor API')
+    .setDescription('The Monotor API description')
     .setVersion('1.0')
     .build();
 

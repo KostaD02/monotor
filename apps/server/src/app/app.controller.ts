@@ -16,7 +16,7 @@ export class AppController {
   @Get()
   base() {
     return {
-      message: 'Welcome to MonoTor API',
+      message: 'Welcome to Monotor API',
       github: 'https://github.com/KostaD02/monotor',
       swagger: `/api/swagger`,
     };

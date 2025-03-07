@@ -1,7 +1,7 @@
 {
   "info": {
     "_postman_id": "1ad206cf-5af3-410b-af86-d1aec93661dc",
-    "name": "MonoTor",
+    "name": "Monotor",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "_exporter_id": "15236555"
   },
@@ -1488,7 +1488,7 @@
   "variable": [
     {
       "key": " _.baseUrl ",
-      "value": "http://localhost:2222/api"
+      "value": "http://localhost:2201/api"
     }
   ]
 }

@@ -1,6 +1,6 @@
 # Workspaces
 
-Here are provided two workspaces for API endpoint testing. There are two apps for it: Insomnia and Postman. You can install them and import the MonoTor workspace.
+Here are provided two workspaces for API endpoint testing. There are two apps for it: Insomnia and Postman. You can install them and import the Monotor workspace.
 
 ## Installation:
 
