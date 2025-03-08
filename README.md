@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/KostaD02/monotor/refs/heads/main/apps/client/src/assets/monotor.png" alt="monotor-logo" width="240px" height="240px"/>
+  <img src="https://raw.githubusercontent.com/KostaD02/monotor/refs/heads/main/monotor.png" alt="monotor-logo" width="240px" height="240px"/>
   <br>
   <em>Monotor: Open-Source monitoring application.</em>
 </p>
