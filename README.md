@@ -1,6 +1,8 @@
-<!-- TOOD: add img -->
-
-Monotor: Open-Source monitoring application.
+<p align="center">
+  <img src="https://raw.githubusercontent.com/KostaD02/monotor/refs/heads/main/apps/client/src/assets/monotor.png" alt="monotor-logo" width="240px" height="240px"/>
+  <br>
+  <em>Monotor: Open-Source monitoring application.</em>
+</p>
 
 <h2>Table of contents</h2>
 
@@ -57,7 +59,13 @@ The application can be easily set up using Docker Compose.
 ```
 mkdir monotor
 cd monotor
-curl -o docker-compose.yml https://raw.githubusercontent.com/KostaD02/monotor/main/server/docker-compose.yml
+curl -o docker-compose.yml https://raw.githubusercontent.com/KostaD02/monotor/main/docker-compose.yml
+```
+
+> [!CAUTION]
+> Update `JWT_SECRET` with something strong, minimum **32** character maximum **64**.\You can use Node.js's built-in crypto function: `crypto.randomBytes(16).toString('base64')`.
+
+```
 docker compose up -d
 ```
 
