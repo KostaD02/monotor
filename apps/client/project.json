@@ -18,6 +18,7 @@
         "inlineStyleLanguage": "less",
         "assets": [
           "apps/client/src/favicon.ico",
+          "apps/client/src/manifest.json",
           {
             "glob": "**/*",
             "input": "libs/shared/assets/src/assets/",

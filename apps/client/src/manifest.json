@@ -1,0 +1,32 @@
+{
+  "theme_color": "#1890ff",
+  "background_color": "#fff",
+  "display": "standalone",
+  "scope": "/",
+  "start_url": "/",
+  "name": "Monotor",
+  "short_name": "Monotor",
+  "description": "Open-Source monitoring application.",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "favicon.ico",
+      "sizes": "256x256",
+      "type": "image/png"
+    },
+    {
+      "src": "favicon.ico",
+      "sizes": "384x384",
+      "type": "image/png"
+    },
+    {
+      "src": "favicon.ico",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
