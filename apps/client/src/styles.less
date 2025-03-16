@@ -103,11 +103,14 @@ body {
 nz-layout.inner {
   width: 100%;
   max-width: 100%;
-  min-height: calc(100vh - 66px) !important;
+  min-height: calc(100vh - 91px);
+  overflow: auto;
 }
 
 nz-content.inner-content {
   padding: 0 25px;
+  max-height: calc(100vh - 91px);
+  overflow-y: auto;
 }
 
 .w-100 {
