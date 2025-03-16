@@ -115,7 +115,7 @@ First user who registers will be admin role.
 
 ### Force admin
 
-If you forget password for admin user, you can force server to give you admin permission if it was enabled in `.env` configuration.
+If you forget password for admin user, you can force server to give you admin permission if it was enabled in `.env` configuration or in `docker-compose`.
 
 Open webiste create new user (this time remember password 🤷‍♂️) and write following code:
 
