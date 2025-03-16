@@ -1,7 +1,15 @@
-FROM nginx:alpine
+FROM node:alpine
 
-COPY dist/apps/client/browser /usr/share/nginx/html
+WORKDIR /app
 
-EXPOSE 80
+COPY package*.json ./
 
-CMD ["nginx", "-g", "daemon off;"]
+RUN npm ci --only=production
+
+COPY dist/apps/client/browser ./monotor-client-dist
+
+COPY scripts/static-client-server.js ./
+
+EXPOSE 2202
+
+CMD ["node", "static-client-server.js"]

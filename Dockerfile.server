@@ -6,10 +6,10 @@ COPY package*.json ./
 
 RUN npm ci --only=production
 
-COPY dist/apps/server ./server-dist
+COPY dist/apps/server ./monotor-server-dist
 
 RUN mkdir -p /app/data /app/logs
 
 EXPOSE 3000
 
-CMD ["node", "server-dist/main.js"]
+CMD ["node", "monotor-server-dist/main.js"]

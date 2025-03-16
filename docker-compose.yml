@@ -35,9 +35,12 @@ services:
     image: kostad02/monotor-client:latest
     restart: always
     ports:
-      - "2202:80"
+      - "2202:2202"
     depends_on:
       - server
+    environment:
+      PROTOCOL: http
+      PORT: 2202 # Make sure port is same as in service
     networks:
       - monotor-network
 
