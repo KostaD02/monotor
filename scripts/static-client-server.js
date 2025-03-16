@@ -4,7 +4,6 @@ const cors = require('cors');
 
 const app = express();
 
-const PROTOCOL = process.env.PROTOCOL || 'http';
 const PORT = process.env.PORT || 2202;
 
 const BASE_URL = path.join(__dirname, 'monotor-client-dist');
@@ -20,6 +19,6 @@ app.get('*', (req, res) => {
 
 app.listen(PORT, () => {
   console.log(
-    `[CLIENT] [LOG] [${new Date().toLocaleDateString()} ${new Date().toLocaleTimeString()}] Server is running on ${PROTOCOL}://YOUR_LOCAL_IP_ADDRESS:${PORT}`,
+    `[CLIENT] [LOG] [${new Date().toLocaleDateString()} ${new Date().toLocaleTimeString()}] Server is running on http://YOUR_LOCAL_IP_ADDRESS:${PORT}`,
   );
 });

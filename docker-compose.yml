@@ -39,7 +39,6 @@ services:
     depends_on:
       - server
     environment:
-      PROTOCOL: http
       PORT: 2202 # Make sure port is same as in service
     networks:
       - monotor-network
